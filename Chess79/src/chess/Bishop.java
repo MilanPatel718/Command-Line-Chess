@@ -1,6 +1,14 @@
 package chess;
 
 public class Bishop extends Piece{
+	/**
+	 * Initializes a Bishop object
+	 * 
+	 * @param name
+	 * Name used to identify a Bishop
+	 * @param block
+	 * The block where the Bishop is initially placed
+	 */
 	public Bishop(String name, Block block){
 		super(name, block);
 	}
