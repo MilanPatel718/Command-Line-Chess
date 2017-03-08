@@ -1,16 +1,24 @@
 package chess;
 
+import Piece.Piece;
+
 public class Block {
 	private int rank;
 	private int file;
-	private String color;
+	private boolean shaded;
 	private boolean occupied;
 	private Piece piece;
+	private String display;
 	
-	public Block(int rank, int file, String color){
+	//Block for 8x8 Board
+	public Block(int rank, int file){
 		this.rank = rank;
 		this.file = file;
-		this.color = color;
+	}
+	
+	//Display Block (a:h, 8:1)
+	public Block(String display){
+		this.display=display;
 	}
 	
 	public int getRank(){
@@ -21,9 +29,6 @@ public class Block {
 		return file;
 	}
 	
-	public String getColor(){
-		return color;
-	}
 	
 	public void setOccupied(boolean b){
 		occupied = b;
@@ -39,5 +44,21 @@ public class Block {
 	
 	public Piece getPiece(){
 		return piece;
+	}
+
+	public boolean isShaded() {
+		return shaded;
+	}
+
+	public void setShaded(boolean shaded) {
+		this.shaded = shaded;
+	}
+
+	public String getDisplay() {
+		return display;
+	}
+
+	public void setDisplay(String display) {
+		this.display = display;
 	}
 }

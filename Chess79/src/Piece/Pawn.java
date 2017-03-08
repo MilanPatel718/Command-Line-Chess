@@ -1,8 +1,10 @@
-package chess;
+package Piece;
+
+import chess.Block;
 
 public class Pawn extends Piece{
-	public Pawn(String name, Block block){
-		super(name, block);
+	public Pawn(String name, Block block, String color){
+		super(name, block, color);
 	}
 	
 	public void move(Block moveTo){

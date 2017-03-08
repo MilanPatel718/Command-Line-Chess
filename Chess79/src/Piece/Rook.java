@@ -1,8 +1,10 @@
-package chess;
+package Piece;
+
+import chess.Block;
 
 public class Rook extends Piece{
-	public Rook(String name, Block block){
-		super(name, block);
+	public Rook(String name, Block block, String color){
+		super(name, block, color);
 	}
 	
 	public void move(Block moveTo){
