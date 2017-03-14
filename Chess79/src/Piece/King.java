@@ -2,7 +2,21 @@ package Piece;
 
 import chess.Block;
 
+/**
+ * @author Baljit Kaur
+ * @author Milan Patel
+ */
 public class King extends Piece {
+	/**
+	 * Initializes a King object
+	 * 
+	 * @param name
+	 * Name used to identify a King
+	 * @param block
+	 * The block where the King is initially placed
+	 * @param color
+	 * Color of the piece
+	 */
 	public King(String name, Block block, String color){
 		super(name, block, color);
 	}

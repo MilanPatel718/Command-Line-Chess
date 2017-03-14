@@ -2,7 +2,21 @@ package Piece;
 
 import chess.Block;
 
+/**
+ * @author Baljit Kaur
+ * @author Milan Patel
+ */
 public class Pawn extends Piece{
+	/**
+	 * Initializes a Pawn object
+	 * 
+	 * @param name
+	 * Name used to identify a Pawn
+	 * @param block
+	 * The block where the Pawn is initially placed
+	 * @param color
+	 * Color of the piece
+	 */
 	public Pawn(String name, Block block, String color){
 		super(name, block, color);
 	}

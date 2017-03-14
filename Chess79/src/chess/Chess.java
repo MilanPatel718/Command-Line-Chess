@@ -3,9 +3,17 @@ package chess;
 import Piece.*;
 
 
+/**
+ * @author Milan Patel
+ * @author Baljit Kaur
+ */
 public class Chess {
 	static Block board[][] =new Block[9][9];
 	
+/**
+ * Populates Chess Board for start of game
+ * @param None
+ */
 public static void populateBoard(){
 	for(int i=0; i<8; i++){
 		for(int j=0;j<8;j++){
@@ -212,6 +220,10 @@ public static void populateBoard(){
 	} 
 }
 	
+	/**
+	 * Prints Chess Board
+	 * @params None
+	 */
 	public static void printBoard(){
 		for(int i=0;i<9;i++){
 			for(int j=0;j<9;j++){
@@ -224,6 +236,9 @@ public static void populateBoard(){
 }
 
 
+	/**
+	 * Main Class for Chess Driver
+	 */
 	public static void main(String[] args){
 			populateBoard();
 			printBoard();

@@ -2,11 +2,11 @@ package Piece;
 
 import chess.Block;
 
+/**
+ * @author Baljit Kaur
+ * @author Milan Patel
+ */
 public class Bishop extends Piece{
-<<<<<<< HEAD:Chess79/src/Piece/Bishop.java
-	public Bishop(String name, Block block, String color){
-		super(name, block, color);
-=======
 	/**
 	 * Initializes a Bishop object
 	 * 
@@ -14,10 +14,11 @@ public class Bishop extends Piece{
 	 * Name used to identify a Bishop
 	 * @param block
 	 * The block where the Bishop is initially placed
+	 * @param color
+	 * Color of the piece
 	 */
-	public Bishop(String name, Block block){
-		super(name, block);
->>>>>>> 7098b25cc7795434eb8a89738c4946558c949155:Chess79/src/chess/Bishop.java
+	public Bishop(String name, Block block, String color){
+		super(name, block, color);
 	}
 	
 	public void move(Block moveTo){

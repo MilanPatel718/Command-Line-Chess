@@ -2,11 +2,11 @@ package Piece;
 
 import chess.Block;
 
+/**
+ * @author Baljit Kaur
+ * @author MIlan Patel
+ */
 public class Rook extends Piece{
-<<<<<<< HEAD:Chess79/src/Piece/Rook.java
-	public Rook(String name, Block block, String color){
-		super(name, block, color);
-=======
 	/**
 	 * Initializes a Bishop object
 	 * 
@@ -14,10 +14,11 @@ public class Rook extends Piece{
 	 * Name used to identify a Rook
 	 * @param block
 	 * The block where the Rook is initially placed
+	 * @param color
+	 * Color of the piece
 	 */
-	public Rook(String name, Block block){
-		super(name, block);
->>>>>>> 7098b25cc7795434eb8a89738c4946558c949155:Chess79/src/chess/Rook.java
+	public Rook(String name, Block block, String color){
+		super(name, block, color);
 	}
 	
 	/**
