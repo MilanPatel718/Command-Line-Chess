@@ -21,6 +21,13 @@ public class Knight extends Piece{
 		super(name, block, color);
 	}
 	
+	/**
+	 * Determines if a move to a new block is valid.
+	 * The Knight is moved if the move is valid, else an error is returned.
+	 * 
+	 * @param moveTo
+	 * The block a Knight will be moved to if the move is valid
+	 */
 	public void move(Block moveTo){
 		if(moveTo.isOccupied()){
 			System.out.println("Invalid move: Block is occupied");

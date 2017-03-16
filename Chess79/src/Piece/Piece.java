@@ -12,8 +12,11 @@ public abstract class Piece {
 	
 	/**
 	 * @param name
+	 * Name used to identify a piece
 	 * @param block
+	 * The block the piece is initially placed on
 	 * @param color
+	 * Color of the block the piece is placed on
 	 */
 	public Piece(String name, Block block, String color){
 		this.name = name;
@@ -23,6 +26,7 @@ public abstract class Piece {
 	
 	/**
 	 * @return name
+	 * Returns the name of the piece
 	 */
 	public String getName(){
 		return name;
@@ -30,6 +34,7 @@ public abstract class Piece {
 	
 	/**
 	 * @return block
+	 * Returns the block the piece is currently placed on
 	 */
 	public Block getBlock(){
 		return block;
@@ -37,6 +42,7 @@ public abstract class Piece {
 	
 	/**
 	 * @param b
+	 * Updates the housing block of a piece
 	 */
 	public void setBlock(Block b){
 		block = b;
@@ -44,11 +50,13 @@ public abstract class Piece {
 	
 	/**
 	 * @param moveTo
+	 * The block a piece is being move to
 	 */
 	public abstract void move(Block moveTo);
 
 	/**
 	 * @return color
+	 * Returns the color of the block the piece is placed on
 	 */
 	public String getColor() {
 		return color;
@@ -56,6 +64,7 @@ public abstract class Piece {
 
 	/**
 	 * @param color
+	 * Updates the color of the block the piece is placed on
 	 */
 	public void setColor(String color) {
 		this.color = color;

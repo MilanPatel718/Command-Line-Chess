@@ -20,6 +20,13 @@ public class Pawn extends Piece{
 		super(name, block, color);
 	}
 	
+	/**
+	 * Determines if a move to a new block is valid.
+	 * The Pawn is moved if the move is valid, else an error is returned.
+	 * 
+	 * @param moveTo
+	 * The block a Pawn will be moved to if the move is valid
+	 */
 	public void move(Block moveTo){
 		if(getName().charAt(0) == 'w'){
 			if(moveTo.isOccupied()){

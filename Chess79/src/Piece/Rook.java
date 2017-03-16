@@ -22,8 +22,11 @@ public class Rook extends Piece{
 	}
 	
 	/**
+	 * Determines if a move to a new block is valid.
+	 * The Rook is moved if the move is valid, else an error is returned.
+	 * 
 	 * @param moveTo
-	 * The potential destination block of a Rook
+	 * The block a Rook will be moved to if the move is valid
 	 */
 	public void move(Block moveTo){
 		if(moveTo.isOccupied()){

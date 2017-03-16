@@ -21,6 +21,13 @@ public class King extends Piece {
 		super(name, block, color);
 	}
 	
+	/**
+	 * Determines if a move to a new block is valid.
+	 * The Bishop is moved if the move is valid, else an error is returned.
+	 * 
+	 * @param moveTo
+	 * The block a King will be moved to if the move is valid.
+	 */
 	public void move(Block moveTo){
 		if(moveTo.isOccupied()){
 			System.out.println("Invalid move: Block is occupied");
