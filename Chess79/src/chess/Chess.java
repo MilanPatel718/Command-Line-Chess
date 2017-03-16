@@ -1,5 +1,8 @@
 package chess;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import Piece.*;
 
 
@@ -9,6 +12,8 @@ import Piece.*;
  */
 public class Chess {
 	static Block board[][] =new Block[9][9];
+	public static Map<String, Integer> Fmap=new HashMap<String, Integer>();
+	public static Map<String, Integer> Rmap=new HashMap<String, Integer>();
 	
 /**
  * Populates Chess Board for start of game
@@ -237,11 +242,37 @@ public static void populateBoard(){
 
 
 	/**
-	 * Main Class for Chess Driver
+	 * Main Chess Driver Method
+	 * @param args
 	 */
 	public static void main(String[] args){
 			populateBoard();
 			printBoard();
+			
+			/*Initializes Maps for FileRank Conversion to Array Indices 
+			 * Use when translating input to actual board location 
+			 * e.g a7 a5 == [1][0] [3][0]
+			 */
+			Fmap.put("a", 0);
+			Fmap.put("b", 1);
+			Fmap.put("c", 2);
+			Fmap.put("d", 3);
+			Fmap.put("e", 4);
+			Fmap.put("f", 5);
+			Fmap.put("g", 6);
+			Fmap.put("h", 7);
+			Rmap.put("1", 7);
+			Rmap.put("2", 6);
+			Rmap.put("3", 5);
+			Rmap.put("4", 4);
+			Rmap.put("5", 3);
+			Rmap.put("6", 2);
+			Rmap.put("7", 1);
+			Rmap.put("8", 0);
+			
+			
+			
+			
 	
 
 	}

@@ -1,5 +1,4 @@
 package Piece;
-
 import chess.Block;
 
 /**
