@@ -23,7 +23,7 @@ public class Player {
 	Pawn pawn7;
 	Pawn pawn8;
 	
-	public Player(King king, Queen queen, Knight knight1, Knight knight2, Rook rook1, Rook rook2, Bishop bishop1, Bishop bishop2,
+	/*public Player(King king, Queen queen, Knight knight1, Knight knight2, Rook rook1, Rook rook2, Bishop bishop1, Bishop bishop2,
 			Pawn pawn1, Pawn pawn2, Pawn pawn3, Pawn pawn4, Pawn pawn5, Pawn pawn6, Pawn pawn7, Pawn pawn8){
 		this.king = king;
 		this.queen = queen;
@@ -41,7 +41,7 @@ public class Player {
 		this.pawn6 = pawn6;
 		this.pawn7 = pawn7;
 		this.pawn8 = pawn8;
-	}
+	}*/
 	
 	public King getKing(){
 		return king;

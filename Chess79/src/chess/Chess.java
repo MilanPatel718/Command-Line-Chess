@@ -14,8 +14,8 @@ public class Chess {
 	static Block board[][] = new Block[9][9];
 	public static Map<String, Integer> Fmap=new HashMap<String, Integer>();
 	public static Map<String, Integer> Rmap=new HashMap<String, Integer>();
-	static Player black;
-	static Player white;
+	public static Player black;
+	public static Player white;
 	
 /**
  * Populates Chess Board for start of game
@@ -314,6 +314,8 @@ public static void populateBoard(){
 	 * Initializes Chessboard
 	 */
 	public static void main(String[] args){
+			black=new Player();
+			white=new Player();
 			populateBoard();
 			printBoard();
 			
@@ -337,5 +339,8 @@ public static void populateBoard(){
 			Rmap.put("6", 2);
 			Rmap.put("7", 1);
 			Rmap.put("8", 0);
+			
+			Game game=new Game(board, black, white);
+			game.Start();
 	}
 }
