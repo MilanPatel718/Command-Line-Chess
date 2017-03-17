@@ -314,8 +314,9 @@ public static void populateBoard(){
 	 * Initializes Chessboard
 	 */
 	public static void main(String[] args){
-			black=new Player();
-			white=new Player();
+			white = new Player("White");
+			black = new Player("Black");
+			
 			populateBoard();
 			printBoard();
 			
@@ -340,7 +341,7 @@ public static void populateBoard(){
 			Rmap.put("7", 1);
 			Rmap.put("8", 0);
 			
-			Game game=new Game(board, black, white);
+			Game game = new Game(board, black, white, Fmap, Rmap);
 			game.Start();
 	}
 }

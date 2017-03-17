@@ -28,19 +28,21 @@ public class Queen extends Piece{
 	 * @param moveTo
 	 * The block a Queen will be moved to if the move is valid
 	 */
-	public void move(Block moveTo){
+	public boolean move(Block moveTo){
 		if(moveTo.isOccupied()){
 			System.out.println("Invalid move: Block is occupied");
-			return;
+			return false;
 		}
 		if((((getBlock().getRank() == moveTo.getRank()) && (getBlock().getFile() != moveTo.getFile())
 				|| ((getBlock().getFile() == moveTo.getFile()) && (getBlock().getRank() != moveTo.getRank()))))
 				|| (Math.abs(getBlock().getRank() - moveTo.getRank()) == 
 						Math.abs(getBlock().getFile() - moveTo.getFile()))){
 			setBlock(moveTo);
+			return true;
 		}else{
-			System.out.println("Invalid Move");
 			//output to board 
+			System.out.println("Illegal move, try again!");
+			return false;
 		}
 	}
 }

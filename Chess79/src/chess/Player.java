@@ -6,42 +6,31 @@ import Piece.*;
  * @author Baljit Kaur
  */
 public class Player {
-	King king;
-	Queen queen;
-	Bishop bishop1;
-	Bishop bishop2;
-	Knight knight1;
-	Knight knight2;
-	Rook rook1;
-	Rook rook2;
-	Pawn pawn1;
-	Pawn pawn2;
-	Pawn pawn3;
-	Pawn pawn4;
-	Pawn pawn5;
-	Pawn pawn6;
-	Pawn pawn7;
-	Pawn pawn8;
+	private String color;
+	private King king;
+	private Queen queen;
+	private Bishop bishop1;
+	private Bishop bishop2;
+	private Knight knight1;
+	private Knight knight2;
+	private Rook rook1;
+	private Rook rook2;
+	private Pawn pawn1;
+	private Pawn pawn2;
+	private Pawn pawn3;
+	private Pawn pawn4;
+	private Pawn pawn5;
+	private Pawn pawn6;
+	private Pawn pawn7;
+	private Pawn pawn8;
 	
-	/*public Player(King king, Queen queen, Knight knight1, Knight knight2, Rook rook1, Rook rook2, Bishop bishop1, Bishop bishop2,
-			Pawn pawn1, Pawn pawn2, Pawn pawn3, Pawn pawn4, Pawn pawn5, Pawn pawn6, Pawn pawn7, Pawn pawn8){
-		this.king = king;
-		this.queen = queen;
-		this.knight1 = knight1;
-		this.knight2 = knight2;
-		this.rook1 = rook1;
-		this.rook2 = rook2;
-		this.bishop1 = bishop1;
-		this.bishop2 = bishop2;
-		this.pawn1 = pawn1;
-		this.pawn2 = pawn2;
-		this.pawn3 = pawn3;
-		this.pawn4 = pawn4;
-		this.pawn5 = pawn5;
-		this.pawn6 = pawn6;
-		this.pawn7 = pawn7;
-		this.pawn8 = pawn8;
-	}*/
+	public Player(String color){
+		this.color = color;
+	}
+	
+	public String getColor(){
+		return color;
+	}
 	
 	public King getKing(){
 		return king;

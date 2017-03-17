@@ -28,17 +28,19 @@ public class Bishop extends Piece{
 	 * @param moveTo
 	 * The block a Bishop will be moved to if the move is valid
 	 */
-	public void move(Block moveTo){
+	public boolean move(Block moveTo){
 		if(moveTo.isOccupied()){
 			System.out.println("Invalid move: Block is occupied");
-			return;
+			return false;
 		}
 		if(Math.abs(getBlock().getRank() - moveTo.getRank()) == 
 				Math.abs(getBlock().getFile() - moveTo.getFile())){
 			setBlock(moveTo);
+			return true;
 		}else{
 			//output to board 
-			System.out.println("Invalid Move");
+			System.out.println("Illegal move, try again!");
+			return false;
 		}
 	}
 }

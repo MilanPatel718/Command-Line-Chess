@@ -28,19 +28,21 @@ public class Knight extends Piece{
 	 * @param moveTo
 	 * The block a Knight will be moved to if the move is valid
 	 */
-	public void move(Block moveTo){
+	public boolean move(Block moveTo){
 		if(moveTo.isOccupied()){
 			System.out.println("Invalid move: Block is occupied");
-			return;
+			return false;
 		}
 		if(((Math.abs(getBlock().getRank() - moveTo.getRank()) == 2)
 			&& (Math.abs(getBlock().getFile() - moveTo.getFile()) == 1))
 			|| ((Math.abs(getBlock().getFile() - moveTo.getFile()) == 2)
 					&& (Math.abs(getBlock().getRank() - moveTo.getRank()) == 1))){
 			setBlock(moveTo);
+			return true;
 		}else{
-			System.out.println("Invalid Move");
 			//output to board 
+			System.out.println("Illegal move, try again!");
+			return false;
 		}
 	}
 }

@@ -27,7 +27,7 @@ public class Pawn extends Piece{
 	 * @param moveTo
 	 * The block a Pawn will be moved to if the move is valid
 	 */
-	public void move(Block moveTo){
+	public boolean move(Block moveTo){
 		if(getName().charAt(0) == 'w'){
 			if(moveTo.isOccupied()){
 				if((moveTo.getRank() == getBlock().getRank() + 1)
@@ -37,6 +37,7 @@ public class Pawn extends Piece{
 						//send message to remove
 					}else{
 						System.out.println("Invalid move!");
+						return false;
 					}
 				}else if((moveTo.getRank() == getBlock().getRank() + 1))
 						/*|| ((moveTo.getRank() == getBlock().getRank() + 2) &&
@@ -44,7 +45,7 @@ public class Pawn extends Piece{
 					
 				}
 				System.out.println("Invalid move: Block is occupied");
-				return;
+				return false;
 			}
 		}else if(getName().charAt(0) == 'b'){
 			if(moveTo.isOccupied()){
@@ -56,8 +57,9 @@ public class Pawn extends Piece{
 					}
 				}
 				System.out.println("Invalid move: Block is occupied");
-				return;
+				return false;
 			}
 		}
+		return false;
 	}
 }

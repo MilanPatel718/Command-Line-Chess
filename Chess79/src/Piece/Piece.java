@@ -52,7 +52,7 @@ public abstract class Piece {
 	 * @param moveTo
 	 * The block a piece is being move to
 	 */
-	public abstract void move(Block moveTo);
+	public abstract boolean move(Block moveTo);
 
 	/**
 	 * @return color
