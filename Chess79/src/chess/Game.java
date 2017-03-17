@@ -74,11 +74,14 @@ public class Game {
 		
 	}
 	
-	public void getInput(Scanner s){
-		sf = s.next().charAt(0);
-		sr = s.next().charAt(1);
-		df = s.next().charAt(3);
-		dr = s.next().charAt(4);
+	public void getInput(Scanner t){
+		String src=t.next();
+		sf = src.charAt(0);
+		sr = src.charAt(1);
+		
+		String dest=t.next();
+		df = dest.charAt(0);
+		dr = dest.charAt(1);
 	}
 	
 	public boolean makeMove(Block current, Block dest, Player player){
@@ -90,10 +93,10 @@ public class Game {
 	
 	public boolean mapAndExecute(Player player, Scanner scanner){
 		getInput(scanner);
-		srcFile = fMap.get(sf);
-		srcRank = rMap.get(sr);
-		destFile = fMap.get(df);
-		destRank = rMap.get(dr);
-		return makeMove(board[srcFile][srcRank], board[destFile][destRank], player);
+		srcFile = fMap.get(sf+"");
+		srcRank = rMap.get(sr+"");
+		destFile = fMap.get(df+"");
+		destRank = rMap.get(dr+"");
+		return makeMove(board[srcRank][srcFile], board[destRank][destFile], player);
 	}
 }
