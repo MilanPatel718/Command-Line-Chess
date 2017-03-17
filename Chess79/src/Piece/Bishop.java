@@ -37,8 +37,8 @@ public class Bishop extends Piece{
 				Math.abs(getBlock().getFile() - moveTo.getFile())){
 			setBlock(moveTo);
 		}else{
-			System.out.println("Invalid Move");
 			//output to board 
+			System.out.println("Invalid Move");
 		}
 	}
 }

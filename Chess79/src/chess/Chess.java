@@ -9,11 +9,13 @@ import Piece.*;
 /**
  * @author Milan Patel
  * @author Baljit Kaur
- */
+ */ 
 public class Chess {
-	static Block board[][] =new Block[9][9];
+	static Block board[][] = new Block[9][9];
 	public static Map<String, Integer> Fmap=new HashMap<String, Integer>();
 	public static Map<String, Integer> Rmap=new HashMap<String, Integer>();
+	static Player black;
+	static Player white;
 	
 /**
  * Populates Chess Board for start of game
@@ -34,6 +36,11 @@ public static void populateBoard(){
 							board[i][j].setOccupied(true);
 							board[i][j].setPiece(new Rook("bR ", board[i][j], "Black"));
 							board[i][j].setDisplay("bR ");
+							if(j == 0){
+								black.setRook1((Rook)board[i][j].getPiece());
+							}else if(j == 7){
+								black.setRook2((Rook)board[i][j].getPiece());
+							}
 							
 						}
 						//White Rook
@@ -42,6 +49,11 @@ public static void populateBoard(){
 							board[i][j].setOccupied(true);
 							board[i][j].setPiece(new Rook("wR ", board[i][j], "White"));
 							board[i][j].setDisplay("wR ");
+							if(j == 0){
+								white.setRook1((Rook)board[i][j].getPiece());
+							}else if(j == 7){
+								white.setRook2((Rook)board[i][j].getPiece());
+							}
 						}
 					}
 					
@@ -53,6 +65,11 @@ public static void populateBoard(){
 							board[i][j].setOccupied(true);
 							board[i][j].setPiece(new Knight("bN ", board[i][j], "Black"));
 							board[i][j].setDisplay("bN ");
+							if(j == 1){
+								black.setKnight1((Knight)board[i][j].getPiece());
+							}else if(j == 6){
+								black.setKnight2((Knight)board[i][j].getPiece());
+							}
 						}
 						//White Knight
 						if(i==7){
@@ -60,6 +77,11 @@ public static void populateBoard(){
 							board[i][j].setOccupied(true);
 							board[i][j].setPiece(new Knight("wN ", board[i][j], "White"));
 							board[i][j].setDisplay("wN ");
+							if(j == 1){
+								white.setKnight1((Knight)board[i][j].getPiece());
+							}else if(j == 6){
+								white.setKnight2((Knight)board[i][j].getPiece());
+							}
 						}
 					}
 					
@@ -71,6 +93,11 @@ public static void populateBoard(){
 							board[i][j].setOccupied(true);
 							board[i][j].setPiece(new Bishop("bB ", board[i][j], "Black"));
 							board[i][j].setDisplay("bB ");
+							if(j == 2){
+								black.setBishop1((Bishop)board[i][j].getPiece());
+							}else if(j == 5){
+								black.setBishop2((Bishop)board[i][j].getPiece());
+							}
 						}
 						//White Bishop
 						if(i==7){
@@ -78,6 +105,11 @@ public static void populateBoard(){
 							board[i][j].setOccupied(true);
 							board[i][j].setPiece(new Bishop("wB ", board[i][j], "White"));
 							board[i][j].setDisplay("wB ");
+							if(j == 2){
+								white.setBishop1((Bishop)board[i][j].getPiece());
+							}else if(j == 5){
+								white.setBishop2((Bishop)board[i][j].getPiece());
+							}
 						}
 						
 					}
@@ -90,6 +122,7 @@ public static void populateBoard(){
 							board[i][j].setOccupied(true);
 							board[i][j].setPiece(new Queen("bQ ", board[i][j], "Black"));
 							board[i][j].setDisplay("bQ ");
+							black.setQueen((Queen)board[i][j].getPiece());
 						}
 						//White Queen
 						if(i==7){
@@ -97,6 +130,7 @@ public static void populateBoard(){
 							board[i][j].setOccupied(true);
 							board[i][j].setPiece(new Queen("wQ ", board[i][j], "White"));
 							board[i][j].setDisplay("bQ ");
+							white.setQueen((Queen)board[i][j].getPiece());
 						}
 					}
 					
@@ -108,6 +142,7 @@ public static void populateBoard(){
 							board[i][j].setOccupied(true);
 							board[i][j].setPiece(new King("bK ", board[i][j], "Black"));
 							board[i][j].setDisplay("bK ");
+							black.setKing((King)board[i][j].getPiece());
 						}
 						//White King
 						if(i==7){
@@ -115,6 +150,7 @@ public static void populateBoard(){
 							board[i][j].setOccupied(true);
 							board[i][j].setPiece(new King("wK ", board[i][j], "White"));
 							board[i][j].setDisplay("wK ");
+							white.setKing((King)board[i][j].getPiece());
 						}
 					}
 					
@@ -128,6 +164,23 @@ public static void populateBoard(){
 							board[i][j].setOccupied(true);
 							board[i][j].setPiece(new Pawn("bp ", board[i][j], "Black"));
 							board[i][j].setDisplay("bp ");
+							if(j == 0){
+								black.setPawn1((Pawn)board[i][j].getPiece());
+							}else if(j == 1){
+								black.setPawn2((Pawn)board[i][j].getPiece());
+							}else if(j == 2){
+								black.setPawn3((Pawn)board[i][j].getPiece());
+							}else if(j == 3){
+								black.setPawn4((Pawn)board[i][j].getPiece());
+							}else if(j == 4){
+								black.setPawn5((Pawn)board[i][j].getPiece());
+							}else if(j == 5){
+								black.setPawn6((Pawn)board[i][j].getPiece());
+							}else if(j == 6){
+								black.setPawn7((Pawn)board[i][j].getPiece());
+							}else if(j == 7){
+								black.setPawn8((Pawn)board[i][j].getPiece());
+							}
 						}
 					//White Pawn
 					if(i==6){
@@ -135,6 +188,23 @@ public static void populateBoard(){
 							board[i][j].setOccupied(true);
 							board[i][j].setPiece(new Pawn("wp ", board[i][j], "White"));
 							board[i][j].setDisplay("wp ");
+							if(j == 0){
+								white.setPawn1((Pawn)board[i][j].getPiece());
+							}else if(j == 1){
+								white.setPawn2((Pawn)board[i][j].getPiece());
+							}else if(j == 2){
+								white.setPawn3((Pawn)board[i][j].getPiece());
+							}else if(j == 3){
+								white.setPawn4((Pawn)board[i][j].getPiece());
+							}else if(j == 4){
+								white.setPawn5((Pawn)board[i][j].getPiece());
+							}else if(j == 5){
+								white.setPawn6((Pawn)board[i][j].getPiece());
+							}else if(j == 6){
+								white.setPawn7((Pawn)board[i][j].getPiece());
+							}else if(j == 7){
+								white.setPawn8((Pawn)board[i][j].getPiece());
+							}
 						}
 					}
 				
@@ -237,13 +307,11 @@ public static void populateBoard(){
 				
 			}
 			System.out.println();
+		}
 	}
-}
-
-
+	
 	/**
-	 * Main Chess Driver Method
-	 * @param args
+	 * Initializes Chessboard
 	 */
 	public static void main(String[] args){
 			populateBoard();
@@ -269,11 +337,5 @@ public static void populateBoard(){
 			Rmap.put("6", 2);
 			Rmap.put("7", 1);
 			Rmap.put("8", 0);
-			
-			
-			
-			
-	
-
 	}
 }
