@@ -11,7 +11,7 @@ import Piece.*;
  * @author Baljit Kaur
  */ 
 public class Chess {
-	static Block board[][] = new Block[9][9];
+	public static Block board[][] = new Block[9][9];
 	public static Map<String, Integer> Fmap=new HashMap<String, Integer>();
 	public static Map<String, Integer> Rmap=new HashMap<String, Integer>();
 	public static Player black;
