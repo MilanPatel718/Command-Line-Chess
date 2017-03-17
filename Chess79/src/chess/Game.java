@@ -27,7 +27,7 @@ public class Game {
 		stalemate = false;
 		successfulMove = false;
 		this.fMap = fMap;
-		this.rMap = rMap;
+		this.rMap = rMap; 
 		sf = '\0'; 
 		sr = '\0';
 		df = '\0'; 
@@ -48,36 +48,33 @@ public class Game {
 		
 		//ask White player for input
 		System.out.print("White's move: ");
+		successfulMove =  mapAndExecute(whitePlayer, scanner);
 		while(successfulMove != true){
-			
+			successfulMove =  mapAndExecute(whitePlayer, scanner);
 		}
 		lastTurn = 0;
 		
 		while(resign != true || checkmate != true || stalemate != true){
 			if(lastTurn == 0){
 				System.out.print("Black's move: ");
-				getInput(scanner, sf, sr, df, dr);
-				srcFile = fMap.get(sf);
-				srcRank = rMap.get(sr);
-				destFile = fMap.get(df);
-				destRank = rMap.get(dr);
-				makeMove(board[srcFile][srcRank], board[destFile][destRank], blackPlayer);
+				successfulMove =  mapAndExecute(blackPlayer, scanner);
+				while(successfulMove != true){
+					successfulMove =  mapAndExecute(blackPlayer, scanner);
+				}
 				lastTurn = 1;
 			}else if(lastTurn == 1){
 				System.out.print("White's move: ");
-				getInput(scanner, sf, sr, df, dr);
-				srcFile = fMap.get(sf);
-				srcRank = rMap.get(sr);
-				destFile = fMap.get(df);
-				destRank = rMap.get(dr);
-				makeMove(board[srcFile][srcRank], board[destFile][destRank], whitePlayer);
+				successfulMove =  mapAndExecute(whitePlayer, scanner);
+				while(successfulMove != true){
+					successfulMove =  mapAndExecute(whitePlayer, scanner);
+				}
 				lastTurn = 0;
 			}
 		}
 		
 	}
 	
-	public void getInput(Scanner s, char sf, char sr, char df, char dr){
+	public void getInput(Scanner s){
 		sf = s.next().charAt(0);
 		sr = s.next().charAt(1);
 		df = s.next().charAt(3);
@@ -91,9 +88,8 @@ public class Game {
 		return false;
 	}
 	
-	public boolean mapAndExecute(char sf, char sr, char df, char dr, Player player, 
-			Map<String, Integer> fMap, Map<String, Integer> rMap, Scanner scanner){
-		getInput(scanner, sf, sr, df, dr);
+	public boolean mapAndExecute(Player player, Scanner scanner){
+		getInput(scanner);
 		srcFile = fMap.get(sf);
 		srcRank = rMap.get(sr);
 		destFile = fMap.get(df);
