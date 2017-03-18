@@ -56,18 +56,24 @@ public class Game {
 		
 		while(resign != true || checkmate != true || stalemate != true){
 			if(lastTurn == 0){
+				scanner=new Scanner(System.in);
 				System.out.print("Black's move: ");
 				successfulMove =  mapAndExecute(blackPlayer, scanner);
 				while(successfulMove != true){
+					scanner=new Scanner(System.in);
 					successfulMove =  mapAndExecute(blackPlayer, scanner);
 				}
+				System.out.println();
 				lastTurn = 1;
 			}else if(lastTurn == 1){
+				scanner=new Scanner(System.in);
 				System.out.print("White's move: ");
 				successfulMove =  mapAndExecute(whitePlayer, scanner);
 				while(successfulMove != true){
+					scanner=new Scanner(System.in);
 					successfulMove =  mapAndExecute(whitePlayer, scanner);
 				}
+				System.out.println();
 				lastTurn = 0;
 			}
 		}
@@ -85,10 +91,8 @@ public class Game {
 	}
 	
 	public boolean makeMove(Block current, Block dest, Player player){
-		if(!dest.isOccupied() && current.getPiece().getColor().equals(player.getColor())){
 			return current.getPiece().move(dest);
-		}
-		return false;
+		
 	}
 	
 	public boolean mapAndExecute(Player player, Scanner scanner){

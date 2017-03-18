@@ -34,21 +34,35 @@ public class Pawn extends Piece{
 		int destFile = moveTo.getFile();
 		int destRank = chess.Chess.Rmap.get(moveTo.getRank()+""); 
 		
-		if(getName().charAt(0) == 'w'){
+		System.out.println(srcRank+" "+srcFile+" "+destRank+" "+destFile);
+		
+		//White Pawn Move
+		if(this.getName().charAt(0) == 'w'){
 			if(moveTo.isOccupied()){
-			   if((destRank == srcRank - 1)
-						&& ((destFile== srcFile - 1) || (destFile == srcFile + 1))){
-					if(moveTo.getPiece().getName().charAt(0) != getName().charAt(0)){
+			   if((destRank == srcRank - 1) && (Math.abs(destFile-srcFile)==1)){
+					if(moveTo.getPiece().getName().charAt(0) != this.getName().charAt(0)){
 						//capture opponent's piece
 						//send message to remove
+						
 						chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
-						getBlock().setOccupied(false);
-						getBlock().setPiece(null);
+						chess.Chess.board[destRank][destFile].setDisplay("wp ");
+						
+						this.getBlock().setOccupied(false);
+						this.getBlock().setPiece(null);
+						
+						if(this.getBlock().isShaded()){
+							this.getBlock().setDisplay("## ");
+						}
+						else{
+							this.getBlock().setDisplay("   ");
+						}
+						this.setBlock(moveTo);
 						chess.Chess.printBoard();
 						return true;
 						
 						
-					}else{
+					}
+				   else{
 						System.out.println("Invalid move!");
 						return false;
 					}
@@ -58,7 +72,7 @@ public class Pawn extends Piece{
 						/*|| ((moveTo.getRank() == getBlock().getRank() + 2) &&
 								(moveTo.getRank() - 1  )))*/{
 				
-				 System.out.println("Invalid move: Block is occupied");
+				System.out.println("Invalid move: Block is occupied");
 				return false;
 			  }
 			 
@@ -77,36 +91,47 @@ public class Pawn extends Piece{
 		//Destination is not occupied	
 		else{
 			if(destRank == srcRank -1){
-				chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
+				
+				chess.Chess.board[destRank][destFile].setPiece(this);
 				chess.Chess.board[destRank][destFile].setOccupied(true);
 				chess.Chess.board[destRank][destFile].setDisplay("wp ");
-				getBlock().setOccupied(false);
-				getBlock().setPiece(null);
-				if(getBlock().isShaded()){
-					getBlock().setDisplay("## ");
+				
+				
+				this.getBlock().setOccupied(false);
+				this.getBlock().setPiece(null);
+				
+				if(this.getBlock().isShaded()){
+					this.getBlock().setDisplay("## ");
 				}
 				else{
-					getBlock().setDisplay("   ");
+					this.getBlock().setDisplay("   ");
 				}
+				this.setBlock(moveTo);
+				
 				chess.Chess.printBoard();
 				return true;
 			}
 			
 			else if(srcRank==6 && destRank == srcRank-2){
-				chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
+				
+				chess.Chess.board[destRank][destFile].setPiece(this);
 				chess.Chess.board[destRank][destFile].setOccupied(true);
 				chess.Chess.board[destRank][destFile].setDisplay("wp ");
-				getBlock().setOccupied(false);
-				getBlock().setPiece(null);
-				if(getBlock().isShaded()){
-					getBlock().setDisplay("## ");
+				
+				this.getBlock().setOccupied(false);
+				this.getBlock().setPiece(null);
+				
+				if(this.getBlock().isShaded()){
+					this.getBlock().setDisplay("## ");
 				}
 				else{
-					getBlock().setDisplay("   ");
+					this.getBlock().setDisplay("   ");
 				}
+				this.setBlock(moveTo);
 				chess.Chess.printBoard();
 				return true;
 			}
+			
 			else{
 				System.out.println("Invalid Move!");
 				return false;
@@ -115,21 +140,109 @@ public class Pawn extends Piece{
 		}
 			
 			
-		}
+	}
 		
-		else if(getName().charAt(0) == 'b'){
+		//Black Pawn Move
+		else if(this.getName().charAt(0) == 'b'){
 			if(moveTo.isOccupied()){
-				if((moveTo.getRank() == getBlock().getRank() - 1)
-						&& (moveTo.getFile() == getBlock().getFile() - 1)){
-					if(moveTo.getPiece().getName().charAt(0) != getName().charAt(0)){
-						//capture opponent's piece
-						//send message to remove
+				   if((destRank == srcRank + 1) && (Math.abs(destFile-srcFile)==1)){
+						if(moveTo.getPiece().getName().charAt(0) != this.getName().charAt(0)){
+							//capture opponent's piece
+							//send message to remove
+							
+							chess.Chess.board[destRank][destFile].setPiece(this);
+							chess.Chess.board[destRank][destFile].setDisplay("bp ");
+							
+							this.getBlock().setOccupied(false);
+							this.getBlock().setPiece(null);
+							
+							if(this.getBlock().isShaded()){
+								this.getBlock().setDisplay("## ");
+							}
+							else{
+								this.getBlock().setDisplay("   ");
+							}
+							this.setBlock(moveTo);
+							chess.Chess.printBoard();
+							return true;
+							
+							
+						}else{
+							System.out.println("Invalid move!");
+							return false;
+						}
 					}
+					
+				  else if(destRank == srcRank + 1)
+							/*|| ((moveTo.getRank() == getBlock().getRank() + 2) &&
+									(moveTo.getRank() - 1  )))*/{
+					
+					System.out.println("Invalid move: Block is occupied");
+					return false;
+				  }
+				 
+				  else if(srcRank==1 && destRank==srcRank+2){
+					  System.out.println("Invalid move: Block is occupied");
+					  return false;
+				  }
+				 
+				  else{
+					  System.out.println("Invalid move!");
+					  return false;
+				  }
+				  
+		}
+			
+			//Destination is not occupied	
+			else{
+				if(destRank == srcRank +1){
+					
+					chess.Chess.board[destRank][destFile].setPiece(this);
+					chess.Chess.board[destRank][destFile].setOccupied(true);
+					chess.Chess.board[destRank][destFile].setDisplay("bp ");
+					
+					this.getBlock().setOccupied(false);
+					this.getBlock().setPiece(null);
+					
+					if(this.getBlock().isShaded()){
+						this.getBlock().setDisplay("## ");
+					}
+					else{
+						this.getBlock().setDisplay("   ");
+					}
+					this.setBlock(moveTo);
+					chess.Chess.printBoard();
+					return true;
 				}
-				System.out.println("Invalid move: Block is occupied");
-				return false;
+				
+				else if(srcRank==1 && destRank == srcRank+2){
+					
+					chess.Chess.board[destRank][destFile].setPiece(this);
+					chess.Chess.board[destRank][destFile].setOccupied(true);
+					chess.Chess.board[destRank][destFile].setDisplay("bp ");
+					
+					this.getBlock().setOccupied(false);
+					this.getBlock().setPiece(null);
+					
+					if(this.getBlock().isShaded()){
+						this.getBlock().setDisplay("## ");
+					}
+					else{
+						this.getBlock().setDisplay("   ");
+					}
+					this.setBlock(moveTo);
+					chess.Chess.printBoard();
+					return true;
+				}
+				
+				else{
+					System.out.println("Invalid Move!");
+					return false;
+				}
+				
 			}
 		}
 		return false;
 	}
 }
+		
