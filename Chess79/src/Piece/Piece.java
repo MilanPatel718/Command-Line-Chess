@@ -105,4 +105,73 @@ public abstract class Piece {
 	public void setNumber(int number) {
 		this.number = number;
 	}
+	/**
+	 * @param num
+	 * @param P
+	 * Sets Player Piece to Null when that piece is captured by enemy player
+	 */
+	public void deletePiece(int num, Piece P){
+		String Name=P.getName();
+		if(Name.equals("Pawn")){
+			if(num==1){
+				P.player.setPawn1(null);
+			}
+			else if(num==2){
+				P.player.setPawn2(null);
+			}
+			else if(num==3){
+				P.player.setPawn3(null);
+			}
+			else if(num==4){
+				P.player.setPawn4(null);
+			}
+			else if(num==5){
+				P.player.setPawn5(null);
+			}
+			else if(num==6){
+				P.player.setPawn6(null);
+			}
+			else if(num==7){
+				P.player.setPawn7(null);
+			}
+			else{
+				P.player.setPawn8(null);
+			}
+		}
+		else if(Name.equals("Rook")){
+			if(num==1){
+				P.player.setRook1(null);
+				
+			}
+			else{
+				P.player.setRook2(null);
+			}
+			
+		}
+		else if(Name.equals("Bishop")){
+			if(num==1){
+				P.player.setBishop1(null);
+			}
+			else{
+				P.player.setBishop2(null);
+			}
+			
+		}
+		else if(Name.equals("Knight")){
+			if(num==1){
+				P.player.setKnight1(null);
+			}
+			else{
+				P.player.setKnight2(null);
+			}
+		}
+		else if(Name.equals("Queen")){
+				P.player.setQueen(null);
+			
+		}
+		else{
+				P.player.setKing(null);
+			
+		}
+	}
 }

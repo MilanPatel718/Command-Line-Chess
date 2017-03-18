@@ -38,8 +38,11 @@ public static void populateBoard(){
 							board[i][j].setDisplay("bR ");
 							if(j == 0){
 								black.setRook1((Rook)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(1);
+								
 							}else if(j == 7){
 								black.setRook2((Rook)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(2);
 							}
 							
 						}
@@ -51,8 +54,10 @@ public static void populateBoard(){
 							board[i][j].setDisplay("wR ");
 							if(j == 0){
 								white.setRook1((Rook)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(1);
 							}else if(j == 7){
 								white.setRook2((Rook)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(2);
 							}
 						}
 					}
@@ -67,8 +72,10 @@ public static void populateBoard(){
 							board[i][j].setDisplay("bN ");
 							if(j == 1){
 								black.setKnight1((Knight)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(1);
 							}else if(j == 6){
 								black.setKnight2((Knight)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(2);
 							}
 						}
 						//White Knight
@@ -79,8 +86,10 @@ public static void populateBoard(){
 							board[i][j].setDisplay("wN ");
 							if(j == 1){
 								white.setKnight1((Knight)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(1);
 							}else if(j == 6){
 								white.setKnight2((Knight)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(2);
 							}
 						}
 					}
@@ -95,8 +104,10 @@ public static void populateBoard(){
 							board[i][j].setDisplay("bB ");
 							if(j == 2){
 								black.setBishop1((Bishop)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(1);
 							}else if(j == 5){
 								black.setBishop2((Bishop)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(2);
 							}
 						}
 						//White Bishop
@@ -107,8 +118,10 @@ public static void populateBoard(){
 							board[i][j].setDisplay("wB ");
 							if(j == 2){
 								white.setBishop1((Bishop)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(1);
 							}else if(j == 5){
 								white.setBishop2((Bishop)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(2);
 							}
 						}
 						
