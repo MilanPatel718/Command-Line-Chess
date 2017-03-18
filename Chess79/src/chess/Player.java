@@ -24,6 +24,7 @@ public class Player {
 	private Pawn pawn7;
 	private Pawn pawn8;
 	
+	//Since Promotion changes pawn to one of four pieces, the following list all possibilities so that check/checkmate can be implemented more easily
 	public Queen QPromote1;
 	public Queen QPromote2;
 	public Queen QPromote3;

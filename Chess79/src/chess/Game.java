@@ -93,6 +93,10 @@ public class Game {
 		
 	}
 	
+	/**
+	 * @param src
+	 * Parses Input Move
+	 */
 	public void getInput(String src){
 		sf = src.charAt(0);
 		sr = src.charAt(1);
@@ -100,6 +104,13 @@ public class Game {
 		dr = src.charAt(4);
 	}
 	
+	/**
+	 * @param current
+	 * @param dest
+	 * @param player
+	 * @return boolean
+	 * Checks if the current piece color matches the current player color and then executes move
+	 */
 	public boolean makeMove(Block current, Block dest, Player player){
 		if(current.getPiece().getColor().equals(player.getColor()))
 		return current.getPiece().move(dest);
@@ -112,6 +123,12 @@ public class Game {
 		
 	}
 	
+	/**
+	 * @param player
+	 * @param s
+	 * @return boolean
+	 * Takes in Player and Move sets up information for makeMove
+	 */
 	public boolean mapAndExecute(Player player, String s){
 		getInput(s);
 		srcFile = fMap.get(sf+"");

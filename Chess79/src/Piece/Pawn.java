@@ -371,6 +371,12 @@ public class Pawn extends Piece{
 		return false;
 	}
 	
+	/**
+	 * @param destRank
+	 * @param destFile
+	 * @param player
+	 * Promotes Pawn that reaches other end of board after a move
+	 */
 	public void promotion(int destRank, int destFile, Player player){
 		Scanner s=new Scanner(System.in);
 		System.out.println("Pawn promotion! Type Rook, Bishop, Queen, or Knight: ");
