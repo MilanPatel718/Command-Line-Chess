@@ -1,6 +1,7 @@
 package Piece;
 import chess.Block;
 
+
 /**
  * @author Baljit Kaur
  * @author Milan Patel
@@ -29,14 +30,20 @@ public class Pawn extends Piece{
 	 */
 	public boolean move(Block moveTo){
 		
+		//Translate File and Rank to array indices
 		int srcFile  = this.getBlock().getFile();
 		int srcRank  = chess.Chess.Rmap.get(this.getBlock().getRank()+"");
 		int destFile = moveTo.getFile();
 		int destRank = chess.Chess.Rmap.get(moveTo.getRank()+""); 
 		
-		System.out.println(srcRank+" "+srcFile+" "+destRank+" "+destFile);
 		
-		//White Pawn Move
+		int prevSrcRank=chess.Chess.Rmap.get(chess.Chess.prevMove.charAt(1)+"");
+		int prevDestFile=chess.Chess.Fmap.get(chess.Chess.prevMove.charAt(3)+"");
+		int prevDestRank=chess.Chess.Rmap.get(chess.Chess.prevMove.charAt(4)+"");
+		
+		System.out.println();
+		
+		//Check White Pawn Legality
 		if(this.getName().charAt(0) == 'w'){
 			if(moveTo.isOccupied()){
 			   if((destRank == srcRank - 1) && (Math.abs(destFile-srcFile)==1)){
@@ -58,12 +65,14 @@ public class Pawn extends Piece{
 						}
 						this.setBlock(moveTo);
 						chess.Chess.printBoard();
+						System.out.println();
+					
 						return true;
 						
 						
 					}
 				   else{
-						System.out.println("Invalid move!");
+						System.out.println("Invalid move, try again");
 						return false;
 					}
 				}
@@ -72,17 +81,17 @@ public class Pawn extends Piece{
 						/*|| ((moveTo.getRank() == getBlock().getRank() + 2) &&
 								(moveTo.getRank() - 1  )))*/{
 				
-				System.out.println("Invalid move: Block is occupied");
+				System.out.println("Invalid move, try again");
 				return false;
 			  }
 			 
 			  else if(srcRank==6 && destRank==srcRank-2){
-				  System.out.println("Invalid move: Block is occupied");
+				  System.out.println("Invalid move, try again");
 				  return false;
 			  }
 			 
 			  else{
-				  System.out.println("Invalid move!");
+				  System.out.println("Invalid move, try again");
 				  return false;
 			  }
 			  
@@ -90,7 +99,8 @@ public class Pawn extends Piece{
 		
 		//Destination is not occupied	
 		else{
-			if(destRank == srcRank -1){
+			//Pawn moves 1 forward
+			if(destRank == srcRank -1 && destFile==srcFile){
 				
 				chess.Chess.board[destRank][destFile].setPiece(this);
 				chess.Chess.board[destRank][destFile].setOccupied(true);
@@ -109,9 +119,11 @@ public class Pawn extends Piece{
 				this.setBlock(moveTo);
 				
 				chess.Chess.printBoard();
+				System.out.println();
 				return true;
 			}
 			
+			//Pawn moves two forward on first move
 			else if(srcRank==6 && destRank == srcRank-2){
 				
 				chess.Chess.board[destRank][destFile].setPiece(this);
@@ -129,11 +141,55 @@ public class Pawn extends Piece{
 				}
 				this.setBlock(moveTo);
 				chess.Chess.printBoard();
+				System.out.println();
 				return true;
 			}
+			//Enpassant Capture
+			else  if((destRank == srcRank - 1) && (Math.abs(destFile-srcFile)==1) && srcRank==3){
+					
+				if((chess.Chess.board[srcRank][destFile].getPiece().equals(chess.Chess.board[prevDestRank][prevDestFile].getPiece())) &&
+					(Math.abs(prevDestRank-prevSrcRank)==2)){
+					
+					chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
+					chess.Chess.board[destRank][destFile].setDisplay("wp ");
+					
+					this.getBlock().setOccupied(false);
+					this.getBlock().setPiece(null);
+					
+					if(this.getBlock().isShaded()){
+						this.getBlock().setDisplay("## ");
+					}
+					else{
+						this.getBlock().setDisplay("   ");
+					}
+					
+					chess.Chess.board[srcRank][destFile].setPiece(null);
+					chess.Chess.board[srcRank][destFile].setOccupied(false);
+
+					if(chess.Chess.board[srcRank][destFile].isShaded()){
+						chess.Chess.board[srcRank][destFile].setDisplay("## ");
+					}
+					else{
+						chess.Chess.board[srcRank][destFile].setDisplay("   ");
+					}
+					
+					this.setBlock(moveTo);
+					chess.Chess.printBoard();
+					System.out.println();
+				
+					return true;
+					
+				}
+				else{
+					System.out.println("Invalid Move, try again");
+					return false;
+				}
+				
+			}
 			
+			//Illegal Move
 			else{
-				System.out.println("Invalid Move!");
+				System.out.println("Invalid Move, try again");
 				return false;
 			}
 			
@@ -164,11 +220,12 @@ public class Pawn extends Piece{
 							}
 							this.setBlock(moveTo);
 							chess.Chess.printBoard();
+							System.out.println();
 							return true;
 							
 							
 						}else{
-							System.out.println("Invalid move!");
+							System.out.println("Invalid move, try again");
 							return false;
 						}
 					}
@@ -177,17 +234,17 @@ public class Pawn extends Piece{
 							/*|| ((moveTo.getRank() == getBlock().getRank() + 2) &&
 									(moveTo.getRank() - 1  )))*/{
 					
-					System.out.println("Invalid move: Block is occupied");
+					System.out.println("Invalid move, try again");
 					return false;
 				  }
 				 
 				  else if(srcRank==1 && destRank==srcRank+2){
-					  System.out.println("Invalid move: Block is occupied");
+					  System.out.println("Invalid move, try again");
 					  return false;
 				  }
 				 
 				  else{
-					  System.out.println("Invalid move!");
+					  System.out.println("Invalid move, try again");
 					  return false;
 				  }
 				  
@@ -195,7 +252,8 @@ public class Pawn extends Piece{
 			
 			//Destination is not occupied	
 			else{
-				if(destRank == srcRank +1){
+				//Pawn moves forward 1 tile
+				if(destRank == srcRank +1 && destFile==srcFile){
 					
 					chess.Chess.board[destRank][destFile].setPiece(this);
 					chess.Chess.board[destRank][destFile].setOccupied(true);
@@ -212,9 +270,10 @@ public class Pawn extends Piece{
 					}
 					this.setBlock(moveTo);
 					chess.Chess.printBoard();
+					System.out.println();
 					return true;
 				}
-				
+				//Pawn moves forward 2 tiles on first move
 				else if(srcRank==1 && destRank == srcRank+2){
 					
 					chess.Chess.board[destRank][destFile].setPiece(this);
@@ -232,11 +291,54 @@ public class Pawn extends Piece{
 					}
 					this.setBlock(moveTo);
 					chess.Chess.printBoard();
+					System.out.println();
 					return true;
 				}
 				
+				//Enpassant capture 
+				else if((destRank == srcRank + 1) && (Math.abs(destFile-srcFile)==1) && srcRank==4){
+					if((chess.Chess.board[srcRank][destFile].getPiece().equals(chess.Chess.board[prevDestRank][prevDestFile].getPiece())) &&
+							(Math.abs(prevDestRank-prevSrcRank)==2)){
+						chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
+						chess.Chess.board[destRank][destFile].setDisplay("bp ");
+						
+						this.getBlock().setOccupied(false);
+						this.getBlock().setPiece(null);
+						
+						if(this.getBlock().isShaded()){
+							this.getBlock().setDisplay("## ");
+						}
+						else{
+							this.getBlock().setDisplay("   ");
+						}
+						
+						chess.Chess.board[srcRank][destFile].setPiece(null);
+						chess.Chess.board[srcRank][destFile].setOccupied(false);
+
+						if(chess.Chess.board[srcRank][destFile].isShaded()){
+							chess.Chess.board[srcRank][destFile].setDisplay("## ");
+						}
+						else{
+							chess.Chess.board[srcRank][destFile].setDisplay("   ");
+						}
+						
+						this.setBlock(moveTo);
+						chess.Chess.printBoard();
+						System.out.println();
+					
+						return true;
+					}
+					
+					else{
+						System.out.println("Invalid Move, try again");
+						return false;
+					}
+					
+				}
+				
+				//Invalid move
 				else{
-					System.out.println("Invalid Move!");
+					System.out.println("Invalid Move, try again");
 					return false;
 				}
 				

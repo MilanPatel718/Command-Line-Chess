@@ -16,6 +16,7 @@ public class Chess {
 	public static Map<String, Integer> Rmap=new HashMap<String, Integer>();
 	public static Player black;
 	public static Player white;
+	public static String prevMove;
 	
 /**
  * Populates Chess Board for start of game
@@ -319,6 +320,7 @@ public static void populateBoard(){
 			
 			populateBoard();
 			printBoard();
+			System.out.println();
 			
 			/*Initializes Maps for FileRank Conversion to Array Indices 
 			 * Use when translating input to actual board location 
