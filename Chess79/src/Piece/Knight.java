@@ -1,6 +1,7 @@
 package Piece;
 
 import chess.Block;
+import chess.Player;
 
 /**
  * @author Baljit Kaur
@@ -17,8 +18,8 @@ public class Knight extends Piece{
 	 * @param color
 	 * Color of the piece
 	 */
-	public Knight(String name, Block block, String color){
-		super(name, block, color);
+	public Knight(String name, Block block, String color, Player player){
+		super(name, block, color, player);
 	}
 	
 	/**

@@ -24,6 +24,46 @@ public class Player {
 	private Pawn pawn7;
 	private Pawn pawn8;
 	
+	public Queen QPromote1;
+	public Queen QPromote2;
+	public Queen QPromote3;
+	public Queen QPromote4;
+	public Queen QPromote5;
+	public Queen QPromote6;
+	public Queen QPromote7;
+	public Queen QPromote8;
+	
+	public Bishop BPromote1;
+	public Bishop BPromote2;
+	public Bishop BPromote3;
+	public Bishop BPromote4;
+	public Bishop BPromote5;
+	public Bishop BPromote6;
+	public Bishop BPromote7;
+	public Bishop BPromote8;
+	
+	public Knight KPromote1;
+	public Knight KPromote2;
+	public Knight KPromote3;
+	public Knight KPromote4;
+	public Knight KPromote5;
+	public Knight KPromote6;
+	public Knight KPromote7;
+	public Knight KPromote8;
+	
+	public Rook RPromote1;
+	public Rook RPromote2;
+	public Rook RPromote3;
+	public Rook RPromote4;
+	public Rook RPromote5;
+	public Rook RPromote6;
+	public Rook RPromote7;
+	public Rook RPromote8;
+	
+	
+	
+	
+	
 	public Player(String color){
 		this.color = color;
 	}

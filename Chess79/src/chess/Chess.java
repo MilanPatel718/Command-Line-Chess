@@ -28,14 +28,13 @@ public static void populateBoard(){
 			
 			//Initialize pieces at starting locations
 			if(i==0 || i==7){
-					
 					//Rooks
 					if(j==0 || j==7){
 						//Black Rook
 						if(i==0){
 							board[i][j]=new Block(8, j);
 							board[i][j].setOccupied(true);
-							board[i][j].setPiece(new Rook("bR ", board[i][j], "Black"));
+							board[i][j].setPiece(new Rook("bR ", board[i][j], "Black", black));
 							board[i][j].setDisplay("bR ");
 							if(j == 0){
 								black.setRook1((Rook)board[i][j].getPiece());
@@ -48,7 +47,7 @@ public static void populateBoard(){
 						if(i==7){
 							board[i][j]=new Block(1, j);
 							board[i][j].setOccupied(true);
-							board[i][j].setPiece(new Rook("wR ", board[i][j], "White"));
+							board[i][j].setPiece(new Rook("wR ", board[i][j], "White", white));
 							board[i][j].setDisplay("wR ");
 							if(j == 0){
 								white.setRook1((Rook)board[i][j].getPiece());
@@ -64,7 +63,7 @@ public static void populateBoard(){
 						if(i==0){
 							board[i][j]=new Block(8, j);
 							board[i][j].setOccupied(true);
-							board[i][j].setPiece(new Knight("bN ", board[i][j], "Black"));
+							board[i][j].setPiece(new Knight("bN ", board[i][j], "Black", black));
 							board[i][j].setDisplay("bN ");
 							if(j == 1){
 								black.setKnight1((Knight)board[i][j].getPiece());
@@ -76,7 +75,7 @@ public static void populateBoard(){
 						if(i==7){
 							board[i][j]=new Block(1, j);
 							board[i][j].setOccupied(true);
-							board[i][j].setPiece(new Knight("wN ", board[i][j], "White"));
+							board[i][j].setPiece(new Knight("wN ", board[i][j], "White", white));
 							board[i][j].setDisplay("wN ");
 							if(j == 1){
 								white.setKnight1((Knight)board[i][j].getPiece());
@@ -92,7 +91,7 @@ public static void populateBoard(){
 						if(i==0){
 							board[i][j]=new Block(8, j);
 							board[i][j].setOccupied(true);
-							board[i][j].setPiece(new Bishop("bB ", board[i][j], "Black"));
+							board[i][j].setPiece(new Bishop("bB ", board[i][j], "Black", black));
 							board[i][j].setDisplay("bB ");
 							if(j == 2){
 								black.setBishop1((Bishop)board[i][j].getPiece());
@@ -104,7 +103,7 @@ public static void populateBoard(){
 						if(i==7){
 							board[i][j]=new Block(1, j);
 							board[i][j].setOccupied(true);
-							board[i][j].setPiece(new Bishop("wB ", board[i][j], "White"));
+							board[i][j].setPiece(new Bishop("wB ", board[i][j], "White", white));
 							board[i][j].setDisplay("wB ");
 							if(j == 2){
 								white.setBishop1((Bishop)board[i][j].getPiece());
@@ -121,7 +120,7 @@ public static void populateBoard(){
 						if(i==0){
 							board[i][j]=new Block(8, j);
 							board[i][j].setOccupied(true);
-							board[i][j].setPiece(new Queen("bQ ", board[i][j], "Black"));
+							board[i][j].setPiece(new Queen("bQ ", board[i][j], "Black", black));
 							board[i][j].setDisplay("bQ ");
 							black.setQueen((Queen)board[i][j].getPiece());
 						}
@@ -129,7 +128,7 @@ public static void populateBoard(){
 						if(i==7){
 							board[i][j]=new Block(1, j);
 							board[i][j].setOccupied(true);
-							board[i][j].setPiece(new Queen("wQ ", board[i][j], "White"));
+							board[i][j].setPiece(new Queen("wQ ", board[i][j], "White", white));
 							board[i][j].setDisplay("bQ ");
 							white.setQueen((Queen)board[i][j].getPiece());
 						}
@@ -141,7 +140,7 @@ public static void populateBoard(){
 						if(i==0){
 							board[i][j]=new Block(8, j);
 							board[i][j].setOccupied(true);
-							board[i][j].setPiece(new King("bK ", board[i][j], "Black"));
+							board[i][j].setPiece(new King("bK ", board[i][j], "Black", black));
 							board[i][j].setDisplay("bK ");
 							black.setKing((King)board[i][j].getPiece());
 						}
@@ -149,7 +148,7 @@ public static void populateBoard(){
 						if(i==7){
 							board[i][j]=new Block(1, j);
 							board[i][j].setOccupied(true);
-							board[i][j].setPiece(new King("wK ", board[i][j], "White"));
+							board[i][j].setPiece(new King("wK ", board[i][j], "White", white));
 							board[i][j].setDisplay("wK ");
 							white.setKing((King)board[i][j].getPiece());
 						}
@@ -163,48 +162,64 @@ public static void populateBoard(){
 					if(i==1){
 							board[i][j]=new Block(7, j);
 							board[i][j].setOccupied(true);
-							board[i][j].setPiece(new Pawn("bp ", board[i][j], "Black"));
+							board[i][j].setPiece(new Pawn("bp ", board[i][j], "Black", black));
 							board[i][j].setDisplay("bp ");
 							if(j == 0){
 								black.setPawn1((Pawn)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(1);
 							}else if(j == 1){
 								black.setPawn2((Pawn)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(2);
 							}else if(j == 2){
 								black.setPawn3((Pawn)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(3);
 							}else if(j == 3){
 								black.setPawn4((Pawn)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(4);
 							}else if(j == 4){
 								black.setPawn5((Pawn)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(5);
 							}else if(j == 5){
 								black.setPawn6((Pawn)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(6);
 							}else if(j == 6){
 								black.setPawn7((Pawn)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(7);
 							}else if(j == 7){
 								black.setPawn8((Pawn)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(8);
 							}
 						}
 					//White Pawn
 					if(i==6){
 							board[i][j]=new Block(2, j);
 							board[i][j].setOccupied(true);
-							board[i][j].setPiece(new Pawn("wp ", board[i][j], "White"));
+							board[i][j].setPiece(new Pawn("wp ", board[i][j], "White", white));
 							board[i][j].setDisplay("wp ");
 							if(j == 0){
 								white.setPawn1((Pawn)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(1);
 							}else if(j == 1){
 								white.setPawn2((Pawn)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(2);
 							}else if(j == 2){
 								white.setPawn3((Pawn)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(3);
 							}else if(j == 3){
 								white.setPawn4((Pawn)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(4);
 							}else if(j == 4){
 								white.setPawn5((Pawn)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(5);
 							}else if(j == 5){
 								white.setPawn6((Pawn)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(6);
 							}else if(j == 6){
 								white.setPawn7((Pawn)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(7);
 							}else if(j == 7){
 								white.setPawn8((Pawn)board[i][j].getPiece());
+								board[i][j].getPiece().setNumber(8);
 							}
 						}
 					}
