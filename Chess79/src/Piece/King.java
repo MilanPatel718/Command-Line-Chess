@@ -103,8 +103,8 @@ public class King extends Piece {
 					&& (chess.Chess.board[destRank][destFile].getPiece().getName().charAt(1) == 'r')){
 				//if the king is white
 				if(getName().charAt(0) == 'w'){
-					if(srcRank == 1 && destRank == 1 && srcFile == 5 && destFile == 8){
-						for(int i = srcFile; i < destFile; i++){
+					if(srcRank == 7 && destRank == 7 && srcFile == 4 && destFile == 6){
+						for(int i = srcFile + 1; i <= destFile; i++){
 							if(chess.Chess.board[srcRank][i].isOccupied()){
 								System.out.println("Invalid move, try again");
 								return false;
@@ -126,8 +126,8 @@ public class King extends Piece {
 						this.setBlock(moveTo);
 						
 						//set new position of rook
-						chess.Chess.board[destRank - 1][destFile].setPiece(getBlock().getPiece());
-						chess.Chess.board[destRank][destFile].setDisplay("wR ");
+						chess.Chess.board[destRank][destFile - 1].setPiece(getBlock().getPiece());
+						chess.Chess.board[destRank][destFile - 1].setDisplay("wR ");
 					
 						this.getBlock().setOccupied(false);
 						this.getBlock().setPiece(null);
@@ -138,15 +138,15 @@ public class King extends Piece {
 						else{
 							this.getBlock().setDisplay("   ");
 						}
-						chess.Chess.board[destRank - 1][destFile].getPiece().setBlock(
-								chess.Chess.board[destRank - 1][destFile]);
+						chess.Chess.board[destRank][destFile - 1].getPiece().setBlock(
+								chess.Chess.board[destRank][destFile - 1]);
 						
 						chess.Chess.printBoard();
 						setHasMoved(true);
-						chess.Chess.board[destRank - 1][destFile].getPiece().setHasMoved(true);
+						chess.Chess.board[destRank][destFile - 1].getPiece().setHasMoved(true);
 						return true;
-					}else if(srcRank == 1 && destRank == 1 && srcFile == 5 && destFile == 1){
-						for(int i = srcFile; i > destFile; i--){
+					}else if(srcRank == 7 && destRank == 7 && srcFile == 4 && destFile == 2){
+						for(int i = srcFile - 1; i >= destFile; i--){
 							if(chess.Chess.board[srcRank][i].isOccupied()){
 								System.out.println("Invalid move, try again");
 								return false;
@@ -168,8 +168,8 @@ public class King extends Piece {
 						this.setBlock(moveTo);
 						
 						//set new position of rook
-						chess.Chess.board[destRank + 1][destFile].setPiece(getBlock().getPiece());
-						chess.Chess.board[destRank][destFile].setDisplay("wR ");
+						chess.Chess.board[destRank][destFile + 1].setPiece(getBlock().getPiece());
+						chess.Chess.board[destRank][destFile + 1].setDisplay("wR ");
 					
 						this.getBlock().setOccupied(false);
 						this.getBlock().setPiece(null);
@@ -180,12 +180,12 @@ public class King extends Piece {
 						else{
 							this.getBlock().setDisplay("   ");
 						}
-						chess.Chess.board[destRank + 1][destFile].getPiece().setBlock(
-								chess.Chess.board[destRank + 1][destFile]);
+						chess.Chess.board[destRank][destFile + 1].getPiece().setBlock(
+								chess.Chess.board[destRank][destFile + 1]);
 						
 						chess.Chess.printBoard();
 						setHasMoved(true);
-						chess.Chess.board[destRank + 1][destFile].getPiece().setHasMoved(true);
+						chess.Chess.board[destRank][destFile + 1].getPiece().setHasMoved(true);
 						return true;
 					}else{
 						System.out.println("Invalid move, try again");
@@ -193,8 +193,8 @@ public class King extends Piece {
 					}
 				//if the king is black
 				}else if(getName().charAt(0) == 'b'){
-					if(srcRank == 8 && destRank == 8 && srcFile == 4 && destFile == 1){
-						for(int i = srcFile; i > destFile; i--){
+					if(srcRank == 0 && destRank == 0 && srcFile == 4 && destFile == 6){
+						for(int i = srcFile + 1; i <= destFile; i++){
 							if(chess.Chess.board[srcRank][i].isOccupied()){
 								System.out.println("Invalid move, try again");
 								return false;
@@ -216,8 +216,8 @@ public class King extends Piece {
 						this.setBlock(moveTo);
 						
 						//set new position of rook
-						chess.Chess.board[destRank + 1][destFile].setPiece(getBlock().getPiece());
-						chess.Chess.board[destRank][destFile].setDisplay("bR ");
+						chess.Chess.board[destRank][destFile - 1].setPiece(getBlock().getPiece());
+						chess.Chess.board[destRank][destFile - 1].setDisplay("bR ");
 					
 						this.getBlock().setOccupied(false);
 						this.getBlock().setPiece(null);
@@ -228,15 +228,15 @@ public class King extends Piece {
 						else{
 							this.getBlock().setDisplay("   ");
 						}
-						chess.Chess.board[destRank + 1][destFile].getPiece().setBlock(
-								chess.Chess.board[destRank + 1][destFile]);
+						chess.Chess.board[destRank][destFile - 1].getPiece().setBlock(
+								chess.Chess.board[destRank][destFile - 1]);
 						
 						chess.Chess.printBoard();
 						setHasMoved(true);
-						chess.Chess.board[destRank + 1][destFile].getPiece().setHasMoved(true);
+						chess.Chess.board[destRank][destFile - 1].getPiece().setHasMoved(true);
 						return true;
-					}else if(srcRank == 8 && destRank == 8 && srcFile == 4 && destFile == 8){
-						for(int i = srcFile; i < destFile; i++){
+					}else if(srcRank == 0 && destRank == 0 && srcFile == 4 && destFile == 2){
+						for(int i = srcFile - 1; i >= destFile; i--){
 							if(chess.Chess.board[srcRank][i].isOccupied()){
 								System.out.println("Invalid move, try again");
 								return false;
@@ -258,8 +258,8 @@ public class King extends Piece {
 						this.setBlock(moveTo);
 						
 						//set new position of rook
-						chess.Chess.board[destRank - 1][destFile].setPiece(getBlock().getPiece());
-						chess.Chess.board[destRank][destFile].setDisplay("bR ");
+						chess.Chess.board[destRank][destFile + 1].setPiece(getBlock().getPiece());
+						chess.Chess.board[destRank][destFile + 1].setDisplay("bR ");
 					
 						this.getBlock().setOccupied(false);
 						this.getBlock().setPiece(null);
@@ -270,12 +270,12 @@ public class King extends Piece {
 						else{
 							this.getBlock().setDisplay("   ");
 						}
-						chess.Chess.board[destRank - 1][destFile].getPiece().setBlock(
-								chess.Chess.board[destRank - 1][destFile]);
+						chess.Chess.board[destRank][destFile + 1].getPiece().setBlock(
+								chess.Chess.board[destRank][destFile + 1]);
 						
 						chess.Chess.printBoard();
 						setHasMoved(true);
-						chess.Chess.board[destRank - 1][destFile].getPiece().setHasMoved(true);
+						chess.Chess.board[destRank][destFile + 1].getPiece().setHasMoved(true);
 						return true;
 					}else{
 						System.out.println("Invalid move, try again");
