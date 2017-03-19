@@ -142,7 +142,7 @@ public static void populateBoard(){
 							board[i][j]=new Block(1, j);
 							board[i][j].setOccupied(true);
 							board[i][j].setPiece(new Queen("wQ ", board[i][j], "White", white));
-							board[i][j].setDisplay("bQ ");
+							board[i][j].setDisplay("wQ ");
 							white.setQueen((Queen)board[i][j].getPiece());
 						}
 					}

@@ -37,33 +37,33 @@ public class Bishop extends Piece{
 		int destRank = chess.Chess.Rmap.get(moveTo.getRank()+"");
 		
 		if(Math.abs(srcRank - destRank) == Math.abs(srcFile - destFile)){
-			if(srcRank < destRank){
+			if(srcRank > destRank){
 				if(srcFile < destFile){
-					for(int i = 0; i < (Math.abs(srcRank - destRank)); i++){
-						if(chess.Chess.board[srcRank + i][destFile + i].isOccupied()==true){
+					for(int i = 1; i <= (Math.abs(srcRank - destRank)); i++){
+						if(chess.Chess.board[srcRank - i][srcFile + i].isOccupied()==true){
 							System.out.println("Invalid move, try again");
 							return false;
 						}
 					}
 				}else if(srcFile > destFile){
-					for(int i = 0; i < (Math.abs(srcRank - destRank)); i++){
-						if(chess.Chess.board[srcRank + i][destFile - i].isOccupied()==true){
+					for(int i = 1; i <= (Math.abs(srcRank - destRank)); i++){
+						if(chess.Chess.board[srcRank - i][srcFile - i].isOccupied()==true){
 							System.out.println("Invalid move, try again");
 							return false;
 						}
 					}	
 				}
-			}else if(srcRank > destRank){
+			}else if(srcRank < destRank){
 				if(srcFile < destFile){
-					for(int i = 0; i < (Math.abs(srcRank - destRank)); i++){
-						if(chess.Chess.board[srcRank - i][destFile + i].isOccupied()==true){
+					for(int i = 1; i <= (Math.abs(srcRank - destRank)); i++){
+						if(chess.Chess.board[srcRank + i][srcFile + i].isOccupied()==true){
 							System.out.println("Invalid move, try again");
 							return false;
 						}
 					}
 				}else if(srcFile > destFile){
-					for(int i = 0; i < (Math.abs(srcRank - destRank)); i++){
-						if(chess.Chess.board[srcRank - i][destFile - i].isOccupied()==true){
+					for(int i = 1; i <= (Math.abs(srcRank - destRank)); i++){
+						if(chess.Chess.board[srcRank + i][srcFile - i].isOccupied()==true){
 							System.out.println("Invalid move, try again");
 							return false;
 						}

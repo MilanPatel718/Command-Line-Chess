@@ -37,8 +37,7 @@ public class Pawn extends Piece{
 		int srcFile  = this.getBlock().getFile();
 		int srcRank  = chess.Chess.Rmap.get(this.getBlock().getRank()+"");
 		int destFile = moveTo.getFile();
-		int destRank = chess.Chess.Rmap.get(moveTo.getRank()+""); 
-		
+		int destRank = chess.Chess.Rmap.get(moveTo.getRank()+"");
 		
 		int prevSrcRank=chess.Chess.Rmap.get(chess.Chess.prevMove.charAt(1)+"");
 		int prevDestFile=chess.Chess.Fmap.get(chess.Chess.prevMove.charAt(3)+"");

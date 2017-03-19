@@ -12,6 +12,7 @@ public abstract class Piece {
 	private String color;
 	private Player player;
 	private int number;
+	private boolean hasMoved;
 	
 	/**
 	 * @param name
@@ -26,6 +27,7 @@ public abstract class Piece {
 		this.block = block;
 		this.setColor(color);
 		this.setPlayer(player);
+		this.hasMoved = false;
 	}
 	
 	/**
@@ -173,5 +175,13 @@ public abstract class Piece {
 				P.player.setKing(null);
 			
 		}
+	}
+	
+	public void setHasMoved(boolean b){
+		hasMoved = b;
+	}
+	
+	public boolean getHasMoved(){
+		return hasMoved;
 	}
 }
