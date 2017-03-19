@@ -8,6 +8,9 @@ import chess.Player;
  * @author MIlan Patel
  */
 public class Rook extends Piece{
+	
+	private boolean hasMoved;
+	
 	/**
 	 * Initializes a Bishop object
 	 * 
@@ -20,6 +23,7 @@ public class Rook extends Piece{
 	 */
 	public Rook(String name, Block block, String color, Player player){
 		super(name, block, color, player);
+		hasMoved = false;
 	}
 	
 	/**
@@ -74,6 +78,7 @@ public class Rook extends Piece{
 							}
 							this.setBlock(moveTo);
 							chess.Chess.printBoard();
+							hasMoved = true;
 							return true;
 							}
 							else{
@@ -102,6 +107,7 @@ public class Rook extends Piece{
 							}
 							this.setBlock(moveTo);
 							chess.Chess.printBoard();
+							hasMoved = true;
 							return true;
 							
 						}
@@ -143,6 +149,7 @@ public class Rook extends Piece{
 							}
 							this.setBlock(moveTo);
 							chess.Chess.printBoard();
+							hasMoved = true;
 							return true;
 						}
 						
@@ -172,6 +179,7 @@ public class Rook extends Piece{
 							}
 							this.setBlock(moveTo);
 							chess.Chess.printBoard();
+							hasMoved = true;
 							return true;
 							
 						}
@@ -214,6 +222,7 @@ public class Rook extends Piece{
 								}
 								this.setBlock(moveTo);
 								chess.Chess.printBoard();
+								hasMoved = true;
 								return true;
 							}
 							else{
@@ -240,6 +249,7 @@ public class Rook extends Piece{
 							}
 							this.setBlock(moveTo);
 							chess.Chess.printBoard();
+							hasMoved = true;
 							return true;
 							
 						}
@@ -278,6 +288,7 @@ public class Rook extends Piece{
 							}
 							this.setBlock(moveTo);
 							chess.Chess.printBoard();
+							hasMoved = true;
 							return true;
 						}
 						else{
@@ -306,8 +317,8 @@ public class Rook extends Piece{
 						}
 						this.setBlock(moveTo);
 						chess.Chess.printBoard();
+						hasMoved = true;
 						return true;
-						
 					}
 					
 					
@@ -319,5 +330,9 @@ public class Rook extends Piece{
 					return false;
 					
 				}
+	}
+	
+	public boolean getHasMoved(){
+		return hasMoved;
 	}
 }
