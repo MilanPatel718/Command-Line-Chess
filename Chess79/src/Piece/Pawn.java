@@ -51,8 +51,9 @@ public class Pawn extends Piece{
 			if(moveTo.isOccupied()){
 			   if((destRank == srcRank - 1) && (Math.abs(destFile-srcFile)==1)){
 					if(moveTo.getPiece().getName().charAt(0) != this.getName().charAt(0)){
-						//capture opponent's piece
-						//send message to remove
+						
+						//Call deletePiece to indicate that target piece has been captured
+						chess.Chess.board[destRank][destFile].getPiece().deletePiece(chess.Chess.board[destRank][destFile].getPiece().getNumber(), chess.Chess.board[destRank][destFile].getPiece());
 						
 						chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 						chess.Chess.board[destRank][destFile].setDisplay("wp ");
@@ -164,8 +165,13 @@ public class Pawn extends Piece{
 				if((chess.Chess.board[srcRank][destFile].getPiece().equals(chess.Chess.board[prevDestRank][prevDestFile].getPiece())) &&
 					(Math.abs(prevDestRank-prevSrcRank)==2) && (prevSrcRank==1)){
 					
+					//Call deletePiece to indicate that target piece has been captured
+					chess.Chess.board[srcRank][destFile].getPiece().deletePiece(chess.Chess.board[srcRank][destFile].getPiece().getNumber(), chess.Chess.board[srcRank][destFile].getPiece());
+					
 					chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 					chess.Chess.board[destRank][destFile].setDisplay("wp ");
+					chess.Chess.board[destRank][destFile].setOccupied(true);
+
 					
 					this.getBlock().setOccupied(false);
 					this.getBlock().setPiece(null);
@@ -219,6 +225,9 @@ public class Pawn extends Piece{
 						if(moveTo.getPiece().getName().charAt(0) != this.getName().charAt(0)){
 							//capture opponent's piece
 							//send message to remove
+							
+							//Call deletePiece to indicate that target piece has been captured
+							chess.Chess.board[destRank][destFile].getPiece().deletePiece(chess.Chess.board[destRank][destFile].getPiece().getNumber(), chess.Chess.board[destRank][destFile].getPiece());
 							
 							chess.Chess.board[destRank][destFile].setPiece(this);
 							chess.Chess.board[destRank][destFile].setDisplay("bp ");
@@ -322,6 +331,10 @@ public class Pawn extends Piece{
 				else if((destRank == srcRank + 1) && (Math.abs(destFile-srcFile)==1) && srcRank==4){
 					if((chess.Chess.board[srcRank][destFile].getPiece().equals(chess.Chess.board[prevDestRank][prevDestFile].getPiece())) &&
 							(Math.abs(prevDestRank-prevSrcRank)==2) && (prevSrcRank==6)){
+						
+						//Call deletePiece to indicate that target piece has been captured
+						chess.Chess.board[srcRank][destFile].getPiece().deletePiece(chess.Chess.board[srcRank][destFile].getPiece().getNumber(), chess.Chess.board[srcRank][destFile].getPiece());
+						
 						chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 						chess.Chess.board[destRank][destFile].setDisplay("bp ");
 						

@@ -39,7 +39,6 @@ public class Rook extends Piece{
 				//Vertical Movement
 				if((srcFile==destFile) && (srcRank!=destRank)){
 					
-					
 					//This means the Rook is moving in the upwards direction
 					if(destRank<srcRank){ 
 						//Loop through every space between source and destination, excluding source and destination
@@ -48,11 +47,81 @@ public class Rook extends Piece{
 								System.out.println("Invalid move, try again");
 								return false;
 							}
-							else{}
+							
 						}
 						//Rook Captures Destination
 						if(moveTo.isOccupied()){
-							//Call deletePiece to indicate that the piece has been captured
+							if(moveTo.getPiece().getColor().equals(chess.Chess.board[srcRank][srcFile].getPiece().getColor())==false){
+							//Call deletePiece to indicate that target piece has been captured
+							chess.Chess.board[destRank][destFile].getPiece().deletePiece(chess.Chess.board[destRank][destFile].getPiece().getNumber(), chess.Chess.board[destRank][destFile].getPiece());
+							
+							chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
+							
+							if(chess.Chess.board[destRank][destFile].getPiece().getColor().equals("White"))
+								chess.Chess.board[destRank][destFile].setDisplay("wR ");
+							else
+								chess.Chess.board[destRank][destFile].setDisplay("bR ");
+								
+							
+							this.getBlock().setOccupied(false);
+							this.getBlock().setPiece(null);
+							
+							if(this.getBlock().isShaded()){
+								this.getBlock().setDisplay("## ");
+							}
+							else{
+								this.getBlock().setDisplay("   ");
+							}
+							this.setBlock(moveTo);
+							chess.Chess.printBoard();
+							return true;
+							}
+							else{
+								System.out.println("Invalid move, try again");
+								return false;
+							}
+						}
+						//Normal Move
+						else{
+							
+							chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
+							if(chess.Chess.board[destRank][destFile].getPiece().getColor().equals("White"))
+								chess.Chess.board[destRank][destFile].setDisplay("wR ");
+							else
+								chess.Chess.board[destRank][destFile].setDisplay("bR ");
+							chess.Chess.board[destRank][destFile].setOccupied(true);
+							
+							this.getBlock().setOccupied(false);
+							this.getBlock().setPiece(null);
+							
+							if(this.getBlock().isShaded()){
+								this.getBlock().setDisplay("## ");
+							}
+							else{
+								this.getBlock().setDisplay("   ");
+							}
+							this.setBlock(moveTo);
+							chess.Chess.printBoard();
+							return true;
+							
+						}
+					}
+					//This indicates downward movement
+					else{
+						//Loop through every space between source and destination, excluding source and destination
+						for(int i=srcRank+1; i<destRank; i++){
+							if(chess.Chess.board[i][srcFile].isOccupied()){
+								System.out.println("Invalid move, try again");
+								return false;
+							}
+							else{}
+						}
+						
+						//Rook Captures Destination
+						if(moveTo.isOccupied()){
+						
+							if(moveTo.getPiece().getColor().equals(chess.Chess.board[srcRank][srcFile].getPiece().getColor())==false){
+							//Call deletePiece to indicate that target piece has been captured
 							chess.Chess.board[destRank][destFile].getPiece().deletePiece(chess.Chess.board[destRank][destFile].getPiece().getNumber(), chess.Chess.board[destRank][destFile].getPiece());
 							
 							chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
@@ -76,7 +145,82 @@ public class Rook extends Piece{
 							chess.Chess.printBoard();
 							return true;
 						}
+						
+							else{
+								System.out.println("Invalid Move, try again");
+								return false;
+							}
+					}
 						//Normal Move
+						else{
+							
+							chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
+							if(chess.Chess.board[destRank][destFile].getPiece().getColor().equals("White"))
+								chess.Chess.board[destRank][destFile].setDisplay("wR ");
+							else
+								chess.Chess.board[destRank][destFile].setDisplay("bR ");
+							chess.Chess.board[destRank][destFile].setOccupied(true);
+							
+							this.getBlock().setOccupied(false);
+							this.getBlock().setPiece(null);
+							
+							if(this.getBlock().isShaded()){
+								this.getBlock().setDisplay("## ");
+							}
+							else{
+								this.getBlock().setDisplay("   ");
+							}
+							this.setBlock(moveTo);
+							chess.Chess.printBoard();
+							return true;
+							
+						}
+						
+					}
+					
+		}
+				//Horizontal Movement
+				else if((srcFile!=destFile) && (srcRank==destRank)){
+					//Leftward Movement
+					if(destFile<srcFile){
+						for(int j=srcFile-1; j>destFile; j--){
+							if(chess.Chess.board[srcRank][j].isOccupied()==true){
+								System.out.println("Invalid move, try again");
+								return false;
+							}
+						}
+						
+						if(moveTo.isOccupied()){
+							if(moveTo.getPiece().getColor().equals(chess.Chess.board[srcRank][srcFile].getPiece().getColor())==false){
+								//Call deletePiece to indicate that target piece has been captured
+								chess.Chess.board[destRank][destFile].getPiece().deletePiece(chess.Chess.board[destRank][destFile].getPiece().getNumber(), chess.Chess.board[destRank][destFile].getPiece());
+								
+								chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
+								
+								if(chess.Chess.board[destRank][destFile].getPiece().getColor().equals("White"))
+									chess.Chess.board[destRank][destFile].setDisplay("wR ");
+								else
+									chess.Chess.board[destRank][destFile].setDisplay("bR ");
+									
+								
+								this.getBlock().setOccupied(false);
+								this.getBlock().setPiece(null);
+								
+								if(this.getBlock().isShaded()){
+									this.getBlock().setDisplay("## ");
+								}
+								else{
+									this.getBlock().setDisplay("   ");
+								}
+								this.setBlock(moveTo);
+								chess.Chess.printBoard();
+								return true;
+							}
+							else{
+								System.out.println("Invalid move, try again");
+								return false;
+							}
+						}
 						else{
 							chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 							if(chess.Chess.board[destRank][destFile].getPiece().getColor().equals("White"))
@@ -99,18 +243,81 @@ public class Rook extends Piece{
 							return true;
 							
 						}
+						
+						
 					}
-				}
-				//Horizontal Movement
-				else if((srcFile!=destFile) && (srcRank==destRank)){
+					//Rightward Movement
+					for(int j=srcFile+1; j<destFile; j++){
+						if(chess.Chess.board[srcRank][j].isOccupied()==true){
+							System.out.println("Invalid move, try again");
+							return false;
+						}
+					}
 					
-				}
-				//Invalid Move
-				else{
+					if(moveTo.isOccupied()){
+						if(moveTo.getPiece().getColor().equals(chess.Chess.board[srcRank][srcFile].getPiece().getColor())==false){
+							//Call deletePiece to indicate that target piece has been captured
+							chess.Chess.board[destRank][destFile].getPiece().deletePiece(chess.Chess.board[destRank][destFile].getPiece().getNumber(), chess.Chess.board[destRank][destFile].getPiece());
+							
+							chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
+							
+							if(chess.Chess.board[destRank][destFile].getPiece().getColor().equals("White"))
+								chess.Chess.board[destRank][destFile].setDisplay("wR ");
+							else
+								chess.Chess.board[destRank][destFile].setDisplay("bR ");
+								
+							
+							this.getBlock().setOccupied(false);
+							this.getBlock().setPiece(null);
+							
+							if(this.getBlock().isShaded()){
+								this.getBlock().setDisplay("## ");
+							}
+							else{
+								this.getBlock().setDisplay("   ");
+							}
+							this.setBlock(moveTo);
+							chess.Chess.printBoard();
+							return true;
+						}
+						else{
+							System.out.println("Invalid move, try again");
+							return false;
+						}
+					}
+					
+					//Normal Move
+					else{
+						chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
+						if(chess.Chess.board[destRank][destFile].getPiece().getColor().equals("White"))
+							chess.Chess.board[destRank][destFile].setDisplay("wR ");
+						else
+							chess.Chess.board[destRank][destFile].setDisplay("bR ");
+						chess.Chess.board[destRank][destFile].setOccupied(true);
+						
+						this.getBlock().setOccupied(false);
+						this.getBlock().setPiece(null);
+						
+						if(this.getBlock().isShaded()){
+							this.getBlock().setDisplay("## ");
+						}
+						else{
+							this.getBlock().setDisplay("   ");
+						}
+						this.setBlock(moveTo);
+						chess.Chess.printBoard();
+						return true;
+						
+					}
+					
 					
 				}
 				
-		
-		return false;
+				//Invalid Move
+				else{
+					System.out.println("Invalid move, try again");
+					return false;
+					
+				}
 	}
 }
