@@ -56,9 +56,11 @@ public abstract class Piece {
 	
 	/**
 	 * @param moveTo
+	 * @param check
+	 * @param move
 	 * The block a piece is being move to
 	 */
-	public abstract boolean move(Block moveTo, boolean check);
+	public abstract boolean move(Block moveTo, boolean check, String move);
 
 	/**
 	 * @return color

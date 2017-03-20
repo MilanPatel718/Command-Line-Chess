@@ -32,7 +32,7 @@ public class King extends Piece {
 	 * @param moveTo
 	 * The block a King will be moved to if the move is valid.
 	 */
-	public boolean move(Block moveTo, boolean check){
+	public boolean move(Block moveTo, boolean check, String move){
 		int srcFile  = this.getBlock().getFile();
 		int srcRank  = chess.Chess.Rmap.get(this.getBlock().getRank()+"");
 		int destFile = moveTo.getFile();

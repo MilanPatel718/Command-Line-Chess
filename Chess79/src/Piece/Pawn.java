@@ -31,7 +31,7 @@ public class Pawn extends Piece{
 	 * @param moveTo
 	 * The block a Pawn will be moved to if the move is valid
 	 */
-	public boolean move(Block moveTo, boolean check){
+	public boolean move(Block moveTo, boolean check, String move){
 		
 		//Translate File and Rank to array indices
 		int srcFile  = this.getBlock().getFile();
@@ -71,7 +71,7 @@ public class Pawn extends Piece{
 						}
 						this.setBlock(moveTo);
 						if(destRank==0){
-							promotion(destRank, destFile, this.getPlayer());
+							promotion(destRank, destFile, this.getPlayer(), move);
 						}
 					
 						chess.Chess.printBoard();
@@ -132,7 +132,7 @@ public class Pawn extends Piece{
 				}
 				this.setBlock(moveTo);
 				if(destRank==0){
-					promotion(destRank, destFile, this.getPlayer());
+					promotion(destRank, destFile, this.getPlayer(), move);
 				}
 				
 				chess.Chess.printBoard();
@@ -161,7 +161,7 @@ public class Pawn extends Piece{
 				}
 				this.setBlock(moveTo);
 				if(destRank==0){
-					promotion(destRank, destFile, this.getPlayer());
+					promotion(destRank, destFile, this.getPlayer(), move);
 				}
 				chess.Chess.printBoard();
 				System.out.println();
@@ -259,7 +259,7 @@ public class Pawn extends Piece{
 							}
 							this.setBlock(moveTo);
 							if(destRank==7){
-								promotion(destRank, destFile, this.getPlayer());
+								promotion(destRank, destFile, this.getPlayer(), move);
 							}
 							chess.Chess.printBoard();
 							System.out.println();
@@ -315,7 +315,7 @@ public class Pawn extends Piece{
 					}
 					this.setBlock(moveTo);
 					if(destRank==7){
-						promotion(destRank, destFile, this.getPlayer());
+						promotion(destRank, destFile, this.getPlayer(), move);
 					}
 					chess.Chess.printBoard();
 					System.out.println();
@@ -343,7 +343,7 @@ public class Pawn extends Piece{
 					}
 					this.setBlock(moveTo);
 					if(destRank==7){
-						promotion(destRank, destFile, this.getPlayer());
+						promotion(destRank, destFile, this.getPlayer(), move);
 					}
 					chess.Chess.printBoard();
 					System.out.println();
@@ -417,12 +417,13 @@ public class Pawn extends Piece{
 	 * @param player
 	 * Promotes Pawn that reaches other end of board after a move
 	 */
-	public void promotion(int destRank, int destFile, Player player){
-		Scanner s=new Scanner(System.in);
-		System.out.println("Pawn promotion! Type Rook, Bishop, Queen, or Knight: ");
-		String promote= s.nextLine();
+	public void promotion(int destRank, int destFile, Player player, String move){
 		
-		if(promote.equals("Rook")){
+		String promote=" ";
+		if(move.length()==7)
+			move.substring(6);
+		
+		if(promote.equals("R")){
 			int num=chess.Chess.board[destRank][destFile].getPiece().getNumber();
 			if(num==1){
 				Rook Rook1;
@@ -537,7 +538,7 @@ public class Pawn extends Piece{
 			}
 			
 		}
-		else if(promote.equals("Bishop")){
+		else if(promote.equals("B")){
 			int num=chess.Chess.board[destRank][destFile].getPiece().getNumber();
 			if(num==1){
 				Bishop Bishop1;
@@ -652,7 +653,7 @@ public class Pawn extends Piece{
 			}
 			
 		}
-		else if(promote.equals("Knight")){
+		else if(promote.equals("K")){
 			int num=chess.Chess.board[destRank][destFile].getPiece().getNumber();
 			if(num==1){
 				Knight Knight1;

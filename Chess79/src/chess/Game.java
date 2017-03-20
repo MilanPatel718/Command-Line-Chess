@@ -98,7 +98,6 @@ public class Game {
 					}
 					successfulMove =  mapAndExecute(blackPlayer, move);
 				}
-				System.out.println();
 				chess.Chess.prevMove=move;
 				lastTurn = 1;
 			}
@@ -125,7 +124,6 @@ public class Game {
 					}
 					successfulMove =  mapAndExecute(whitePlayer, move);
 				}
-				System.out.println();
 				chess.Chess.prevMove=move;
 				lastTurn = 0;
 			}
@@ -156,9 +154,9 @@ public class Game {
 	 * @return boolean
 	 * Checks if the current piece color matches the current player color and then executes move
 	 */
-	public boolean makeMove(Block current, Block dest, Player player, boolean check){
+	public boolean makeMove(Block current, Block dest, Player player, boolean check, String move){
 		if(current.getPiece().getColor().equals(player.getColor()))
-			return current.getPiece().move(dest, check);
+			return current.getPiece().move(dest, check, move);
 		else{
 			System.out.println("Invalid move, try again");
 			return false;
@@ -179,6 +177,6 @@ public class Game {
 		srcRank = rMap.get(sr+"");
 		destFile = fMap.get(df+"");
 		destRank = rMap.get(dr+"");
-		return makeMove(board[srcRank][srcFile], board[destRank][destFile], player, false);
+		return makeMove(board[srcRank][srcFile], board[destRank][destFile], player, false, s);
 	}
 }

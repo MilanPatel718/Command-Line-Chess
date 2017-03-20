@@ -30,8 +30,7 @@ public class Rook extends Piece{
 	 * @param moveTo
 	 * The block a Rook will be moved to if the move is valid
 	 */
-	public boolean move(Block moveTo, boolean check
-			){
+	public boolean move(Block moveTo, boolean check, String move){
 		//Translate File and Rank to array indices
 				int srcFile  = this.getBlock().getFile();
 				int srcRank  = chess.Chess.Rmap.get(this.getBlock().getRank()+"");
