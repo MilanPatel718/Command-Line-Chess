@@ -79,6 +79,9 @@ public class Queen extends Piece{
 				return true;
 				}
 				else{
+					if(check == true){
+						   return false;
+					}
 					System.out.println("Invalid move, try again");
 					return false;
 				}
@@ -110,6 +113,9 @@ public class Queen extends Piece{
 		}else if(((srcFile==destFile) && (srcRank!=destRank)) && destRank > srcRank){ //Queen is moving down
 			for(int i=srcRank+1; i<destRank; i++){
 				if(chess.Chess.board[i][srcFile].isOccupied()){
+					if(check == true){
+						   return false;
+					}
 					System.out.println("Invalid move, try again");
 					return false;
 				}
@@ -146,6 +152,9 @@ public class Queen extends Piece{
 				chess.Chess.printBoard();
 				return true;
 			}else{
+				if(check == true){
+					   return false;
+				}
 				System.out.println("Invalid Move, try again");
 				return false;
 			}
@@ -178,6 +187,9 @@ public class Queen extends Piece{
 		//Loop through every space between source and destination, excluding source and destination
 		for(int i = srcFile - 1; i > destFile; i--){
 			if(chess.Chess.board[srcRank][i].isOccupied()){
+				if(check == true){
+					   return false;
+				}
 				System.out.println("Invalid move, try again");
 				return false;
 			}
@@ -215,6 +227,9 @@ public class Queen extends Piece{
 				chess.Chess.printBoard();
 				return true;
 				}else{
+					if(check == true){
+						   return false;
+					}
 					System.out.println("Invalid move, try again");
 					return false;
 				}
@@ -246,6 +261,9 @@ public class Queen extends Piece{
 		}else if(((srcFile!=destFile) && (srcRank==destRank)) && destFile > srcFile){ //Queen is moving right
 			for(int i=srcFile+1; i<destFile; i++){
 				if(chess.Chess.board[srcRank][i].isOccupied()){
+					if(check == true){
+						   return false;
+					}
 					System.out.println("Invalid move, try again");
 					return false;
 				}
@@ -282,6 +300,9 @@ public class Queen extends Piece{
 					chess.Chess.printBoard();
 					return true;
 				}else{
+					if(check == true){
+						return false;
+					}
 					System.out.println("Invalid Move, try again");
 					return false;
 				}
@@ -315,6 +336,9 @@ public class Queen extends Piece{
 				if(srcFile < destFile){
 					for(int i = 1; i < (Math.abs(srcRank - destRank)); i++){
 						if(chess.Chess.board[srcRank - i][srcFile + i].isOccupied()==true){
+							if(check == true){
+								return false;
+							}
 							System.out.println("Invalid move, try again");
 							return false;
 						}
@@ -322,6 +346,9 @@ public class Queen extends Piece{
 				}else if(srcFile > destFile){
 					for(int i = 1; i < (Math.abs(srcRank - destRank)); i++){
 						if(chess.Chess.board[srcRank - i][srcFile - i].isOccupied()==true){
+							if(check == true){
+								return false;
+							}
 							System.out.println("Invalid move, try again");
 							return false;
 						}
@@ -331,6 +358,9 @@ public class Queen extends Piece{
 				if(srcFile < destFile){
 					for(int i = 1; i < (Math.abs(srcRank - destRank)); i++){
 						if(chess.Chess.board[srcRank + i][srcFile + i].isOccupied()==true){
+							if(check == true){
+								return false;
+							}
 							System.out.println("Invalid move, try again");
 							return false;
 						}
@@ -338,6 +368,9 @@ public class Queen extends Piece{
 				}else if(srcFile > destFile){
 					for(int i = 1; i < (Math.abs(srcRank - destRank)); i++){
 						if(chess.Chess.board[srcRank + i][srcFile - i].isOccupied()==true){
+							if(check == true){
+								return false;
+							}
 							System.out.println("Invalid move, try again");
 							return false;
 						}
@@ -378,6 +411,9 @@ public class Queen extends Piece{
 					return true;
 				}
 				else{
+					if(check == true){
+						return false;
+					}
 					System.out.println("Invalid move, try again");
 					return false;
 				}
@@ -410,6 +446,9 @@ public class Queen extends Piece{
 				return true;
 			}
 		}else{
+			if(check == true){
+				return false;
+			}
 			System.out.println("Invalid move, try again");
 			return false;
 		}

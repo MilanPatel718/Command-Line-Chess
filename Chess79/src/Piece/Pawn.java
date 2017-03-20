@@ -43,7 +43,9 @@ public class Pawn extends Piece{
 		int prevDestFile=chess.Chess.Fmap.get(chess.Chess.prevMove.charAt(3)+"");
 		int prevDestRank=chess.Chess.Rmap.get(chess.Chess.prevMove.charAt(4)+"");
 		
-		System.out.println();
+		if(check == false){
+			System.out.println();
+		}
 		
 		//Check White Pawn Legality
 		if(this.getName().charAt(0) == 'w'){
@@ -83,6 +85,9 @@ public class Pawn extends Piece{
 						
 					}
 				   else{
+					   if(check == true){
+						   return false;
+					   }
 						System.out.println("Invalid move, try again");
 						return false;
 					}
@@ -91,17 +96,25 @@ public class Pawn extends Piece{
 			  else if(destRank == srcRank - 1)
 						/*|| ((moveTo.getRank() == getBlock().getRank() + 2) &&
 								(moveTo.getRank() - 1  )))*/{
-				
+				  if(check == true){
+					   return false;
+				   }
 				System.out.println("Invalid move, try again");
 				return false;
 			  }
 			 
 			  else if(srcRank==6 && destRank==srcRank-2){
+				  if(check == true){
+					   return false;
+				   }
 				  System.out.println("Invalid move, try again");
 				  return false;
 			  }
 			 
 			  else{
+				  if(check == true){
+					   return false;
+				   }
 				  System.out.println("Invalid move, try again");
 				  return false;
 			  }
@@ -220,6 +233,9 @@ public class Pawn extends Piece{
 			
 			//Illegal Move
 			else{
+				if(check == true){
+					   return false;
+				}
 				System.out.println("Invalid Move, try again");
 				return false;
 			}
@@ -267,6 +283,9 @@ public class Pawn extends Piece{
 							
 							
 						}else{
+							if(check == true){
+								   return false;
+							}
 							System.out.println("Invalid move, try again");
 							return false;
 						}
@@ -276,16 +295,25 @@ public class Pawn extends Piece{
 							/*|| ((moveTo.getRank() == getBlock().getRank() + 2) &&
 									(moveTo.getRank() - 1  )))*/{
 					
+					  if(check == true){
+						   return false;
+					   }
 					System.out.println("Invalid move, try again");
 					return false;
 				  }
 				 
 				  else if(srcRank==1 && destRank==srcRank+2){
+					  if(check == true){
+						   return false;
+					   }
 					  System.out.println("Invalid move, try again");
 					  return false;
 				  }
 				 
 				  else{
+					  if(check == true){
+						   return false;
+					   }
 					  System.out.println("Invalid move, try again");
 					  return false;
 				  }
@@ -394,6 +422,9 @@ public class Pawn extends Piece{
 					}
 					
 					else{
+						if(check == true){
+							   return false;
+						}
 						System.out.println("Invalid Move, try again");
 						return false;
 					}
@@ -402,6 +433,9 @@ public class Pawn extends Piece{
 				
 				//Invalid move
 				else{
+					if(check == true){
+						   return false;
+					}
 					System.out.println("Invalid Move, try again");
 					return false;
 				}

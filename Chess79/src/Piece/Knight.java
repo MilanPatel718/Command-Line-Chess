@@ -39,6 +39,9 @@ public class Knight extends Piece{
 				if(((Math.abs(srcRank-destRank)==1 && Math.abs(srcFile-destFile)==2) || (Math.abs(srcRank-destRank)==2 && Math.abs(srcFile-destFile)==1))){
 					if(moveTo.isOccupied()){
 						if(moveTo.getPiece().getColor().equals(chess.Chess.board[srcRank][srcFile].getPiece().getColor())==true){
+							if(check == true){
+								return false;
+							}
 							System.out.println("Invalid move, try again");
 							return false;
 						}
@@ -103,6 +106,9 @@ public class Knight extends Piece{
 					}
 				}
 				else{
+					if(check == true){
+						return false;
+					}
 					System.out.println("Invalid move, try again");
 					return false;
 				}

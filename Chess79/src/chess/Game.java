@@ -168,14 +168,28 @@ public class Game {
 	 * Checks if the current piece color matches the current player color and then executes move
 	 */
 	public boolean makeMove(Block current, Block dest, Player player, boolean check, String move){
-		if(current.getPiece().getColor().equals(player.getColor()))
-			return current.getPiece().move(dest, check, move);
-		else{
+		boolean success = false;
+		if(current.getPiece().getColor().equals(player.getColor())){
+			success = current.getPiece().move(dest, check, move);
+			if(success == true){
+				//checks if the opponent's king is in check after move
+				if(dest.getPiece().getName().charAt(0) == 'w'){
+					if(blackPlayer.getKing().isInCheck() == true){
+						System.out.println("Check");
+						return true;
+					}
+				}else if(dest.getPiece().getName().charAt(0) == 'b'){
+					if(whitePlayer.getKing().isInCheck() == true){
+						System.out.println("Check");
+						return true;
+					}
+				}
+			}
+			return success;
+		}else{
 			System.out.println("Invalid move, try again");
 			return false;
 		}
-
-		
 	}
 	
 	/**

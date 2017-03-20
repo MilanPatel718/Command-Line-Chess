@@ -45,6 +45,9 @@ public class Rook extends Piece{
 						//Loop through every space between source and destination, excluding source and destination
 						for(int i=srcRank-1; i>destRank; i--){
 							if(chess.Chess.board[i][srcFile].isOccupied()){
+								if(check == true){
+									return false;
+								}
 								System.out.println("Invalid move, try again");
 								return false;
 							}
@@ -83,6 +86,9 @@ public class Rook extends Piece{
 							return true;
 							}
 							else{
+								if(check == true){
+									return false;
+								}
 								System.out.println("Invalid move, try again");
 								return false;
 							}
@@ -121,6 +127,9 @@ public class Rook extends Piece{
 						//Loop through every space between source and destination, excluding source and destination
 						for(int i=srcRank+1; i<destRank; i++){
 							if(chess.Chess.board[i][srcFile].isOccupied()){
+								if(check == true){
+									return false;
+								}
 								System.out.println("Invalid move, try again");
 								return false;
 							}
@@ -161,6 +170,9 @@ public class Rook extends Piece{
 						}
 						
 							else{
+								if(check == true){
+									return false;
+								}
 								System.out.println("Invalid Move, try again");
 								return false;
 							}
@@ -203,6 +215,9 @@ public class Rook extends Piece{
 					if(destFile<srcFile){
 						for(int j=srcFile-1; j>destFile; j--){
 							if(chess.Chess.board[srcRank][j].isOccupied()==true){
+								if(check == true){
+									return false;
+								}
 								System.out.println("Invalid move, try again");
 								return false;
 							}
@@ -240,6 +255,9 @@ public class Rook extends Piece{
 								return true;
 							}
 							else{
+								if(check == true){
+									return false;
+								}
 								System.out.println("Invalid move, try again");
 								return false;
 							}
@@ -277,6 +295,9 @@ public class Rook extends Piece{
 					//Rightward Movement
 					for(int j=srcFile+1; j<destFile; j++){
 						if(chess.Chess.board[srcRank][j].isOccupied()==true){
+							if(check == true){
+								return false;
+							}
 							System.out.println("Invalid move, try again");
 							return false;
 						}
@@ -314,6 +335,9 @@ public class Rook extends Piece{
 							return true;
 						}
 						else{
+							if(check == true){
+								return false;
+							}
 							System.out.println("Invalid move, try again");
 							return false;
 						}
@@ -352,6 +376,9 @@ public class Rook extends Piece{
 				
 				//Invalid Move
 				else{
+					if(check == true){
+						return false;
+					}
 					System.out.println("Invalid move, try again");
 					return false;
 					

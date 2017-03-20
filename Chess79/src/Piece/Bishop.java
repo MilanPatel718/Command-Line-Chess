@@ -41,6 +41,9 @@ public class Bishop extends Piece{
 				if(srcFile < destFile){
 					for(int i = 1; i < (Math.abs(srcRank - destRank)); i++){
 						if(chess.Chess.board[srcRank - i][srcFile + i].isOccupied()==true){
+							if(check == true){
+								return false;
+							}
 							System.out.println("Invalid move, try again");
 							return false;
 						}
@@ -48,6 +51,9 @@ public class Bishop extends Piece{
 				}else if(srcFile > destFile){
 					for(int i = 1; i < (Math.abs(srcRank - destRank)); i++){
 						if(chess.Chess.board[srcRank - i][srcFile - i].isOccupied()==true){
+							if(check == true){
+								return false;
+							}
 							System.out.println("Invalid move, try again");
 							return false;
 						}
@@ -57,6 +63,9 @@ public class Bishop extends Piece{
 				if(srcFile < destFile){
 					for(int i = 1; i < (Math.abs(srcRank - destRank)); i++){
 						if(chess.Chess.board[srcRank + i][srcFile + i].isOccupied()==true){
+							if(check == true){
+								return false;
+							}
 							System.out.println("Invalid move, try again");
 							return false;
 						}
@@ -64,6 +73,9 @@ public class Bishop extends Piece{
 				}else if(srcFile > destFile){
 					for(int i = 1; i < (Math.abs(srcRank - destRank)); i++){
 						if(chess.Chess.board[srcRank + i][srcFile - i].isOccupied()==true){
+							if(check == true){
+								return false;
+							}
 							System.out.println("Invalid move, try again");
 							return false;
 						}
@@ -104,6 +116,9 @@ public class Bishop extends Piece{
 					return true;
 				}
 				else{
+					if(check == true){
+						return false;
+					}
 					System.out.println("Invalid move, try again");
 					return false;
 				}
@@ -137,6 +152,9 @@ public class Bishop extends Piece{
 				return true;
 			}
 		}else{
+			if(check == true){
+				return false;
+			}
 			System.out.println("Invalid move, try again");
 			return false;
 		}

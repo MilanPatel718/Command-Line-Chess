@@ -72,11 +72,15 @@ public class King extends Piece {
 						this.getBlock().setDisplay("   ");
 					}
 					this.setBlock(moveTo);
+					getPlayer().getKing().setBlock(moveTo);
 					chess.Chess.printBoard();
 					setHasMoved(true);
 					return true;
 				}
 				else{
+					if(check == true){
+						return false;
+					}
 					System.out.println("Invalid move, try again");
 					return false;
 				}
@@ -103,6 +107,7 @@ public class King extends Piece {
 					this.getBlock().setDisplay("   ");
 				}
 				this.setBlock(moveTo);
+				getPlayer().getKing().setBlock(moveTo);
 				chess.Chess.printBoard();
 				setHasMoved(true);
 				return true;
@@ -140,6 +145,7 @@ public class King extends Piece {
 							this.getBlock().setDisplay("   ");
 						}
 						this.setBlock(moveTo);
+						getPlayer().getKing().setBlock(moveTo);
 						
 						//set new position of rook
 						chess.Chess.board[destRank][destFile - 1].setPiece(chess.Chess.board[destRank][destFile+1].getPiece());
@@ -191,6 +197,7 @@ public class King extends Piece {
 							this.getBlock().setDisplay("   ");
 						}
 						this.setBlock(moveTo);
+						getPlayer().getKing().setBlock(moveTo);
 						
 						//set new position of rook
 						chess.Chess.board[destRank][destFile + 1].setPiece(chess.Chess.board[destRank][destFile-2].getPiece());
@@ -248,6 +255,7 @@ public class King extends Piece {
 							this.getBlock().setDisplay("   ");
 						}
 						this.setBlock(moveTo);
+						getPlayer().getKing().setBlock(moveTo);
 						
 						//set new position of rook
 						chess.Chess.board[destRank][destFile - 1].setPiece(chess.Chess.board[destRank][destFile+1].getPiece());
@@ -299,6 +307,7 @@ public class King extends Piece {
 							this.getBlock().setDisplay("   ");
 						}
 						this.setBlock(moveTo);
+						getPlayer().getKing().setBlock(moveTo);
 						
 						//set new position of rook
 						chess.Chess.board[destRank][destFile + 1].setPiece(chess.Chess.board[destRank][destFile-2].getPiece());
@@ -337,15 +346,49 @@ public class King extends Piece {
 	}
 	
 	/**
+	 * Determines if King is currently in check
+	 * 
+	 * @return
+	 * true if King is in check after the opponent's move
+	 * false if the opponent's move does not put the king in check
+	 */
+	public boolean isInCheck(){
+		for(int i = 0; i < 8; i++){
+			for(int j = 0; j < 8; j++){
+				if(chess.Chess.board[i][j].isOccupied()){
+					if(chess.Chess.board[i][j].getPiece().getName().charAt(0) != getName().charAt(0)){
+						if(chess.Chess.board[i][j].getPiece().move(getBlock(), true, "") == true){
+							return true;
+						}
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
+	/**
 	 * Analyzes all of the opponent's pieces and determines if 
 	 * a move puts the King in check
 	 * 
 	 * @return
-	 * true if King is or will be in check after the opponent's move
+	 * true if King will be in check after the opponent's move
 	 * false if the opponent's move does not put the king in check
 	 */
-	public boolean isInCheck(){
-		
+	public boolean willBeInCheck(){
+		/*
+		for(int i = 0; i < 8; i++){
+			for(int j = 0; j < 8; j++){
+				if(chess.Chess.board[i][j].isOccupied()){
+					if(chess.Chess.board[i][j].getPiece().getName().charAt(0) != getName().charAt(0)){
+						if(chess.Chess.board[i][j].getPiece().move(moveto, true, "") == true){
+							
+						}
+					}
+				}
+			}
+		}
+		*/
 		return false; 
 	}
 }
