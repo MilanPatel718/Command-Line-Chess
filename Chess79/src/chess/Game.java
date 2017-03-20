@@ -51,8 +51,10 @@ public class Game {
 		//ask White player for input
 		System.out.print("White's move: ");
 		String move=scanner.nextLine();
-		if(move.equals("resign"))
+		if(move.equals("resign")){
 			resign=true;
+			System.out.println("Black wins");
+		}
 		chess.Chess.prevMove=move;
 		
 		if(resign==false)
@@ -68,6 +70,7 @@ public class Game {
 			move=scanner.nextLine();
 			if(move.equals("resign")){
 				resign=true;
+				System.out.println("Black wins");
 				break;
 			}
 			successfulMove =  mapAndExecute(whitePlayer, move);
@@ -76,14 +79,18 @@ public class Game {
 		lastTurn = 0;
 		
 		while(resign != true && checkmate != true && stalemate != true){
+			//Black Move
 			if(lastTurn == 0){
 				scanner=new Scanner(System.in);
 				System.out.print("Black's move: ");
 				move=scanner.nextLine();
-				if(drawPrompt==true && move.equals("draw"))
+				if(drawPrompt==true && move.equals("draw")){
+					System.out.println("Draw");
 					break;
+				}
 				if(move.equals("resign")){
 					resign=true;
+					System.out.println("White wins");
 					continue;
 				}
 				drawPrompt=false;
@@ -94,6 +101,7 @@ public class Game {
 					move=scanner.nextLine();
 					if(move.equals("resign")){
 						resign=true;
+						System.out.println("White wins");
 						continue;
 					}
 					successfulMove =  mapAndExecute(blackPlayer, move);
@@ -102,14 +110,18 @@ public class Game {
 				lastTurn = 1;
 			}
 			
+			//White Move
 			else if(lastTurn == 1){
 				scanner=new Scanner(System.in);
 				System.out.print("White's move: ");
 				move=scanner.nextLine();
-				if(drawPrompt==true && move.equals("draw"))
+				if(drawPrompt==true && move.equals("draw")){
+					System.out.println("Draw");
 					break;
+				}
 				if(move.equals("resign")){
 					resign=true;
+					System.out.println("Black wins");
 					continue;
 				}
 				drawPrompt=false;
@@ -120,6 +132,7 @@ public class Game {
 					move=scanner.nextLine();
 					if(move.equals("resign")){
 						resign=true;
+						System.out.println("Black wins");
 						continue;
 					}
 					successfulMove =  mapAndExecute(whitePlayer, move);
