@@ -99,12 +99,12 @@ public class King extends Piece {
 			}
 		}else if((getHasMoved() == false) && (hasCastled == false)){ //CASTLING IMPLEMENTATION
 			//check if piece has been moved before and if it is a rook
-			if((chess.Chess.board[destRank][destFile].getPiece().getHasMoved() == false)
-					&& (chess.Chess.board[destRank][destFile].getPiece().getName().charAt(1) == 'r')){
+			if((chess.Chess.board[destRank][destFile].getPiece()==null)
+					&& ((chess.Chess.board[destRank][destFile+1].getPiece().getName().charAt(1) == 'R') || chess.Chess.board[destRank][destFile-1].getPiece().getName().charAt(1) == 'R' )){
 				//if the king is white
 				if(getName().charAt(0) == 'w'){
 					if(srcRank == 7 && destRank == 7 && srcFile == 4 && destFile == 6){
-						for(int i = srcFile + 1; i <= destFile; i++){
+						for(int i = srcFile + 1; i < destFile; i++){
 							if(chess.Chess.board[srcRank][i].isOccupied()){
 								System.out.println("Invalid move, try again");
 								return false;
@@ -113,6 +113,7 @@ public class King extends Piece {
 						//Set new position of king
 						chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 						chess.Chess.board[destRank][destFile].setDisplay("wK ");
+						chess.Chess.board[destRank][destFile].setOccupied(true);
 					
 						this.getBlock().setOccupied(false);
 						this.getBlock().setPiece(null);
@@ -126,18 +127,20 @@ public class King extends Piece {
 						this.setBlock(moveTo);
 						
 						//set new position of rook
-						chess.Chess.board[destRank][destFile - 1].setPiece(getBlock().getPiece());
-						chess.Chess.board[destRank][destFile - 1].setDisplay("wR ");
-					
-						this.getBlock().setOccupied(false);
-						this.getBlock().setPiece(null);
+						chess.Chess.board[destRank][destFile - 1].setPiece(chess.Chess.board[destRank][destFile+1].getPiece());
+						chess.Chess.board[destRank][destFile+1].setPiece(null);
+						chess.Chess.board[destRank][destFile+1].setOccupied(false);
 						
-						if(this.getBlock().isShaded()){
-							this.getBlock().setDisplay("## ");
+						chess.Chess.board[destRank][destFile - 1].setDisplay("wR ");
+						
+						if(chess.Chess.board[destRank][destFile+1].isShaded()){
+							chess.Chess.board[destRank][destFile+1].setDisplay("## ");
 						}
 						else{
-							this.getBlock().setDisplay("   ");
+							chess.Chess.board[destRank][destFile+1].setDisplay("   ");
 						}
+					
+
 						chess.Chess.board[destRank][destFile - 1].getPiece().setBlock(
 								chess.Chess.board[destRank][destFile - 1]);
 						
@@ -147,7 +150,7 @@ public class King extends Piece {
 						chess.Chess.board[destRank][destFile - 1].getPiece().setHasMoved(true);
 						return true;
 					}else if(srcRank == 7 && destRank == 7 && srcFile == 4 && destFile == 2){
-						for(int i = srcFile - 1; i >= destFile; i--){
+						for(int i = srcFile - 1; i > destFile; i--){
 							if(chess.Chess.board[srcRank][i].isOccupied()){
 								System.out.println("Invalid move, try again");
 								return false;
@@ -156,6 +159,7 @@ public class King extends Piece {
 						//Set new position of king
 						chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 						chess.Chess.board[destRank][destFile].setDisplay("wK ");
+						chess.Chess.board[destRank][destFile].setOccupied(true);
 					
 						this.getBlock().setOccupied(false);
 						this.getBlock().setPiece(null);
@@ -169,18 +173,20 @@ public class King extends Piece {
 						this.setBlock(moveTo);
 						
 						//set new position of rook
-						chess.Chess.board[destRank][destFile + 1].setPiece(getBlock().getPiece());
-						chess.Chess.board[destRank][destFile + 1].setDisplay("wR ");
-					
-						this.getBlock().setOccupied(false);
-						this.getBlock().setPiece(null);
+						chess.Chess.board[destRank][destFile + 1].setPiece(chess.Chess.board[destRank][destFile-2].getPiece());
+						chess.Chess.board[destRank][destFile-2].setPiece(null);
+						chess.Chess.board[destRank][destFile-2].setOccupied(false);
 						
-						if(this.getBlock().isShaded()){
-							this.getBlock().setDisplay("## ");
+						chess.Chess.board[destRank][destFile + 1].setDisplay("wR ");
+						
+						if(chess.Chess.board[destRank][destFile-2].isShaded()){
+							chess.Chess.board[destRank][destFile-2].setDisplay("## ");
 						}
 						else{
-							this.getBlock().setDisplay("   ");
+							chess.Chess.board[destRank][destFile-2].setDisplay("   ");
 						}
+					
+
 						chess.Chess.board[destRank][destFile + 1].getPiece().setBlock(
 								chess.Chess.board[destRank][destFile + 1]);
 						
@@ -196,7 +202,7 @@ public class King extends Piece {
 				//if the king is black
 				}else if(getName().charAt(0) == 'b'){
 					if(srcRank == 0 && destRank == 0 && srcFile == 4 && destFile == 6){
-						for(int i = srcFile + 1; i <= destFile; i++){
+						for(int i = srcFile + 1; i < destFile; i++){
 							if(chess.Chess.board[srcRank][i].isOccupied()){
 								System.out.println("Invalid move, try again");
 								return false;
@@ -205,6 +211,7 @@ public class King extends Piece {
 						//Set new position of king
 						chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 						chess.Chess.board[destRank][destFile].setDisplay("bK ");
+						chess.Chess.board[destRank][destFile].setOccupied(true);
 					
 						this.getBlock().setOccupied(false);
 						this.getBlock().setPiece(null);
@@ -218,18 +225,20 @@ public class King extends Piece {
 						this.setBlock(moveTo);
 						
 						//set new position of rook
-						chess.Chess.board[destRank][destFile - 1].setPiece(getBlock().getPiece());
-						chess.Chess.board[destRank][destFile - 1].setDisplay("bR ");
-					
-						this.getBlock().setOccupied(false);
-						this.getBlock().setPiece(null);
+						chess.Chess.board[destRank][destFile - 1].setPiece(chess.Chess.board[destRank][destFile+1].getPiece());
+						chess.Chess.board[destRank][destFile+1].setPiece(null);
+						chess.Chess.board[destRank][destFile+1].setOccupied(false);
 						
-						if(this.getBlock().isShaded()){
-							this.getBlock().setDisplay("## ");
+						chess.Chess.board[destRank][destFile - 1].setDisplay("bR ");
+						
+						if(chess.Chess.board[destRank][destFile+1].isShaded()){
+							chess.Chess.board[destRank][destFile+1].setDisplay("## ");
 						}
 						else{
-							this.getBlock().setDisplay("   ");
+							chess.Chess.board[destRank][destFile+1].setDisplay("   ");
 						}
+					
+
 						chess.Chess.board[destRank][destFile - 1].getPiece().setBlock(
 								chess.Chess.board[destRank][destFile - 1]);
 						
@@ -248,6 +257,7 @@ public class King extends Piece {
 						//Set new position of king
 						chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 						chess.Chess.board[destRank][destFile].setDisplay("bK ");
+						chess.Chess.board[destRank][destFile].setOccupied(true);
 					
 						this.getBlock().setOccupied(false);
 						this.getBlock().setPiece(null);
@@ -261,18 +271,20 @@ public class King extends Piece {
 						this.setBlock(moveTo);
 						
 						//set new position of rook
-						chess.Chess.board[destRank][destFile + 1].setPiece(getBlock().getPiece());
-						chess.Chess.board[destRank][destFile + 1].setDisplay("bR ");
-					
-						this.getBlock().setOccupied(false);
-						this.getBlock().setPiece(null);
+						chess.Chess.board[destRank][destFile + 1].setPiece(chess.Chess.board[destRank][destFile-2].getPiece());
+						chess.Chess.board[destRank][destFile-2].setPiece(null);
+						chess.Chess.board[destRank][destFile-2].setOccupied(false);
 						
-						if(this.getBlock().isShaded()){
-							this.getBlock().setDisplay("## ");
+						chess.Chess.board[destRank][destFile + 1].setDisplay("bR ");
+						
+						if(chess.Chess.board[destRank][destFile-2].isShaded()){
+							chess.Chess.board[destRank][destFile-2].setDisplay("## ");
 						}
 						else{
-							this.getBlock().setDisplay("   ");
+							chess.Chess.board[destRank][destFile-2].setDisplay("   ");
 						}
+					
+
 						chess.Chess.board[destRank][destFile + 1].getPiece().setBlock(
 								chess.Chess.board[destRank][destFile + 1]);
 						
