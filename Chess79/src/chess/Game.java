@@ -10,6 +10,7 @@ public class Game {
 	boolean resign;
 	boolean checkmate;
 	boolean stalemate;
+	boolean drawPrompt;
 	int lastTurn; // 0: white went last, 1:black went last
 	int srcFile, srcRank, destFile, destRank;
 	char sf, sr, df, dr;
@@ -25,6 +26,7 @@ public class Game {
 		resign = false;
 		checkmate = false;
 		stalemate = false;
+		drawPrompt=false;
 		successfulMove = false;
 		this.fMap = fMap;
 		this.rMap = rMap; 
@@ -45,27 +47,51 @@ public class Game {
 		//ask White player for input
 		System.out.print("White's move: ");
 		String move=scanner.nextLine();
+		if(move.equals("resign"))
+			resign=true;
 		chess.Chess.prevMove=move;
+		
+		if(resign==false)
 		successfulMove =  mapAndExecute(whitePlayer, move);
+		else{
+			successfulMove=true;
+		}
+		
+		
 		while(successfulMove != true){
 			System.out.print("White's move: ");
 			scanner=new Scanner(System.in);
 			move=scanner.nextLine();
+			if(move.equals("resign")){
+				resign=true;
+				break;
+			}
 			successfulMove =  mapAndExecute(whitePlayer, move);
 		}
 
 		lastTurn = 0;
 		
-		while(resign != true || checkmate != true || stalemate != true){
+		while(resign != true && checkmate != true && stalemate != true){
 			if(lastTurn == 0){
 				scanner=new Scanner(System.in);
 				System.out.print("Black's move: ");
 				move=scanner.nextLine();
+				if(drawPrompt==true && move.equals("draw"))
+					break;
+				if(move.equals("resign")){
+					resign=true;
+					continue;
+				}
+				drawPrompt=false;
 				successfulMove =  mapAndExecute(blackPlayer, move);
 				while(successfulMove != true){
 					System.out.print("Black's move: ");
 					scanner=new Scanner(System.in);
 					move=scanner.nextLine();
+					if(move.equals("resign")){
+						resign=true;
+						continue;
+					}
 					successfulMove =  mapAndExecute(blackPlayer, move);
 				}
 				System.out.println();
@@ -77,11 +103,22 @@ public class Game {
 				scanner=new Scanner(System.in);
 				System.out.print("White's move: ");
 				move=scanner.nextLine();
+				if(drawPrompt==true && move.equals("draw"))
+					break;
+				if(move.equals("resign")){
+					resign=true;
+					continue;
+				}
+				drawPrompt=false;
 				successfulMove =  mapAndExecute(whitePlayer, move);
 				while(successfulMove != true){
 					System.out.print("White's move: ");
 					scanner=new Scanner(System.in);
 					move=scanner.nextLine();
+					if(move.equals("resign")){
+						resign=true;
+						continue;
+					}
 					successfulMove =  mapAndExecute(whitePlayer, move);
 				}
 				System.out.println();
@@ -98,10 +135,14 @@ public class Game {
 	 * Parses Input Move
 	 */
 	public void getInput(String src){
+		if(src.length()==11)
+			drawPrompt=true;
 		sf = src.charAt(0);
 		sr = src.charAt(1);
 		df = src.charAt(3);
 		dr = src.charAt(4);
+		
+		
 	}
 	
 	/**
