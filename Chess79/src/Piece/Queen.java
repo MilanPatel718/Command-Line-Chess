@@ -29,7 +29,7 @@ public class Queen extends Piece{
 	 * @param moveTo
 	 * The block a Queen will be moved to if the move is valid
 	 */
-	public boolean move(Block moveTo){
+	public boolean move(Block moveTo, boolean check){
 		//Translate File and Rank
 		int srcFile  = this.getBlock().getFile();
 		int srcRank  = chess.Chess.Rmap.get(this.getBlock().getRank()+"");
@@ -48,6 +48,10 @@ public class Queen extends Piece{
 			//Queen Captures Piece at Destination
 			if(moveTo.isOccupied()){
 				if(moveTo.getPiece().getColor().equals(chess.Chess.board[srcRank][srcFile].getPiece().getColor())==false){
+					//A check to see if this move puts the opponent's King in check
+					if(check == true){
+						return true;
+					}
 				//Call deletePiece to indicate that target piece has been captured
 				chess.Chess.board[destRank][destFile].getPiece().deletePiece(
 						chess.Chess.board[destRank][destFile].getPiece().getNumber(), 
@@ -79,6 +83,10 @@ public class Queen extends Piece{
 					return false;
 				}
 			}else{
+				//A check to see if this move puts the opponent's King in check
+				if(check == true){
+					return true;
+				}
 				chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 				if(chess.Chess.board[destRank][destFile].getPiece().getColor().equals("White"))
 					chess.Chess.board[destRank][destFile].setDisplay("wQ ");
@@ -108,6 +116,10 @@ public class Queen extends Piece{
 			}
 			if(moveTo.isOccupied()){
 				if(moveTo.getPiece().getColor().equals(chess.Chess.board[srcRank][srcFile].getPiece().getColor())==false){
+					//A check to see if this move puts the opponent's King in check
+					if(check == true){
+						return true;
+					}
 				//Call deletePiece to indicate that target piece has been captured
 				chess.Chess.board[destRank][destFile].getPiece().deletePiece(
 						chess.Chess.board[destRank][destFile].getPiece().getNumber(), 
@@ -138,6 +150,10 @@ public class Queen extends Piece{
 				return false;
 			}
 		}else{
+			//A check to see if this move puts the opponent's King in check
+			if(check == true){
+				return true;
+			}
 			chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 			if(chess.Chess.board[destRank][destFile].getPiece().getColor().equals("White"))
 				chess.Chess.board[destRank][destFile].setDisplay("wQ ");
@@ -169,6 +185,10 @@ public class Queen extends Piece{
 		//Queen Captures Piece at Destination
 		if(moveTo.isOccupied()){
 			if(moveTo.getPiece().getColor().equals(chess.Chess.board[srcRank][srcFile].getPiece().getColor())==false){
+				//A check to see if this move puts the opponent's King in check
+				if(check == true){
+					return true;
+				}
 			//Call deletePiece to indicate that target piece has been captured
 				chess.Chess.board[destRank][destFile].getPiece().deletePiece(
 					chess.Chess.board[destRank][destFile].getPiece().getNumber(), 
@@ -199,6 +219,10 @@ public class Queen extends Piece{
 					return false;
 				}
 			}else{
+				//A check to see if this move puts the opponent's King in check
+				if(check == true){
+					return true;
+				}
 				chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 				if(chess.Chess.board[destRank][destFile].getPiece().getColor().equals("White"))
 					chess.Chess.board[destRank][destFile].setDisplay("wQ ");
@@ -228,6 +252,10 @@ public class Queen extends Piece{
 			}
 			if(moveTo.isOccupied()){
 				if(moveTo.getPiece().getColor().equals(chess.Chess.board[srcRank][srcFile].getPiece().getColor())==false){
+					//A check to see if this move puts the opponent's King in check
+					if(check == true){
+						return true;
+					}
 					//Call deletePiece to indicate that target piece has been captured
 					chess.Chess.board[destRank][destFile].getPiece().deletePiece(
 							chess.Chess.board[destRank][destFile].getPiece().getNumber(), 
@@ -258,6 +286,10 @@ public class Queen extends Piece{
 					return false;
 				}
 			}else{
+				//A check to see if this move puts the opponent's King in check
+				if(check == true){
+					return true;
+				}
 				chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 				if(chess.Chess.board[destRank][destFile].getPiece().getColor().equals("White"))
 					chess.Chess.board[destRank][destFile].setDisplay("wQ ");
@@ -315,6 +347,10 @@ public class Queen extends Piece{
 			
 			if(moveTo.isOccupied()){
 				if(moveTo.getPiece().getColor().equals(chess.Chess.board[srcRank][srcFile].getPiece().getColor())==false){
+					//A check to see if this move puts the opponent's King in check
+					if(check == true){
+						return true;
+					}
 					//Call deletePiece to indicate that target piece has been captured
 					chess.Chess.board[destRank][destFile].getPiece().deletePiece(
 							chess.Chess.board[destRank][destFile].getPiece().getNumber(), 
@@ -349,6 +385,10 @@ public class Queen extends Piece{
 			
 			//Normal Move
 			else{
+				//A check to see if this move puts the opponent's King in check
+				if(check == true){
+					return true;
+				}
 				chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 				if(chess.Chess.board[destRank][destFile].getPiece().getColor().equals("White"))
 					chess.Chess.board[destRank][destFile].setDisplay("wQ ");

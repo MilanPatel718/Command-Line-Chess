@@ -31,7 +31,7 @@ public class Pawn extends Piece{
 	 * @param moveTo
 	 * The block a Pawn will be moved to if the move is valid
 	 */
-	public boolean move(Block moveTo){
+	public boolean move(Block moveTo, boolean check){
 		
 		//Translate File and Rank to array indices
 		int srcFile  = this.getBlock().getFile();
@@ -50,7 +50,10 @@ public class Pawn extends Piece{
 			if(moveTo.isOccupied()){
 			   if((destRank == srcRank - 1) && (Math.abs(destFile-srcFile)==1)){
 					if(moveTo.getPiece().getName().charAt(0) != this.getName().charAt(0)){
-						
+						//A check to see if this move puts the opponent's King in check
+						if(check == true){
+							return true;
+						}
 						//Call deletePiece to indicate that target piece has been captured
 						chess.Chess.board[destRank][destFile].getPiece().deletePiece(chess.Chess.board[destRank][destFile].getPiece().getNumber(), chess.Chess.board[destRank][destFile].getPiece());
 						
@@ -109,7 +112,10 @@ public class Pawn extends Piece{
 		else{
 			//Pawn moves 1 forward
 			if(destRank == srcRank -1 && destFile==srcFile){
-				
+				//A check to see if this move puts the opponent's King in check
+				if(check == true){
+					return true;
+				}
 				chess.Chess.board[destRank][destFile].setPiece(this);
 				chess.Chess.board[destRank][destFile].setOccupied(true);
 				chess.Chess.board[destRank][destFile].setDisplay("wp ");
@@ -136,7 +142,10 @@ public class Pawn extends Piece{
 			
 			//Pawn moves two forward on first move
 			else if(srcRank==6 && destRank == srcRank-2){
-				
+				//A check to see if this move puts the opponent's King in check
+				if(check == true){
+					return true;
+				}
 				chess.Chess.board[destRank][destFile].setPiece(this);
 				chess.Chess.board[destRank][destFile].setOccupied(true);
 				chess.Chess.board[destRank][destFile].setDisplay("wp ");
@@ -163,7 +172,10 @@ public class Pawn extends Piece{
 					
 				if((chess.Chess.board[srcRank][destFile].getPiece().equals(chess.Chess.board[prevDestRank][prevDestFile].getPiece())) &&
 					(Math.abs(prevDestRank-prevSrcRank)==2) && (prevSrcRank==1)){
-					
+					//A check to see if this move puts the opponent's King in check
+					if(check == true){
+						return true;
+					}
 					//Call deletePiece to indicate that target piece has been captured
 					chess.Chess.board[srcRank][destFile].getPiece().deletePiece(chess.Chess.board[srcRank][destFile].getPiece().getNumber(), chess.Chess.board[srcRank][destFile].getPiece());
 					
@@ -222,6 +234,11 @@ public class Pawn extends Piece{
 			if(moveTo.isOccupied()){
 				   if((destRank == srcRank + 1) && (Math.abs(destFile-srcFile)==1)){
 						if(moveTo.getPiece().getName().charAt(0) != this.getName().charAt(0)){
+							//A check to see if this move puts the opponent's King in check
+							if(check == true){
+								return true;
+							}
+							
 							//capture opponent's piece
 							//send message to remove
 							
@@ -279,7 +296,10 @@ public class Pawn extends Piece{
 			else{
 				//Pawn moves forward 1 tile
 				if(destRank == srcRank +1 && destFile==srcFile){
-					
+					//A check to see if this move puts the opponent's King in check
+					if(check == true){
+						return true;
+					}
 					chess.Chess.board[destRank][destFile].setPiece(this);
 					chess.Chess.board[destRank][destFile].setOccupied(true);
 					chess.Chess.board[destRank][destFile].setDisplay("bp ");
@@ -303,6 +323,10 @@ public class Pawn extends Piece{
 				}
 				//Pawn moves forward 2 tiles on first move
 				else if(srcRank==1 && destRank == srcRank+2){
+					//A check to see if this move puts the opponent's King in check
+					if(check == true){
+						return true;
+					}
 					
 					chess.Chess.board[destRank][destFile].setPiece(this);
 					chess.Chess.board[destRank][destFile].setOccupied(true);
@@ -330,6 +354,10 @@ public class Pawn extends Piece{
 				else if((destRank == srcRank + 1) && (Math.abs(destFile-srcFile)==1) && srcRank==4){
 					if((chess.Chess.board[srcRank][destFile].getPiece().equals(chess.Chess.board[prevDestRank][prevDestFile].getPiece())) &&
 							(Math.abs(prevDestRank-prevSrcRank)==2) && (prevSrcRank==6)){
+						//A check to see if this move puts the opponent's King in check
+						if(check == true){
+							return true;
+						}
 						
 						//Call deletePiece to indicate that target piece has been captured
 						chess.Chess.board[srcRank][destFile].getPiece().deletePiece(chess.Chess.board[srcRank][destFile].getPiece().getNumber(), chess.Chess.board[srcRank][destFile].getPiece());

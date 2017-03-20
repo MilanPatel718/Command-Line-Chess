@@ -32,7 +32,7 @@ public class King extends Piece {
 	 * @param moveTo
 	 * The block a King will be moved to if the move is valid.
 	 */
-	public boolean move(Block moveTo){
+	public boolean move(Block moveTo, boolean check){
 		int srcFile  = this.getBlock().getFile();
 		int srcRank  = chess.Chess.Rmap.get(this.getBlock().getRank()+"");
 		int destFile = moveTo.getFile();
@@ -44,6 +44,11 @@ public class King extends Piece {
 				((Math.abs(srcRank - destRank) == 0) && (Math.abs(srcFile - destFile) == 1))){
 			if(moveTo.isOccupied()){
 				if(moveTo.getPiece().getColor().equals(chess.Chess.board[srcRank][srcFile].getPiece().getColor())==false){
+					//A check to see if this move puts the opponent's King in check
+					if(check == true){
+						return true;
+					}
+					
 					//Call deletePiece to indicate that target piece has been captured
 					chess.Chess.board[destRank][destFile].getPiece().deletePiece(
 							chess.Chess.board[destRank][destFile].getPiece().getNumber(), 
@@ -76,6 +81,11 @@ public class King extends Piece {
 					return false;
 				}
 			}else{
+				//A check to see if this move puts the opponent's King in check
+				if(check == true){
+					return true;
+				}
+				
 				chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 				if(chess.Chess.board[destRank][destFile].getPiece().getColor().equals("White"))
 					chess.Chess.board[destRank][destFile].setDisplay("wK ");
@@ -110,6 +120,11 @@ public class King extends Piece {
 								return false;
 							}
 						}
+						//A check to see if this move puts the opponent's King in check
+						if(check == true){
+							return true;
+						}
+						
 						//Set new position of king
 						chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 						chess.Chess.board[destRank][destFile].setDisplay("wK ");
@@ -156,6 +171,11 @@ public class King extends Piece {
 								return false;
 							}
 						}
+						//A check to see if this move puts the opponent's King in check
+						if(check == true){
+							return true;
+						}
+						
 						//Set new position of king
 						chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 						chess.Chess.board[destRank][destFile].setDisplay("wK ");
@@ -208,6 +228,11 @@ public class King extends Piece {
 								return false;
 							}
 						}
+						//A check to see if this move puts the opponent's King in check
+						if(check == true){
+							return true;
+						}
+						
 						//Set new position of king
 						chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 						chess.Chess.board[destRank][destFile].setDisplay("bK ");
@@ -254,6 +279,11 @@ public class King extends Piece {
 								return false;
 							}
 						}
+						//A check to see if this move puts the opponent's King in check
+						if(check == true){
+							return true;
+						}
+						
 						//Set new position of king
 						chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 						chess.Chess.board[destRank][destFile].setDisplay("bK ");
@@ -304,6 +334,19 @@ public class King extends Piece {
 			return false;
 		}
 		return false;
+	}
+	
+	/**
+	 * Analyzes all of the opponent's pieces and determines if 
+	 * a move puts the King in check
+	 * 
+	 * @return
+	 * true if King is or will be in check after the opponent's move
+	 * false if the opponent's move does not put the king in check
+	 */
+	public boolean isInCheck(){
+		
+		return false; 
 	}
 }
 

@@ -1,8 +1,12 @@
 package chess;
 
 import java.util.Map;
-import java.util.Scanner;
 
+import java.util.Scanner;
+/**
+ * @author Baljit Kaur
+ * @author Milan Patel
+ */
 public class Game {
 	Block board[][];
 	Player blackPlayer;
@@ -152,10 +156,9 @@ public class Game {
 	 * @return boolean
 	 * Checks if the current piece color matches the current player color and then executes move
 	 */
-	public boolean makeMove(Block current, Block dest, Player player){
+	public boolean makeMove(Block current, Block dest, Player player, boolean check){
 		if(current.getPiece().getColor().equals(player.getColor()))
-		return current.getPiece().move(dest);
-		
+			return current.getPiece().move(dest, check);
 		else{
 			System.out.println("Invalid move, try again");
 			return false;
@@ -176,6 +179,6 @@ public class Game {
 		srcRank = rMap.get(sr+"");
 		destFile = fMap.get(df+"");
 		destRank = rMap.get(dr+"");
-		return makeMove(board[srcRank][srcFile], board[destRank][destFile], player);
+		return makeMove(board[srcRank][srcFile], board[destRank][destFile], player, false);
 	}
 }

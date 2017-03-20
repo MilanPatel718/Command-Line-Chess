@@ -30,7 +30,8 @@ public class Rook extends Piece{
 	 * @param moveTo
 	 * The block a Rook will be moved to if the move is valid
 	 */
-	public boolean move(Block moveTo){
+	public boolean move(Block moveTo, boolean check
+			){
 		//Translate File and Rank to array indices
 				int srcFile  = this.getBlock().getFile();
 				int srcRank  = chess.Chess.Rmap.get(this.getBlock().getRank()+"");
@@ -53,6 +54,10 @@ public class Rook extends Piece{
 						//Rook Captures Destination
 						if(moveTo.isOccupied()){
 							if(moveTo.getPiece().getColor().equals(chess.Chess.board[srcRank][srcFile].getPiece().getColor())==false){
+								//A check to see if this move puts the opponent's King in check
+								if(check == true){
+									return true;
+								}
 							//Call deletePiece to indicate that target piece has been captured
 							chess.Chess.board[destRank][destFile].getPiece().deletePiece(chess.Chess.board[destRank][destFile].getPiece().getNumber(), chess.Chess.board[destRank][destFile].getPiece());
 							
@@ -85,7 +90,10 @@ public class Rook extends Piece{
 						}
 						//Normal Move
 						else{
-							
+							//A check to see if this move puts the opponent's King in check
+							if(check == true){
+								return true;
+							}
 							chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 							if(chess.Chess.board[destRank][destFile].getPiece().getColor().equals("White"))
 								chess.Chess.board[destRank][destFile].setDisplay("wR ");
@@ -122,8 +130,11 @@ public class Rook extends Piece{
 						
 						//Rook Captures Destination
 						if(moveTo.isOccupied()){
-						
 							if(moveTo.getPiece().getColor().equals(chess.Chess.board[srcRank][srcFile].getPiece().getColor())==false){
+								//A check to see if this move puts the opponent's King in check
+								if(check == true){
+									return true;
+								}
 							//Call deletePiece to indicate that target piece has been captured
 							chess.Chess.board[destRank][destFile].getPiece().deletePiece(chess.Chess.board[destRank][destFile].getPiece().getNumber(), chess.Chess.board[destRank][destFile].getPiece());
 							
@@ -157,7 +168,10 @@ public class Rook extends Piece{
 					}
 						//Normal Move
 						else{
-							
+							//A check to see if this move puts the opponent's King in check
+							if(check == true){
+								return true;
+							}
 							chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 							if(chess.Chess.board[destRank][destFile].getPiece().getColor().equals("White"))
 								chess.Chess.board[destRank][destFile].setDisplay("wR ");
@@ -197,6 +211,10 @@ public class Rook extends Piece{
 						
 						if(moveTo.isOccupied()){
 							if(moveTo.getPiece().getColor().equals(chess.Chess.board[srcRank][srcFile].getPiece().getColor())==false){
+								//A check to see if this move puts the opponent's King in check
+								if(check == true){
+									return true;
+								}
 								//Call deletePiece to indicate that target piece has been captured
 								chess.Chess.board[destRank][destFile].getPiece().deletePiece(chess.Chess.board[destRank][destFile].getPiece().getNumber(), chess.Chess.board[destRank][destFile].getPiece());
 								
@@ -228,6 +246,10 @@ public class Rook extends Piece{
 							}
 						}
 						else{
+							//A check to see if this move puts the opponent's King in check
+							if(check == true){
+								return true;
+							}
 							chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 							if(chess.Chess.board[destRank][destFile].getPiece().getColor().equals("White"))
 								chess.Chess.board[destRank][destFile].setDisplay("wR ");
@@ -263,6 +285,10 @@ public class Rook extends Piece{
 					
 					if(moveTo.isOccupied()){
 						if(moveTo.getPiece().getColor().equals(chess.Chess.board[srcRank][srcFile].getPiece().getColor())==false){
+							//A check to see if this move puts the opponent's King in check
+							if(check == true){
+								return true;
+							}
 							//Call deletePiece to indicate that target piece has been captured
 							chess.Chess.board[destRank][destFile].getPiece().deletePiece(chess.Chess.board[destRank][destFile].getPiece().getNumber(), chess.Chess.board[destRank][destFile].getPiece());
 							
@@ -296,6 +322,10 @@ public class Rook extends Piece{
 					
 					//Normal Move
 					else{
+						//A check to see if this move puts the opponent's King in check
+						if(check == true){
+							return true;
+						}
 						chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
 						if(chess.Chess.board[destRank][destFile].getPiece().getColor().equals("White"))
 							chess.Chess.board[destRank][destFile].setDisplay("wR ");
