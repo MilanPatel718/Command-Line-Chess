@@ -653,7 +653,7 @@ public class Pawn extends Piece{
 			}
 			
 		}
-		else if(promote.equals("K")){
+		else if(promote.equals("N")){
 			int num=chess.Chess.board[destRank][destFile].getPiece().getNumber();
 			if(num==1){
 				Knight Knight1;
