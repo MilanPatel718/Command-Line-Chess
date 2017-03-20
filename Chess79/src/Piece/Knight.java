@@ -30,20 +30,72 @@ public class Knight extends Piece{
 	 * The block a Knight will be moved to if the move is valid
 	 */
 	public boolean move(Block moveTo){
-		if(moveTo.isOccupied()){
-			System.out.println("Invalid move: Block is occupied");
-			return false;
-		}
-		if(((Math.abs(getBlock().getRank() - moveTo.getRank()) == 2)
-			&& (Math.abs(getBlock().getFile() - moveTo.getFile()) == 1))
-			|| ((Math.abs(getBlock().getFile() - moveTo.getFile()) == 2)
-					&& (Math.abs(getBlock().getRank() - moveTo.getRank()) == 1))){
-			setBlock(moveTo);
-			return true;
-		}else{
-			//output to board 
-			System.out.println("Illegal move, try again!");
-			return false;
-		}
+		//Translate File and Rank to array indices
+				int srcFile  = this.getBlock().getFile();
+				int srcRank  = chess.Chess.Rmap.get(this.getBlock().getRank()+"");
+				int destFile = moveTo.getFile();
+				int destRank = chess.Chess.Rmap.get(moveTo.getRank()+""); 
+				
+				if(((Math.abs(srcRank-destRank)==1 && Math.abs(srcFile-destFile)==2) || (Math.abs(srcRank-destRank)==2 && Math.abs(srcFile-destFile)==1))){
+					if(moveTo.isOccupied()){
+						if(moveTo.getPiece().getColor().equals(chess.Chess.board[srcRank][srcFile].getPiece().getColor())==true){
+							System.out.println("Invalid move, try again");
+							return false;
+						}
+						
+						//Call deletePiece to indicate that target piece has been captured
+						chess.Chess.board[destRank][destFile].getPiece().deletePiece(chess.Chess.board[destRank][destFile].getPiece().getNumber(), chess.Chess.board[destRank][destFile].getPiece());
+						
+						chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
+						
+						if(chess.Chess.board[destRank][destFile].getPiece().getColor().equals("White"))
+							chess.Chess.board[destRank][destFile].setDisplay("wN ");
+						else
+							chess.Chess.board[destRank][destFile].setDisplay("bN ");
+							
+						
+						this.getBlock().setOccupied(false);
+						this.getBlock().setPiece(null);
+						
+						if(this.getBlock().isShaded()){
+							this.getBlock().setDisplay("## ");
+						}
+						else{
+							this.getBlock().setDisplay("   ");
+						}
+						this.setBlock(moveTo);
+						chess.Chess.printBoard();
+						return true;
+						
+					}
+					
+					else{
+						chess.Chess.board[destRank][destFile].setPiece(getBlock().getPiece());
+						if(chess.Chess.board[destRank][destFile].getPiece().getColor().equals("White"))
+							chess.Chess.board[destRank][destFile].setDisplay("wN ");
+						else
+							chess.Chess.board[destRank][destFile].setDisplay("bN ");
+						chess.Chess.board[destRank][destFile].setOccupied(true);
+						
+						this.getBlock().setOccupied(false);
+						this.getBlock().setPiece(null);
+						
+						if(this.getBlock().isShaded()){
+							this.getBlock().setDisplay("## ");
+						}
+						else{
+							this.getBlock().setDisplay("   ");
+						}
+						this.setBlock(moveTo);
+						chess.Chess.printBoard();
+						return true;
+						
+					}
+				}
+				else{
+					System.out.println("Invalid move, try again");
+					return false;
+				}
+						
 	}
 }
