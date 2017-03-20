@@ -98,7 +98,7 @@ public class King extends Piece {
 				return true;
 			}
 		}else if((getHasMoved() == false) && (hasCastled == false)){ //CASTLING IMPLEMENTATION
-			//check if piece has moved before and if it is a rook
+			//check if piece has been moved before and if it is a rook
 			if((chess.Chess.board[destRank][destFile].getPiece().getHasMoved() == false)
 					&& (chess.Chess.board[destRank][destFile].getPiece().getName().charAt(1) == 'r')){
 				//if the king is white
@@ -143,6 +143,7 @@ public class King extends Piece {
 						
 						chess.Chess.printBoard();
 						setHasMoved(true);
+						hasCastled = true;
 						chess.Chess.board[destRank][destFile - 1].getPiece().setHasMoved(true);
 						return true;
 					}else if(srcRank == 7 && destRank == 7 && srcFile == 4 && destFile == 2){
@@ -185,6 +186,7 @@ public class King extends Piece {
 						
 						chess.Chess.printBoard();
 						setHasMoved(true);
+						hasCastled = true;
 						chess.Chess.board[destRank][destFile + 1].getPiece().setHasMoved(true);
 						return true;
 					}else{
@@ -233,6 +235,7 @@ public class King extends Piece {
 						
 						chess.Chess.printBoard();
 						setHasMoved(true);
+						hasCastled = true;
 						chess.Chess.board[destRank][destFile - 1].getPiece().setHasMoved(true);
 						return true;
 					}else if(srcRank == 0 && destRank == 0 && srcFile == 4 && destFile == 2){
@@ -275,6 +278,7 @@ public class King extends Piece {
 						
 						chess.Chess.printBoard();
 						setHasMoved(true);
+						hasCastled = true;
 						chess.Chess.board[destRank][destFile + 1].getPiece().setHasMoved(true);
 						return true;
 					}else{
