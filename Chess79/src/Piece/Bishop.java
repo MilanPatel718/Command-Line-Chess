@@ -113,6 +113,7 @@ public class Bishop extends Piece{
 					}
 					this.setBlock(moveTo);
 					chess.Chess.printBoard();
+					System.out.println();
 					return true;
 				}
 				else{
@@ -149,6 +150,7 @@ public class Bishop extends Piece{
 				}
 				this.setBlock(moveTo);
 				chess.Chess.printBoard();
+				System.out.println();
 				return true;
 			}
 		}else{

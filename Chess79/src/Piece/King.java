@@ -112,7 +112,8 @@ public class King extends Piece {
 				setHasMoved(true);
 				return true;
 			}
-		}else if((getHasMoved() == false) && (hasCastled == false)){ //CASTLING IMPLEMENTATION
+		}else if((getHasMoved() == false) && (hasCastled == false) &&
+				(isOrWillBeInCheck(srcRank, srcFile, destRank, destFile) != true)){ //CASTLING IMPLEMENTATION
 			//check if piece has been moved before and if it is a rook
 			if((chess.Chess.board[destRank][destFile].getPiece()==null)
 					&& ((chess.Chess.board[destRank][destFile+1].getPiece().getName().charAt(1) == 'R') || chess.Chess.board[destRank][destFile-1].getPiece().getName().charAt(1) == 'R' )){
@@ -369,26 +370,70 @@ public class King extends Piece {
 	
 	/**
 	 * Analyzes all of the opponent's pieces and determines if 
-	 * a move puts the King in check
+	 * a move puts the King in check when trying to castle
 	 * 
 	 * @return
 	 * true if King will be in check after the opponent's move
 	 * false if the opponent's move does not put the king in check
 	 */
-	public boolean willBeInCheck(){
-		/*
-		for(int i = 0; i < 8; i++){
-			for(int j = 0; j < 8; j++){
-				if(chess.Chess.board[i][j].isOccupied()){
-					if(chess.Chess.board[i][j].getPiece().getName().charAt(0) != getName().charAt(0)){
-						if(chess.Chess.board[i][j].getPiece().move(moveto, true, "") == true){
-							
+	public boolean isOrWillBeInCheck(int srcRank, int srcFile, int destRank, int destFile){
+		if(getName().charAt(0) == 'w' && (srcRank == 7) && (srcFile == 4) && (destRank == 7) && (destFile == 6)){
+			for(int i = 0; i < 8; i++){
+				for(int j = 0; j < 8; j++){
+					if(chess.Chess.board[i][j].isOccupied()){
+						if(chess.Chess.board[i][j].getPiece().getName().charAt(0) != getName().charAt(0)){
+							if((chess.Chess.board[i][j].getPiece().move(chess.Chess.board[4][7], true, "") == true) ||
+									(chess.Chess.board[i][j].getPiece().move(chess.Chess.board[5][7], true, "") == true) ||
+									(chess.Chess.board[i][j].getPiece().move(chess.Chess.board[6][7], true, "") == true)){
+								return true;
+							}
+						}
+					}
+				}
+			}
+		}else if(getName().charAt(0) == 'w' && (srcRank == 7) && (srcFile == 4) && (destRank == 7) && (destFile == 2)){
+			for(int i = 0; i < 8; i++){
+				for(int j = 0; j < 8; j++){
+					if(chess.Chess.board[i][j].isOccupied()){
+						if(chess.Chess.board[i][j].getPiece().getName().charAt(0) != getName().charAt(0)){
+							if((chess.Chess.board[i][j].getPiece().move(chess.Chess.board[4][7], true, "") == true) ||
+									(chess.Chess.board[i][j].getPiece().move(chess.Chess.board[3][7], true, "") == true) ||
+									(chess.Chess.board[i][j].getPiece().move(chess.Chess.board[2][7], true, "") == true)){
+								return true;
+							}
+						}
+					}
+				}
+			}
+		}else if(getName().charAt(0) == 'b' && (srcRank == 0) && (srcFile == 4) && (destRank == 0) && (destFile == 6)){
+			for(int i = 0; i < 8; i++){
+				for(int j = 0; j < 8; j++){
+					if(chess.Chess.board[i][j].isOccupied()){
+						if(chess.Chess.board[i][j].getPiece().getName().charAt(0) != getName().charAt(0)){
+							if((chess.Chess.board[i][j].getPiece().move(chess.Chess.board[4][0], true, "") == true) ||
+									(chess.Chess.board[i][j].getPiece().move(chess.Chess.board[5][0], true, "") == true) ||
+									(chess.Chess.board[i][j].getPiece().move(chess.Chess.board[6][0], true, "") == true)){
+								return true;
+							}
+						}
+					}
+				}
+			}
+		}else if(getName().charAt(0) == 'b' && (srcRank == 0) && (srcFile == 4) && (destRank == 0) && (destFile == 2)){
+			for(int i = 0; i < 8; i++){
+				for(int j = 0; j < 8; j++){
+					if(chess.Chess.board[i][j].isOccupied()){
+						if(chess.Chess.board[i][j].getPiece().getName().charAt(0) != getName().charAt(0)){
+							if((chess.Chess.board[i][j].getPiece().move(chess.Chess.board[4][0], true, "") == true) ||
+									(chess.Chess.board[i][j].getPiece().move(chess.Chess.board[3][0], true, "") == true) ||
+									(chess.Chess.board[i][j].getPiece().move(chess.Chess.board[2][0], true, "") == true)){
+								return true;
+							}
 						}
 					}
 				}
 			}
 		}
-		*/
 		return false; 
 	}
 }

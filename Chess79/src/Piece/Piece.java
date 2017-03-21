@@ -116,7 +116,7 @@ public abstract class Piece {
 	 */
 	public void deletePiece(int num, Piece P){
 		String Name=P.getName();
-		if(Name.equals("Pawn")){
+		if((Name.equals("wP ") || Name.equals("bP "))){
 			if(num==1){
 				P.player.setPawn1(null);
 			}
@@ -142,7 +142,7 @@ public abstract class Piece {
 				P.player.setPawn8(null);
 			}
 		}
-		else if(Name.equals("Rook")){
+		else if((Name.equals("wR ")) || Name.equals("bR ")){
 			if(num==1){
 				P.player.setRook1(null);
 				
@@ -152,7 +152,7 @@ public abstract class Piece {
 			}
 			
 		}
-		else if(Name.equals("Bishop")){
+		else if(((Name.equals("wB ")) || Name.equals("bB "))){
 			if(num==1){
 				P.player.setBishop1(null);
 			}
@@ -161,7 +161,7 @@ public abstract class Piece {
 			}
 			
 		}
-		else if(Name.equals("Knight")){
+		else if(((Name.equals("wN ")) || Name.equals("bN "))){
 			if(num==1){
 				P.player.setKnight1(null);
 			}
@@ -169,13 +169,12 @@ public abstract class Piece {
 				P.player.setKnight2(null);
 			}
 		}
-		else if(Name.equals("Queen")){
+		else if(((Name.equals("wQ ")) || Name.equals("bQ "))){
 				P.player.setQueen(null);
 			
 		}
-		else{
+		else if(((Name.equals("wK ")) || Name.equals("bK "))){
 				P.player.setKing(null);
-			
 		}
 	}
 	
@@ -185,5 +184,9 @@ public abstract class Piece {
 	
 	public boolean getHasMoved(){
 		return hasMoved;
+	}
+	
+	public boolean isInCheck(){
+		return false;
 	}
 }

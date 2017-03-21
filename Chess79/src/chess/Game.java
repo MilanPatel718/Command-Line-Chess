@@ -36,7 +36,7 @@ public class Game {
 		this.rMap = rMap; 
 		sf = '\0'; 
 		sr = '\0';
-		df = '\0'; 
+		df = '\0';
 		dr = '\0';
 	}
 	
