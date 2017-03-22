@@ -1,5 +1,4 @@
 package Piece;
-import java.util.Scanner;
 
 import chess.Block;
 import chess.Player;
@@ -473,6 +472,7 @@ public class Pawn extends Piece{
 				Rook1.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
+				player.RPromote1.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==2){
 				Rook Rook2;
@@ -488,7 +488,7 @@ public class Pawn extends Piece{
 				Rook2.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.RPromote2.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==3){
 				Rook Rook3;
@@ -504,7 +504,7 @@ public class Pawn extends Piece{
 				Rook3.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.RPromote3.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==4){
 				Rook Rook4;
@@ -520,7 +520,7 @@ public class Pawn extends Piece{
 				Rook4.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.RPromote4.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==5){
 				Rook Rook5;
@@ -536,7 +536,7 @@ public class Pawn extends Piece{
 				Rook5.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.RPromote5.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==6){
 				Rook Rook6;
@@ -552,7 +552,7 @@ public class Pawn extends Piece{
 				Rook6.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.RPromote6.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==7){
 				Rook Rook7;
@@ -568,7 +568,7 @@ public class Pawn extends Piece{
 				Rook7.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.RPromote7.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else{
 				Rook Rook8;
@@ -584,7 +584,7 @@ public class Pawn extends Piece{
 				Rook8.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.RPromote8.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			
 		}
@@ -604,7 +604,7 @@ public class Pawn extends Piece{
 				Bishop1.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.BPromote1.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==2){
 				Bishop Bishop2;
@@ -620,7 +620,7 @@ public class Pawn extends Piece{
 				Bishop2.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.BPromote2.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==3){
 				Bishop Bishop3;
@@ -636,6 +636,7 @@ public class Pawn extends Piece{
 				Bishop3.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
+				player.BPromote3.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==4){
 				Bishop Bishop4;
@@ -651,7 +652,7 @@ public class Pawn extends Piece{
 				Bishop4.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.BPromote4.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==5){
 				Bishop Bishop5;
@@ -667,7 +668,7 @@ public class Pawn extends Piece{
 				Bishop5.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.BPromote5.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==6){
 				Bishop Bishop6;
@@ -683,7 +684,7 @@ public class Pawn extends Piece{
 				Bishop6.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.BPromote6.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==7){
 				Bishop Bishop7;
@@ -699,7 +700,7 @@ public class Pawn extends Piece{
 				Bishop7.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.BPromote7.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else{
 				Bishop Bishop8;
@@ -715,7 +716,7 @@ public class Pawn extends Piece{
 				Bishop8.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.BPromote8.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			
 		}
@@ -735,7 +736,7 @@ public class Pawn extends Piece{
 				Knight1.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.KPromote1.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==2){
 				Knight Knight2;
@@ -751,7 +752,7 @@ public class Pawn extends Piece{
 				Knight2.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.KPromote2.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==3){
 				Knight Knight3;
@@ -767,7 +768,7 @@ public class Pawn extends Piece{
 				Knight3.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.KPromote3.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==4){
 				Knight Knight4;
@@ -783,7 +784,7 @@ public class Pawn extends Piece{
 				Knight4.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.KPromote4.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==5){
 				Knight Knight5;
@@ -799,7 +800,7 @@ public class Pawn extends Piece{
 				Knight5.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.KPromote5.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==6){
 				Knight Knight6;
@@ -815,7 +816,7 @@ public class Pawn extends Piece{
 				Knight6.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.KPromote6.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==7){
 				Knight Knight7;
@@ -831,7 +832,7 @@ public class Pawn extends Piece{
 				Knight7.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.KPromote7.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else{
 				Knight Knight8;
@@ -847,7 +848,7 @@ public class Pawn extends Piece{
 				Knight8.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.KPromote8.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			
 		}
@@ -867,6 +868,7 @@ public class Pawn extends Piece{
 				Queen1.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
+				player.QPromote1.setBlock(chess.Chess.board[destRank][destFile]);
 				
 			}
 			else if(num==2){
@@ -883,6 +885,7 @@ public class Pawn extends Piece{
 				Queen2.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
+				player.QPromote2.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==3){
 				Queen Queen3;
@@ -898,7 +901,7 @@ public class Pawn extends Piece{
 				Queen3.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.QPromote3.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==4){
 				Queen Queen4;
@@ -914,6 +917,7 @@ public class Pawn extends Piece{
 				Queen4.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
+				player.QPromote4.setBlock(chess.Chess.board[destRank][destFile]);
 				
 			}
 			else if(num==5){
@@ -930,7 +934,7 @@ public class Pawn extends Piece{
 				Queen5.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.QPromote5.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==6){
 				Queen Queen6;
@@ -946,7 +950,7 @@ public class Pawn extends Piece{
 				Queen6.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.QPromote6.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else if(num==7){
 				Queen Queen7;
@@ -962,7 +966,7 @@ public class Pawn extends Piece{
 				Queen7.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.QPromote7.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			else{
 				Queen Queen8;
@@ -978,7 +982,7 @@ public class Pawn extends Piece{
 				Queen8.setBlock(chess.Chess.board[destRank][destFile]);
 				chess.Chess.board[destRank][destFile].setDisplay(chess.Chess.board[destRank][destFile].getPiece().getName());
 				chess.Chess.board[destRank][destFile].setOccupied(true);
-				
+				player.QPromote8.setBlock(chess.Chess.board[destRank][destFile]);
 			}
 			
 		}
