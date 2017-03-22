@@ -114,6 +114,7 @@ public class Game {
 					boolean check1=false, check2=false, check3=false, check4=false, check5=false, check6=false, check7=false, check8=false;
 					int file=whitePlayer.getKing().getBlock().getFile();
 					int rank=rMap.get(whitePlayer.getKing().getBlock().getRank()+"");
+					whitePlayer.getKing().getBlock().setOccupied(false);
 					
 					if((0<=file-1 && file-1<=7) && (0<=rank-1 && rank-1<=7)){
 						if(whitePlayer.getKing().move(chess.Chess.board[rank-1][file-1], true, "")){
@@ -157,6 +158,7 @@ public class Game {
 							check8=Check(chess.Chess.board[rank+1][file+1], "White", true);
 					}
 				}
+					whitePlayer.getKing().getBlock().setOccupied(true);
 					
 						if(check1==false && check2==false && check3==false && check4==false && check5 ==false &&
 								check6==false && check7==false && check8==false){
@@ -202,6 +204,7 @@ public class Game {
 					boolean check1=false, check2=false, check3=false, check4=false, check5=false, check6=false, check7=false, check8=false;
 					int file=blackPlayer.getKing().getBlock().getFile();
 					int rank=rMap.get(blackPlayer.getKing().getBlock().getRank()+"");
+					blackPlayer.getKing().getBlock().setOccupied(false);
 					
 					if((0<=file-1 && file-1<=7) && (0<=rank-1 && rank-1<=7)){
 						if(blackPlayer.getKing().move(chess.Chess.board[rank-1][file-1], true, "")){
@@ -245,6 +248,7 @@ public class Game {
 							check8=Check(chess.Chess.board[rank+1][file+1], "Black", true);
 					}
 				}
+					blackPlayer.getKing().getBlock().setOccupied(false);
 					
 						if(check1==false && check2==false && check3==false && check4==false && check5 ==false &&
 								check6==false && check7==false && check8==false){
@@ -289,22 +293,9 @@ public class Game {
 		boolean success = false;
 		if(current.getPiece().getColor().equals(player.getColor())){
 			success = current.getPiece().move(dest, check, move);
-			if(success == true){
-				/*checks if the opponent's king is in check after move
-				if(dest.getPiece().getName().charAt(0) == 'w'){
-					if(blackPlayer.getKing().isInCheck() == true){
-						System.out.println("Check");
-						return true;
-					}
-				}else if(dest.getPiece().getName().charAt(0) == 'b'){
-					if(whitePlayer.getKing().isInCheck() == true){
-						System.out.println("Check");
-						return true;
-					}
-				}*/
-			}
 			return success;
-		}else{
+		}
+		else{
 			System.out.println("Invalid move, try again");
 			return false;
 		}
@@ -1533,49 +1524,48 @@ public class Game {
 		
 	}
 	
-	public boolean checkMate(Block King, Piece  P, String color){
-		boolean occupied=King.isOccupied();
-		
+	public boolean checkMate(Block Move, Piece  P, String color){
+		boolean occupied=Move.isOccupied();
+		String Color=" ";
+		if(Move.getPiece()!=null){
+			Color=Move.getPiece().getColor();
+			
+		}
 		if(occupied){
 			if(color.equals("Black"))
-			King.getPiece().setColor("Black");
+			Move.getPiece().setColor("Black");
 			else
-			King.getPiece().setColor("White");
+			Move.getPiece().setColor("White");
 		}
 		else{
 			if(color.equals("Black")){
-			King.setPiece(new Pawn("bp", King, "Black", blackPlayer));
-			King.setOccupied(true);
+			Move.setPiece(new Pawn("bp", Move, "Black", blackPlayer));
+			Move.setOccupied(true);
 			}
 			else{
-			King.setPiece(new Pawn("wp", King, "White", whitePlayer));
-			King.setOccupied(true);
+			Move.setPiece(new Pawn("wp", Move, "White", whitePlayer));
+			Move.setOccupied(true);
 			}
 		}
 		
-		boolean check=P.move(King, true, "");
+		boolean check=P.move(Move, true, "");
+
 		if(check){
-			if(occupied){
-				if(color.equals("Black"))
-				King.getPiece().setColor("White");
-				else
-				King.getPiece().setColor("Black");
-			}
+			if(occupied)
+				Move.getPiece().setColor(Color);
+			
 			else{
-				King.setPiece(null);
-				King.setOccupied(false);
+				Move.setPiece(null);
+				Move.setOccupied(false);
 			}
 			return false;
 		}
-		if(occupied){
-			if(color.equals("Black"))
-			King.getPiece().setColor("White");
-			else
-			King.getPiece().setColor("Black");
-		}
+		
+		if(occupied)
+			Move.getPiece().setColor(Color);
 		else{
-			King.setPiece(null);
-			King.setOccupied(false);
+			Move.setPiece(null);
+			Move.setOccupied(false);
 		}
 		return true;
 	}

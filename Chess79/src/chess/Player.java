@@ -8,63 +8,63 @@ import Piece.*;
 public class Player {
 	private String color;
 	
-	private King king;
-	private Queen queen;
+	private King king=null;
+	private Queen queen=null;
 	
-	private Bishop bishop1;
-	private Bishop bishop2;
+	private Bishop bishop1=null;
+	private Bishop bishop2=null;
 	
-	private Knight knight1;
-	private Knight knight2;
+	private Knight knight1=null;
+	private Knight knight2=null;
 	
-	private Rook rook1;
-	private Rook rook2;
+	private Rook rook1=null;
+	private Rook rook2=null;
 	
-	private Pawn pawn1;
-	private Pawn pawn2;
-	private Pawn pawn3;
-	private Pawn pawn4;
-	private Pawn pawn5;
-	private Pawn pawn6;
-	private Pawn pawn7;
-	private Pawn pawn8;
+	private Pawn pawn1=null;
+	private Pawn pawn2=null;
+	private Pawn pawn3=null;
+	private Pawn pawn4=null;
+	private Pawn pawn5=null;
+	private Pawn pawn6=null;
+	private Pawn pawn7=null;
+	private Pawn pawn8=null;
 	
 	//Since Promotion changes pawn to one of four pieces, the following list all possibilities so that check/checkmate can be implemented more easily
-	public Queen QPromote1;
-	public Queen QPromote2;
-	public Queen QPromote3;
-	public Queen QPromote4;
-	public Queen QPromote5;
-	public Queen QPromote6;
-	public Queen QPromote7;
-	public Queen QPromote8;
+	public Queen QPromote1=null;
+	public Queen QPromote2=null;
+	public Queen QPromote3=null;
+	public Queen QPromote4=null;
+	public Queen QPromote5=null;
+	public Queen QPromote6=null;
+	public Queen QPromote7=null;
+	public Queen QPromote8=null;
 	
-	public Bishop BPromote1;
-	public Bishop BPromote2;
-	public Bishop BPromote3;
-	public Bishop BPromote4;
-	public Bishop BPromote5;
-	public Bishop BPromote6;
-	public Bishop BPromote7;
-	public Bishop BPromote8;
+	public Bishop BPromote1=null;
+	public Bishop BPromote2=null;
+	public Bishop BPromote3=null;
+	public Bishop BPromote4=null;
+	public Bishop BPromote5=null;
+	public Bishop BPromote6=null;
+	public Bishop BPromote7=null;
+	public Bishop BPromote8=null;
 	
-	public Knight KPromote1;
-	public Knight KPromote2;
-	public Knight KPromote3;
-	public Knight KPromote4;
-	public Knight KPromote5;
-	public Knight KPromote6;
-	public Knight KPromote7;
-	public Knight KPromote8;
+	public Knight KPromote1=null;
+	public Knight KPromote2=null;
+	public Knight KPromote3=null;
+	public Knight KPromote4=null;
+	public Knight KPromote5=null;
+	public Knight KPromote6=null;
+	public Knight KPromote7=null;
+	public Knight KPromote8=null;
 	
-	public Rook RPromote1;
-	public Rook RPromote2;
-	public Rook RPromote3;
-	public Rook RPromote4;
-	public Rook RPromote5;
-	public Rook RPromote6;
-	public Rook RPromote7;
-	public Rook RPromote8;
+	public Rook RPromote1=null;
+	public Rook RPromote2=null;
+	public Rook RPromote3=null;
+	public Rook RPromote4=null;
+	public Rook RPromote5=null;
+	public Rook RPromote6=null;
+	public Rook RPromote7=null;
+	public Rook RPromote8=null;
 	
 	
 	
