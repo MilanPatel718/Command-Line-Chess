@@ -112,8 +112,7 @@ public class King extends Piece {
 				setHasMoved(true);
 				return true;
 			}
-		}else if((getHasMoved() == false) && (hasCastled == false) &&
-				(isOrWillBeInCheck(srcRank, srcFile, destRank, destFile) != true)){ //CASTLING IMPLEMENTATION
+		}else if((getHasMoved() == false) && (hasCastled == false)){ //CASTLING IMPLEMENTATION
 			//check if piece has been moved before and if it is a rook
 			if((chess.Chess.board[destRank][destFile].getPiece()==null)){
 				//if the king is white
@@ -157,6 +156,7 @@ public class King extends Piece {
 							chess.Chess.board[destRank][destFile+1].setOccupied(false);
 							
 							chess.Chess.board[destRank][destFile - 1].setDisplay("wR ");
+							chess.Chess.board[destRank][destFile-1].setOccupied(true);
 							
 							if(chess.Chess.board[destRank][destFile+1].isShaded()){
 								chess.Chess.board[destRank][destFile+1].setDisplay("## ");
@@ -214,6 +214,7 @@ public class King extends Piece {
 							chess.Chess.board[destRank][destFile-2].setOccupied(false);
 							
 							chess.Chess.board[destRank][destFile + 1].setDisplay("wR ");
+							chess.Chess.board[destRank][destFile+1].setOccupied(true);
 							
 							if(chess.Chess.board[destRank][destFile-2].isShaded()){
 								chess.Chess.board[destRank][destFile-2].setDisplay("## ");
@@ -279,6 +280,7 @@ public class King extends Piece {
 							chess.Chess.board[destRank][destFile+1].setPiece(null);
 							chess.Chess.board[destRank][destFile+1].setOccupied(false);
 							
+							chess.Chess.board[destRank][destFile-1].setOccupied(true);
 							chess.Chess.board[destRank][destFile - 1].setDisplay("bR ");
 							
 							if(chess.Chess.board[destRank][destFile+1].isShaded()){
@@ -337,6 +339,7 @@ public class King extends Piece {
 							chess.Chess.board[destRank][destFile-2].setOccupied(false);
 							
 							chess.Chess.board[destRank][destFile + 1].setDisplay("bR ");
+							chess.Chess.board[destRank][destFile+1].setOccupied(true);
 							
 							if(chess.Chess.board[destRank][destFile-2].isShaded()){
 								chess.Chess.board[destRank][destFile-2].setDisplay("## ");
@@ -373,96 +376,6 @@ public class King extends Piece {
 		}
 		return false;
 	}
-	
-	/**
-	 * Determines if King is currently in check
-	 * 
-	 * @return
-	 * true if King is in check after the opponent's move
-	 * false if the opponent's move does not put the king in check
-	 */
-	public boolean isInCheck(){
-		for(int i = 0; i < 8; i++){
-			for(int j = 0; j < 8; j++){
-				if(chess.Chess.board[i][j].isOccupied()){
-					if(chess.Chess.board[i][j].getPiece().getName().charAt(0) != getName().charAt(0)){
-						if(chess.Chess.board[i][j].getPiece().move(getBlock(), true, "") == true){
-							return true;
-						}
-					}
-				}
-			}
-		}
-		return false;
-	}
-	
-	/**
-	 * Analyzes all of the opponent's pieces and determines if 
-	 * a move puts the King in check when trying to castle
-	 * 
-	 * @return
-	 * true if King will be in check after the opponent's move
-	 * false if the opponent's move does not put the king in check
-	 */
-	public boolean isOrWillBeInCheck(int srcRank, int srcFile, int destRank, int destFile){
-		if(getName().charAt(0) == 'w' && (srcRank == 7) && (srcFile == 4) && (destRank == 7) && (destFile == 6)){
-			for(int i = 0; i < 8; i++){
-				for(int j = 0; j < 8; j++){
-					if(chess.Chess.board[i][j].isOccupied()){
-						if(chess.Chess.board[i][j].getPiece().getName().charAt(0) != getName().charAt(0)){
-							if((chess.Chess.board[i][j].getPiece().move(chess.Chess.board[7][4], true, "") == true) ||
-									(chess.Chess.board[i][j].getPiece().move(chess.Chess.board[7][5], true, "") == true) ||
-									(chess.Chess.board[i][j].getPiece().move(chess.Chess.board[7][6], true, "") == true)){
-								return true;
-							}
-						}
-					}
-				}
-			}
-		}else if(getName().charAt(0) == 'w' && (srcRank == 7) && (srcFile == 4) && (destRank == 7) && (destFile == 2)){
-			for(int i = 0; i < 8; i++){
-				for(int j = 0; j < 8; j++){
-					if(chess.Chess.board[i][j].isOccupied()){
-						if(chess.Chess.board[i][j].getPiece().getName().charAt(0) != getName().charAt(0)){
-							if((chess.Chess.board[i][j].getPiece().move(chess.Chess.board[7][4], true, "") == true) ||
-									(chess.Chess.board[i][j].getPiece().move(chess.Chess.board[7][3], true, "") == true) ||
-									(chess.Chess.board[i][j].getPiece().move(chess.Chess.board[7][2], true, "") == true)){
-								return true;
-							}
-						}
-					}
-				}
-			}
-		}else if(getName().charAt(0) == 'b' && (srcRank == 0) && (srcFile == 4) && (destRank == 0) && (destFile == 6)){
-			for(int i = 0; i < 8; i++){
-				for(int j = 0; j < 8; j++){
-					if(chess.Chess.board[i][j].isOccupied()){
-						if(chess.Chess.board[i][j].getPiece().getName().charAt(0) != getName().charAt(0)){
-							if((chess.Chess.board[i][j].getPiece().move(chess.Chess.board[0][4], true, "") == true) ||
-									(chess.Chess.board[i][j].getPiece().move(chess.Chess.board[0][5], true, "") == true) ||
-									(chess.Chess.board[i][j].getPiece().move(chess.Chess.board[0][6], true, "") == true)){
-								return true;
-							}
-						}
-					}
-				}
-			}
-		}else if(getName().charAt(0) == 'b' && (srcRank == 0) && (srcFile == 4) && (destRank == 0) && (destFile == 2)){
-			for(int i = 0; i < 8; i++){
-				for(int j = 0; j < 8; j++){
-					if(chess.Chess.board[i][j].isOccupied()){
-						if(chess.Chess.board[i][j].getPiece().getName().charAt(0) != getName().charAt(0)){
-							if((chess.Chess.board[i][j].getPiece().move(chess.Chess.board[0][4], true, "") == true) ||
-									(chess.Chess.board[i][j].getPiece().move(chess.Chess.board[0][3], true, "") == true) ||
-									(chess.Chess.board[i][j].getPiece().move(chess.Chess.board[0][2], true, "") == true)){
-								return true;
-							}
-						}
-					}
-				}
-			}
-		}
-		return false; 
-	}
+
 }
 

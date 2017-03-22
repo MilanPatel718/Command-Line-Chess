@@ -41,6 +41,9 @@ public class Queen extends Piece{
 			//Loop through every space between source and destination, excluding source and destination
 			for(int i = srcRank - 1; i > destRank; i--){
 				if(chess.Chess.board[i][srcFile].isOccupied()){
+					if(check==true){
+						return false;
+					}
 					System.out.println("Invalid move, try again");
 					return false;
 				}

@@ -7,14 +7,19 @@ import Piece.*;
  */
 public class Player {
 	private String color;
+	
 	private King king;
 	private Queen queen;
+	
 	private Bishop bishop1;
 	private Bishop bishop2;
+	
 	private Knight knight1;
 	private Knight knight2;
+	
 	private Rook rook1;
 	private Rook rook2;
+	
 	private Pawn pawn1;
 	private Pawn pawn2;
 	private Pawn pawn3;

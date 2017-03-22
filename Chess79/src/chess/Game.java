@@ -3,6 +3,9 @@ package chess;
 import java.util.Map;
 
 import java.util.Scanner;
+
+import Piece.Pawn;
+import Piece.Piece;
 /**
  * @author Baljit Kaur
  * @author Milan Patel
@@ -106,12 +109,69 @@ public class Game {
 					}
 					successfulMove =  mapAndExecute(blackPlayer, move);
 				}
+				boolean check=Check(whitePlayer.getKing().getBlock(), "White", false);
+				if(check){
+					boolean check1=false, check2=false, check3=false, check4=false, check5=false, check6=false, check7=false, check8=false;
+					int file=whitePlayer.getKing().getBlock().getFile();
+					int rank=rMap.get(whitePlayer.getKing().getBlock().getRank()+"");
+					
+					if((0<=file-1 && file-1<=7) && (0<=rank-1 && rank-1<=7)){
+						if(whitePlayer.getKing().move(chess.Chess.board[rank-1][file-1], true, "")){
+							check1=Check(chess.Chess.board[rank-1][file-1], "White", true);
+						}
+				}
+					if((0<=file && file<=7) && (0<=rank-1 && rank-1<=7)){
+						if(whitePlayer.getKing().move(chess.Chess.board[rank-1][file], true, "")){
+							check2=Check(chess.Chess.board[rank-1][file], "White", true);
+						}
+							
+					}
+					if((0<=file+1 && file+1<=7) && (0<=rank-1 && rank-1<=7)){
+						if(whitePlayer.getKing().move(chess.Chess.board[rank-1][file+1], true, "")){
+							check3=Check(chess.Chess.board[rank-1][file+1], "White", true);
+						}
+							
+					}
+					if((0<=file-1 && file-1<=7) && (0<=rank && rank<=7)){
+						if(whitePlayer.getKing().move(chess.Chess.board[rank][file-1], true, "")){
+							check4=Check(chess.Chess.board[rank][file-1], "White", true);
+					}
+				}
+					if((0<=file+1 && file+1<=7) && (0<=rank && rank<=7)){
+						if(whitePlayer.getKing().move(chess.Chess.board[rank][file+1], true, "")){
+							check5=Check(chess.Chess.board[rank][file+1], "White", true);
+					}
+				}
+					if((0<=file-1 && file-1<=7) && (0<=rank+1 && rank+1<=7)){
+						if(whitePlayer.getKing().move(chess.Chess.board[rank+1][file-1], true, "")){
+							check6=Check(chess.Chess.board[rank+1][file-1], "White", true);
+					}
+				}
+					if((0<=file && file<=7) && (0<=rank+1 && rank+1<=7)){
+						if(whitePlayer.getKing().move(chess.Chess.board[rank+1][file], true, "")){
+							check7=Check(chess.Chess.board[rank+1][file], "White", true);
+					}
+				}
+					if((0<=file+1 && file+1<=7) && (0<=rank+1 && rank+1<=7)){
+						if(whitePlayer.getKing().move(chess.Chess.board[rank+1][file+1], true, "")){
+							check8=Check(chess.Chess.board[rank+1][file+1], "White", true);
+					}
+				}
+					
+						if(check1==false && check2==false && check3==false && check4==false && check5 ==false &&
+								check6==false && check7==false && check8==false){
+								checkmate=true;
+								System.out.println("Black Wins");
+								continue;
+							}
+						System.out.println("Check");
+				}
 				chess.Chess.prevMove=move;
 				lastTurn = 1;
 			}
 			
 			//White Move
-			else if(lastTurn == 1){
+			if(lastTurn == 1){
 				scanner=new Scanner(System.in);
 				System.out.print("White's move: ");
 				move=scanner.nextLine();
@@ -137,12 +197,70 @@ public class Game {
 					}
 					successfulMove =  mapAndExecute(whitePlayer, move);
 				}
+				boolean check=Check(blackPlayer.getKing().getBlock(), "Black", false);
+				if(check){
+					boolean check1=false, check2=false, check3=false, check4=false, check5=false, check6=false, check7=false, check8=false;
+					int file=blackPlayer.getKing().getBlock().getFile();
+					int rank=rMap.get(blackPlayer.getKing().getBlock().getRank()+"");
+					
+					if((0<=file-1 && file-1<=7) && (0<=rank-1 && rank-1<=7)){
+						if(blackPlayer.getKing().move(chess.Chess.board[rank-1][file-1], true, "")){
+							check1=Check(chess.Chess.board[rank-1][file-1], "Black", true);
+						}
+				}
+					if((0<=file && file<=7) && (0<=rank-1 && rank-1<=7)){
+						if(blackPlayer.getKing().move(chess.Chess.board[rank-1][file], true, "")){
+							check2=Check(chess.Chess.board[rank-1][file], "Black", true);
+						}
+							
+					}
+					if((0<=file+1 && file+1<=7) && (0<=rank-1 && rank-1<=7)){
+						if(blackPlayer.getKing().move(chess.Chess.board[rank-1][file+1], true, "")){
+							check3=Check(chess.Chess.board[rank-1][file+1], "Black", true);
+						}
+							
+					}
+					if((0<=file-1 && file-1<=7) && (0<=rank && rank<=7)){
+						if(blackPlayer.getKing().move(chess.Chess.board[rank][file-1], true, "")){
+							check4=Check(chess.Chess.board[rank][file-1], "Black", true);
+					}
+				}
+					if((0<=file+1 && file+1<=7) && (0<=rank && rank<=7)){
+						if(blackPlayer.getKing().move(chess.Chess.board[rank][file+1], true, "")){
+							check5=Check(chess.Chess.board[rank][file+1], "Black", true);
+					}
+				}
+					if((0<=file-1 && file-1<=7) && (0<=rank+1 && rank+1<=7)){
+						if(blackPlayer.getKing().move(chess.Chess.board[rank+1][file-1], true, "")){
+							check6=Check(chess.Chess.board[rank+1][file-1], "Black", true);
+					}
+				}
+					if((0<=file && file<=7) && (0<=rank+1 && rank+1<=7)){
+						if(blackPlayer.getKing().move(chess.Chess.board[rank+1][file], true, "")){
+							check7=Check(chess.Chess.board[rank+1][file], "Black", true);
+					}
+				}
+					if((0<=file+1 && file+1<=7) && (0<=rank+1 && rank+1<=7)){
+						if(blackPlayer.getKing().move(chess.Chess.board[rank+1][file+1], true, "")){
+							check8=Check(chess.Chess.board[rank+1][file+1], "Black", true);
+					}
+				}
+					
+						if(check1==false && check2==false && check3==false && check4==false && check5 ==false &&
+								check6==false && check7==false && check8==false){
+								checkmate=true;
+								System.out.println("White Wins");
+								continue;
+							}
+					System.out.println("Check");
+				}
+				
 				chess.Chess.prevMove=move;
 				lastTurn = 0;
 			}
 		}
 		scanner.close();
-		
+			
 	}
 	
 	/**
@@ -172,7 +290,7 @@ public class Game {
 		if(current.getPiece().getColor().equals(player.getColor())){
 			success = current.getPiece().move(dest, check, move);
 			if(success == true){
-				//checks if the opponent's king is in check after move
+				/*checks if the opponent's king is in check after move
 				if(dest.getPiece().getName().charAt(0) == 'w'){
 					if(blackPlayer.getKing().isInCheck() == true){
 						System.out.println("Check");
@@ -183,7 +301,7 @@ public class Game {
 						System.out.println("Check");
 						return true;
 					}
-				}
+				}*/
 			}
 			return success;
 		}else{
@@ -191,6 +309,1277 @@ public class Game {
 			return false;
 		}
 	}
+	
+	public boolean Check(Block King, String color, Boolean CM){
+		boolean check=false;
+		if(color.equals("White")){
+			
+			if(this.blackPlayer.getQueen()!=null){
+				if(CM){
+					boolean cMate= checkMate(King, this.blackPlayer.getQueen(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.blackPlayer.getQueen().move(King, true, "");
+				if(check)
+					return true;
+				}
+					
+			}
+			if(this.blackPlayer.getBishop1()!=null){
+				if(CM){
+					boolean cMate= checkMate(King, this.blackPlayer.getBishop1(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.blackPlayer.getBishop1().move(King, true, "");
+				if(check)
+					return true;
+				}
+			}
+					
+				
+			
+			if(this.blackPlayer.getBishop2()!=null){
+				if(CM){
+					boolean cMate= checkMate(King, this.blackPlayer.getBishop2(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.blackPlayer.getBishop2().move(King, true, "");
+				if(check)
+					return true;
+				}
+					
+			}
+			if(this.blackPlayer.getRook1()!=null){
+				if(CM){
+					boolean cMate= checkMate(King, this.blackPlayer.getRook1(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.blackPlayer.getRook1().move(King, true, "");
+				if(check)
+					return true;
+				}
+					
+				
+			}
+			if(this.blackPlayer.getRook2()!=null){
+				if(CM){
+					boolean cMate= checkMate(King, this.blackPlayer.getRook2(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.blackPlayer.getRook2().move(King, true, "");
+				if(check)
+					return true;
+				}
+					
+			}
+			if(this.blackPlayer.getPawn1()==null){
+				if(this.blackPlayer.RPromote1!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.RPromote1, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.RPromote1.move(King, true, "");
+					if(check)
+						return true;
+					}
+				}
+				if(this.blackPlayer.QPromote1!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.QPromote1, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.QPromote1.move(King, true, "");
+					if(check)
+						return true;
+					}
+						
+				}
+				if(this.blackPlayer.BPromote1!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.BPromote1, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.BPromote1.move(King, true, "");
+					if(check)
+						return true;
+					}
+						
+				}
+				if(this.blackPlayer.KPromote1!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.KPromote1, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.KPromote1.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+			}
+		}
+			else{
+				if(CM){
+					boolean cMate= checkMate(King, this.blackPlayer.getPawn1(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.blackPlayer.getPawn1().move(King, true, "");
+				if(check)
+					return true;
+				}
+				
+			}
+			if(this.blackPlayer.getPawn2()==null){
+				if(this.blackPlayer.RPromote2!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.RPromote2, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.RPromote2.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+				if(this.blackPlayer.QPromote2!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.QPromote2, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.QPromote2.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+				if(this.blackPlayer.BPromote2!=null){
+						if(CM){
+							boolean cMate= checkMate(King, this.blackPlayer.BPromote2, color);
+							if(!cMate)
+								return false;
+						}
+						else{
+						check=this.blackPlayer.BPromote2.move(King, true, "");
+						if(check)
+							return true;
+						}
+						
+				}
+				if(this.blackPlayer.KPromote2!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.KPromote2, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.KPromote2.move(King, true, "");
+					if(check)
+						return true;
+					
+						
+					}
+				}
+					
+			}
+			else{
+				if(CM){
+					boolean cMate= checkMate(King, this.blackPlayer.getPawn2(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.blackPlayer.getPawn2().move(King, true, "");
+				if(check)
+					return true;
+				
+				
+				}
+			}
+			if(this.blackPlayer.getPawn3()==null){
+				if(this.blackPlayer.RPromote3!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.RPromote3, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.RPromote3.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+				if(this.blackPlayer.QPromote3!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.QPromote3, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.QPromote3.move(King, true, "");
+					if(check)
+						return true;
+					}
+				}
+				if(this.blackPlayer.BPromote3!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.BPromote3, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.BPromote3.move(King, true, "");
+					if(check)
+						return true;
+					}
+
+				}
+				if(this.blackPlayer.KPromote3!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.KPromote3, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.KPromote3.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+					
+			}
+			else{
+				if(CM){
+					boolean cMate= checkMate(King, this.blackPlayer.getPawn3(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.blackPlayer.getPawn3().move(King, true, "");
+				if(check)
+					return true;
+				}
+				
+			}
+			if(this.blackPlayer.getPawn4()==null){
+				if(this.blackPlayer.RPromote4!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.RPromote4, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.RPromote4.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+				if(this.blackPlayer.QPromote4!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.QPromote4, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.QPromote4.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+				if(this.blackPlayer.BPromote4!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.BPromote4, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.BPromote4.move(King, true, "");
+					if(check)
+						return true;
+					}
+				}
+				if(this.blackPlayer.KPromote4!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.KPromote4, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.KPromote4.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+					
+			}
+			else{
+				if(CM){
+					boolean cMate= checkMate(King, this.blackPlayer.getPawn4(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.blackPlayer.getPawn4().move(King, true, "");
+				if(check)
+					return true;
+				}
+			}
+			if(this.blackPlayer.getPawn5()==null){
+				if(this.blackPlayer.RPromote5!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.RPromote5, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.RPromote5.move(King, true, "");
+					if(check)
+						return true;
+					}
+				}
+				if(this.blackPlayer.QPromote5!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.QPromote5, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.QPromote5.move(King, true, "");
+					if(check)
+						return true;
+					}
+				}
+				if(this.blackPlayer.BPromote5!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.BPromote5, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.BPromote5.move(King, true, "");
+					if(check)
+						return true;
+					}
+
+				}
+				if(this.blackPlayer.KPromote5!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.KPromote5, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.KPromote5.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+					
+			}
+			else{
+				if(CM){
+					boolean cMate= checkMate(King, this.blackPlayer.getPawn5(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.blackPlayer.getPawn5().move(King, true, "");
+				if(check)
+					return true;
+				}
+				
+			}
+			if(this.blackPlayer.getPawn6()==null){
+				if(this.blackPlayer.RPromote6!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.RPromote6, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.RPromote6.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+				if(this.blackPlayer.QPromote6!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.QPromote6, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.QPromote6.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+				if(this.blackPlayer.BPromote6!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.BPromote6, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.BPromote6.move(King, true, "");
+					if(check)
+						return true;
+					}
+				}
+				if(this.blackPlayer.KPromote6!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.KPromote6, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.KPromote6.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+					
+			}
+			else{
+				if(CM){
+					boolean cMate= checkMate(King, this.blackPlayer.getPawn6(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.blackPlayer.getPawn6().move(King, true, "");
+				if(check)
+					return true;
+				}
+			}
+			if(this.blackPlayer.getPawn7()==null){
+				if(this.blackPlayer.RPromote7!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.RPromote7, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.RPromote7.move(King, true, "");
+					if(check)
+						return true;
+					}
+				}
+				if(this.blackPlayer.QPromote7!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.QPromote7, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.QPromote7.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+				if(this.blackPlayer.BPromote7!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.BPromote7, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.BPromote7.move(King, true, "");
+					if(check)
+						return true;
+					}
+				}
+				if(this.blackPlayer.KPromote7!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.KPromote7, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.KPromote7.move(King, true, "");
+					if(check)
+						return true;
+					}
+
+					
+				}
+					
+			}
+			else{
+				if(CM){
+					boolean cMate= checkMate(King, this.blackPlayer.getPawn7(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.blackPlayer.getPawn7().move(King, true, "");
+				if(check)
+					return true;
+				}
+				
+			}
+			if(this.blackPlayer.getPawn8()==null){
+				if(this.blackPlayer.RPromote8!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.RPromote8, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.RPromote8.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+				if(this.blackPlayer.QPromote8!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.QPromote8, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.QPromote8.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+				if(this.blackPlayer.BPromote8!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.BPromote8, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.BPromote8.move(King, true, "");
+					if(check)
+						return true;
+					}
+				}
+				if(this.blackPlayer.KPromote8!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.blackPlayer.KPromote8, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.blackPlayer.KPromote8.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+					
+			}
+			else{
+				if(CM){
+					boolean cMate= checkMate(King, this.blackPlayer.getPawn8(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.blackPlayer.getPawn8().move(King, true, "");
+				if(check)
+					return true;
+				}
+				
+			}
+			
+		
+	}
+		else{
+			if(this.whitePlayer.getQueen()!=null){
+				if(CM){
+					boolean cMate= checkMate(King, this.whitePlayer.getQueen(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.whitePlayer.getQueen().move(King, true, "");
+				if(check)
+					return true;
+				}
+					
+			}
+			if(this.whitePlayer.getBishop1()!=null){
+				if(CM){
+					boolean cMate= checkMate(King, this.whitePlayer.getBishop1(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.whitePlayer.getBishop1().move(King, true, "");
+				if(check)
+					return true;
+				}
+			}
+					
+				
+			
+			if(this.whitePlayer.getBishop2()!=null){
+				if(CM){
+					boolean cMate= checkMate(King, this.whitePlayer.getBishop2(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.whitePlayer.getBishop2().move(King, true, "");
+				if(check)
+					return true;
+				}
+					
+			}
+			if(this.whitePlayer.getRook1()!=null){
+				if(CM){
+					boolean cMate= checkMate(King, this.whitePlayer.getRook1(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.whitePlayer.getRook1().move(King, true, "");
+				if(check)
+					return true;
+				}
+					
+				
+			}
+			if(this.whitePlayer.getRook2()!=null){
+				if(CM){
+					boolean cMate= checkMate(King, this.whitePlayer.getRook2(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.whitePlayer.getRook2().move(King, true, "");
+				if(check)
+					return true;
+				}
+					
+			}
+			if(this.whitePlayer.getPawn1()==null){
+				if(this.whitePlayer.RPromote1!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.RPromote1, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.RPromote1.move(King, true, "");
+					if(check)
+						return true;
+					}
+				}
+				if(this.whitePlayer.QPromote1!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.QPromote1, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.QPromote1.move(King, true, "");
+					if(check)
+						return true;
+					}
+						
+				}
+				if(this.whitePlayer.BPromote1!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.BPromote1, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.BPromote1.move(King, true, "");
+					if(check)
+						return true;
+					}
+						
+				}
+				if(this.whitePlayer.KPromote1!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.KPromote1, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.KPromote1.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+			}
+		}
+			else{
+				if(CM){
+					boolean cMate= checkMate(King, this.whitePlayer.getPawn1(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.whitePlayer.getPawn1().move(King, true, "");
+				if(check)
+					return true;
+				}
+				
+			}
+			if(this.whitePlayer.getPawn2()==null){
+				if(this.whitePlayer.RPromote2!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.RPromote2, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.RPromote2.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+				if(this.whitePlayer.QPromote2!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.QPromote2, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.QPromote2.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+				if(this.whitePlayer.BPromote2!=null){
+						if(CM){
+							boolean cMate= checkMate(King, this.whitePlayer.BPromote2, color);
+							if(!cMate)
+								return false;
+						}
+						else{
+						check=this.whitePlayer.BPromote2.move(King, true, "");
+						if(check)
+							return true;
+						}
+						
+				}
+				if(this.whitePlayer.KPromote2!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.KPromote2, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.KPromote2.move(King, true, "");
+					if(check)
+						return true;
+					
+						
+					}
+				}
+					
+			}
+			else{
+				if(CM){
+					boolean cMate= checkMate(King, this.whitePlayer.getPawn2(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.whitePlayer.getPawn2().move(King, true, "");
+				if(check)
+					return true;
+				
+				
+				}
+			}
+			if(this.whitePlayer.getPawn3()==null){
+				if(this.whitePlayer.RPromote3!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.RPromote3, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.RPromote3.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+				if(this.whitePlayer.QPromote3!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.QPromote3, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.QPromote3.move(King, true, "");
+					if(check)
+						return true;
+					}
+				}
+				if(this.whitePlayer.BPromote3!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.BPromote3, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.BPromote3.move(King, true, "");
+					if(check)
+						return true;
+					}
+
+				}
+				if(this.whitePlayer.KPromote3!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.KPromote3, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.KPromote3.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+					
+			}
+			else{
+				if(CM){
+					boolean cMate= checkMate(King, this.whitePlayer.getPawn3(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.whitePlayer.getPawn3().move(King, true, "");
+				if(check)
+					return true;
+				}
+				
+			}
+			if(this.whitePlayer.getPawn4()==null){
+				if(this.whitePlayer.RPromote4!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.RPromote4, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.RPromote4.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+				if(this.whitePlayer.QPromote4!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.QPromote4, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.QPromote4.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+				if(this.whitePlayer.BPromote4!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.BPromote4, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.BPromote4.move(King, true, "");
+					if(check)
+						return true;
+					}
+				}
+				if(this.whitePlayer.KPromote4!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.KPromote4, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.KPromote4.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+					
+			}
+			else{
+				if(CM){
+					boolean cMate= checkMate(King, this.whitePlayer.getPawn4(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.whitePlayer.getPawn4().move(King, true, "");
+				if(check)
+					return true;
+				}
+			}
+			if(this.whitePlayer.getPawn5()==null){
+				if(this.whitePlayer.RPromote5!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.RPromote5, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.RPromote5.move(King, true, "");
+					if(check)
+						return true;
+					}
+				}
+				if(this.whitePlayer.QPromote5!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.QPromote5, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.QPromote5.move(King, true, "");
+					if(check)
+						return true;
+					}
+				}
+				if(this.whitePlayer.BPromote5!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.BPromote5, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.BPromote5.move(King, true, "");
+					if(check)
+						return true;
+					}
+
+				}
+				if(this.whitePlayer.KPromote5!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.KPromote5, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.KPromote5.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+					
+			}
+			else{
+				if(CM){
+					boolean cMate= checkMate(King, this.whitePlayer.getPawn5(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.whitePlayer.getPawn5().move(King, true, "");
+				if(check)
+					return true;
+				}
+				
+			}
+			if(this.whitePlayer.getPawn6()==null){
+				if(this.whitePlayer.RPromote6!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.RPromote6, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.RPromote6.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+				if(this.whitePlayer.QPromote6!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.QPromote6, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.QPromote6.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+				if(this.whitePlayer.BPromote6!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.BPromote6, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.BPromote6.move(King, true, "");
+					if(check)
+						return true;
+					}
+				}
+				if(this.whitePlayer.KPromote6!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.KPromote6, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.KPromote6.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+					
+			}
+			else{
+				if(CM){
+					boolean cMate= checkMate(King, this.whitePlayer.getPawn6(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.whitePlayer.getPawn6().move(King, true, "");
+				if(check)
+					return true;
+				}
+			}
+			if(this.whitePlayer.getPawn7()==null){
+				if(this.whitePlayer.RPromote7!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.RPromote7, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.RPromote7.move(King, true, "");
+					if(check)
+						return true;
+					}
+				}
+				if(this.whitePlayer.QPromote7!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.QPromote7, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.QPromote7.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+				if(this.whitePlayer.BPromote7!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.BPromote7, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.BPromote7.move(King, true, "");
+					if(check)
+						return true;
+					}
+				}
+				if(this.whitePlayer.KPromote7!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.KPromote7, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.KPromote7.move(King, true, "");
+					if(check)
+						return true;
+					}
+
+					
+				}
+					
+			}
+			else{
+				if(CM){
+					boolean cMate= checkMate(King, this.whitePlayer.getPawn7(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.whitePlayer.getPawn7().move(King, true, "");
+				if(check)
+					return true;
+				}
+				
+			}
+			if(this.whitePlayer.getPawn8()==null){
+				if(this.whitePlayer.RPromote8!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.RPromote8, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.RPromote8.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+				if(this.whitePlayer.QPromote8!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.QPromote8, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.QPromote8.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+				if(this.whitePlayer.BPromote8!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.BPromote8, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.BPromote8.move(King, true, "");
+					if(check)
+						return true;
+					}
+				}
+				if(this.whitePlayer.KPromote8!=null){
+					if(CM){
+						boolean cMate= checkMate(King, this.whitePlayer.KPromote8, color);
+						if(!cMate)
+							return false;
+					}
+					else{
+					check=this.whitePlayer.KPromote8.move(King, true, "");
+					if(check)
+						return true;
+					}
+					
+				}
+					
+			}
+			else{
+				if(CM){
+					boolean cMate= checkMate(King, this.whitePlayer.getPawn8(), color);
+					if(!cMate)
+						return false;
+				}
+				else{
+				check=this.whitePlayer.getPawn8().move(King, true, "");
+				if(check)
+					return true;
+				}
+				
+			}
+		}
+		if(CM)
+			return true;
+		else
+		return false;
+		
+		
+	}
+	
+	public boolean checkMate(Block King, Piece  P, String color){
+		boolean occupied=King.isOccupied();
+		
+		if(occupied){
+			if(color.equals("Black"))
+			King.getPiece().setColor("Black");
+			else
+			King.getPiece().setColor("White");
+		}
+		else{
+			if(color.equals("Black")){
+			King.setPiece(new Pawn("bp", King, "Black", blackPlayer));
+			King.setOccupied(true);
+			}
+			else{
+			King.setPiece(new Pawn("wp", King, "White", whitePlayer));
+			King.setOccupied(true);
+			}
+		}
+		
+		boolean check=P.move(King, true, "");
+		if(check){
+			if(occupied){
+				if(color.equals("Black"))
+				King.getPiece().setColor("White");
+				else
+				King.getPiece().setColor("Black");
+			}
+			else{
+				King.setPiece(null);
+				King.setOccupied(false);
+			}
+			return false;
+		}
+		if(occupied){
+			if(color.equals("Black"))
+			King.getPiece().setColor("White");
+			else
+			King.getPiece().setColor("Black");
+		}
+		else{
+			King.setPiece(null);
+			King.setOccupied(false);
+		}
+		return true;
+	}
+
 	
 	/**
 	 * @param player

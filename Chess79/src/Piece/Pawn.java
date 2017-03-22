@@ -51,7 +51,7 @@ public class Pawn extends Piece{
 		if(this.getName().charAt(0) == 'w'){
 			if(moveTo.isOccupied()){
 			   if((destRank == srcRank - 1) && (Math.abs(destFile-srcFile)==1)){
-					if(moveTo.getPiece().getName().charAt(0) != this.getName().charAt(0)){
+					if(moveTo.getPiece().getColor().equals(chess.Chess.board[srcRank][srcFile].getPiece().getColor())==false){
 						//A check to see if this move puts the opponent's King in check
 						if(check == true){
 							return true;
@@ -249,7 +249,7 @@ public class Pawn extends Piece{
 		else if(this.getName().charAt(0) == 'b'){
 			if(moveTo.isOccupied()){
 				   if((destRank == srcRank + 1) && (Math.abs(destFile-srcFile)==1)){
-						if(moveTo.getPiece().getName().charAt(0) != this.getName().charAt(0)){
+						if(moveTo.getPiece().getColor().equals(chess.Chess.board[srcRank][srcFile].getPiece().getColor())==false){
 							//A check to see if this move puts the opponent's King in check
 							if(check == true){
 								return true;
