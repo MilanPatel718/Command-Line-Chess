@@ -4,6 +4,7 @@ import chess.Block;
 import chess.Player;
 
 /**
+ * Represent a King in a Chess game.
  * @author Baljit Kaur
  * @author Milan Patel
  */
@@ -12,13 +13,9 @@ public class King extends Piece {
 	
 	/**
 	 * Initializes a King object
-	 * 
-	 * @param name
-	 * Name used to identify a King
-	 * @param block
-	 * The block where the King is initially placed
-	 * @param color
-	 * Color of the piece
+	 * @param name Name used to identify a King
+	 * @param block The block where the King is initially placed
+	 * @param color Color of the piece
 	 */
 	public King(String name, Block block, String color, Player player){
 		super(name, block, color, player);
@@ -28,9 +25,7 @@ public class King extends Piece {
 	/**
 	 * Determines if a move to a new block is valid.
 	 * The Bishop is moved if the move is valid, else an error is returned.
-	 * 
-	 * @param moveTo
-	 * The block a King will be moved to if the move is valid.
+	 * @param moveTo The block a King will be moved to if the move is valid.
 	 */
 	public boolean move(Block moveTo, boolean check, String move){
 		int srcFile  = this.getBlock().getFile();

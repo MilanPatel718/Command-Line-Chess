@@ -10,14 +10,10 @@ import chess.Player;
  */
 public class Pawn extends Piece{
 	/**
-	 * Initializes a Pawn object
-	 * 
-	 * @param name
-	 * Name used to identify a Pawn
-	 * @param block
-	 * The block where the Pawn is initially placed
-	 * @param color
-	 * Color of the piece
+	 * Initializes a Pawn object.
+	 * @param name Name used to identify a Pawn.
+	 * @param block The block where the Pawn is initially placed.
+	 * @param color Color of the piece.
 	 */
 	public Pawn(String name, Block block, String color, Player player){
 		super(name, block, color, player);
@@ -26,9 +22,7 @@ public class Pawn extends Piece{
 	/**
 	 * Determines if a move to a new block is valid.
 	 * The Pawn is moved if the move is valid, else an error is returned.
-	 * 
-	 * @param moveTo
-	 * The block a Pawn will be moved to if the move is valid
+	 * @param moveTo The block a Pawn will be moved to if the move is valid.
 	 */
 	public boolean move(Block moveTo, boolean check, String move){
 		
@@ -445,10 +439,10 @@ public class Pawn extends Piece{
 	}
 	
 	/**
-	 * @param destRank
-	 * @param destFile
-	 * @param player
-	 * Promotes Pawn that reaches other end of board after a move
+	 * Promotes Pawn that reaches other end of board after a move.
+	 * @param destRank Rank of the destination block.
+	 * @param destFile File of the destination block.
+	 * @param move The name of the piece the user wants to promote a Pawn to.
 	 */
 	public void promotion(int destRank, int destFile, String move){
 		Player player=this.getPlayer();

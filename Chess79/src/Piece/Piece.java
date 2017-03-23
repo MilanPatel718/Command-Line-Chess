@@ -15,12 +15,11 @@ public abstract class Piece {
 	private boolean hasMoved;
 	
 	/**
-	 * @param name
-	 * Name used to identify a piece
-	 * @param block
-	 * The block the piece is initially placed on
-	 * @param color
-	 * Color of the block the piece is placed on
+	 * Specifies the name, block, color and player of the Piece.
+	 * @param name Name used to identify a piece
+	 * @param block The block the piece is initially placed on
+	 * @param color Color of the block the piece is placed on
+	 * @param player The player who owns the piece.
 	 */
 	public Piece(String name, Block block, String color, Player player){
 		this.name = name;
@@ -31,88 +30,88 @@ public abstract class Piece {
 	}
 	
 	/**
-	 * @return name
-	 * Returns the name of the piece
+	 * Returns the name of the piece.
+	 * @return name The name of the piece
 	 */
 	public String getName(){
 		return name;
 	}
 	
 	/**
-	 * @return block
 	 * Returns the block the piece is currently placed on
+	 * @return block The block a piece is on.
 	 */
 	public Block getBlock(){
 		return block;
 	}
 	
 	/**
-	 * @param b
-	 * Updates the housing block of a piece
+	 * Sets the block a piece is placed on.
+	 * @param the block
 	 */
 	public void setBlock(Block b){
 		block = b;
 	}
 	
 	/**
-	 * @param moveTo
-	 * @param check
-	 * @param move
-	 * The block a piece is being move to
+	 * The block a piece is being moved to
+	 * @param moveTo The block the piece is being moved to
+	 * @param check If the move is being executed or only checked whether it results in a check.
+	 * @param move Used for pawn promotion
 	 */
 	public abstract boolean move(Block moveTo, boolean check, String move);
 
 	/**
-	 * @return color
 	 * Returns the color of the block the piece is placed on
+	 * @return color The color of piece.
 	 */
 	public String getColor() {
 		return color;
 	}
 
 	/**
-	 * @param color
 	 * Updates the color of the block the piece is placed on
+	 * @param color The color of the block
 	 */
 	public void setColor(String color) {
 		this.color = color;
 	}
 
 	/**
-	 * @return player
 	 * Returns the Player assigned to Piece
+	 * @return player The player the piece belongs to
 	 */
 	public Player getPlayer() {
 		return player;
 	}
 
 	/**
-	 * @param player
 	 * Sets the player assigned to Piece
+	 * @param player The player a piece belongs to
 	 */
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
 
 	/**
-	 * @return number
 	 * Returns the Number Assigned to a piece
+	 * @return number The number of the piece
 	 */
 	public int getNumber() {
 		return number;
 	}
 
 	/**
-	 * @param number
 	 * Sets the number to assign to a piece
+	 * @param number the number of the piece
 	 */
 	public void setNumber(int number) {
 		this.number = number;
 	}
 	/**
-	 * @param num
-	 * @param P
 	 * Sets Player Piece to Null when that piece is captured by enemy player
+	 * @param num the number of the piece
+	 * @param P the piece that is already in the game
 	 */
 	public void deletePiece(int num, Piece P){
 		String Name=P.getName();
@@ -178,14 +177,26 @@ public abstract class Piece {
 		}
 	}
 	
+	/**
+	 * Sets whether the piece has been moved.
+	 * @param b Boolean b
+	 */
 	public void setHasMoved(boolean b){
 		hasMoved = b;
 	}
 	
+	/**
+	 * Returns whether the piece has been moved or not.
+	 * @return Boolean hasMoved
+	 */
 	public boolean getHasMoved(){
 		return hasMoved;
 	}
 	
+	/**
+	 * Returns whether the piece is in check.
+	 * @return false
+	 */
 	public boolean isInCheck(){
 		return false;
 	}

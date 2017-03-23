@@ -4,6 +4,7 @@ import chess.Block;
 import chess.Player;
 
 /**
+ * Represent a Bishop in a Chess game.
  * @author Baljit Kaur
  * @author Milan Patel
  */
@@ -11,12 +12,9 @@ public class Bishop extends Piece{
 	/**
 	 * Initializes a Bishop object
 	 * 
-	 * @param name
-	 * Name used to identify a Bishop
-	 * @param block
-	 * The block where the Bishop is initially placed
-	 * @param color
-	 * Color of the piece
+	 * @param name Name used to identify a Bishop
+	 * @param block The block where the Bishop is initially placed
+	 * @param color Color of the piece
 	 */
 	public Bishop(String name, Block block, String color, Player player){
 		super(name, block, color, player);
@@ -25,9 +23,7 @@ public class Bishop extends Piece{
 	/**
 	 * Determines if a move to a new block is valid.
 	 * The Bishop is moved if the move is valid, else an error is returned.
-	 * 
-	 * @param moveTo
-	 * The block a Bishop will be moved to if the move is valid
+	 * @param moveTo The block a Bishop will be moved to if the move is valid
 	 */
 	public boolean move(Block moveTo, boolean check, String move){
 		//Translate File and Rank to array indices

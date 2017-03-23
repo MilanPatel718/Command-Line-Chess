@@ -4,6 +4,7 @@ import chess.Block;
 import chess.Player;
 
 /**
+ * Represent a Rook in a Chess game.
  * @author Baljit Kaur
  * @author MIlan Patel
  */
@@ -11,13 +12,9 @@ public class Rook extends Piece{
 	
 	/**
 	 * Initializes a Bishop object
-	 * 
-	 * @param name
-	 * Name used to identify a Rook
-	 * @param block
-	 * The block where the Rook is initially placed
-	 * @param color
-	 * Color of the piece
+	 * @param name Name used to identify a Rook
+	 * @param block The block where the Rook is initially placed
+	 * @param color Color of the piece
 	 */
 	public Rook(String name, Block block, String color, Player player){
 		super(name, block, color, player);
@@ -26,9 +23,7 @@ public class Rook extends Piece{
 	/**
 	 * Determines if a move to a new block is valid.
 	 * The Rook is moved if the move is valid, else an error is returned.
-	 * 
-	 * @param moveTo
-	 * The block a Rook will be moved to if the move is valid
+	 * @param moveTo The block a Rook will be moved to if the move is valid
 	 */
 	public boolean move(Block moveTo, boolean check, String move){
 		//Translate File and Rank to array indices

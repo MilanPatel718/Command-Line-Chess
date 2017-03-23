@@ -7,6 +7,7 @@ import Piece.*;
 
 
 /**
+ * The Chess application sets up the Chess Board with both players' game pieces and creates a Game instance to start the game.
  * @author Milan Patel
  * @author Baljit Kaur
  */ 
@@ -19,8 +20,9 @@ public class Chess {
 	public static String prevMove;
 	
 /**
- * Populates Chess Board for start of game
- * @param None
+ * Populates Chess Board with each players pieces in the designated locations.
+ * @param None.
+ * @return Nothing.
  */
 public static void populateBoard(){
 	for(int i=0; i<8; i++){
@@ -325,8 +327,9 @@ public static void populateBoard(){
 }
 	
 	/**
-	 * Prints Chess Board
-	 * @params None
+	 * Prints the Chess Board
+	 * @params None.
+	 * @return Nothing.
 	 */
 	public static void printBoard(){
 		for(int i=0;i<9;i++){
@@ -340,7 +343,10 @@ public static void populateBoard(){
 	}
 	
 	/**
-	 * Initializes Chessboard
+	 * Main method where the board is populated and  two players are initialized.
+	 * A Game instance is created and the start function in game is invoked.
+	 * @param args Unused.
+	 * @return Nothing.
 	 */
 	public static void main(String[] args){
 			white = new Player("White");

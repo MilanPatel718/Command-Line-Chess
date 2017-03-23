@@ -3,9 +3,9 @@ package chess;
 import Piece.Piece;
 
 /**
+ * The Block application models a Chess Board block.
  * @author Milan Patel
  * @author Baljit Kaur
- *
  */
 public class Block {
 	private int rank;
@@ -17,9 +17,9 @@ public class Block {
 	
 	
 	/**
-	 * Block Constructor for game board
-	 * @param rank
-	 * @param file
+	 * Initializes the block with parameters rank and file.
+	 * @param rank The rank of the block.
+	 * @param file The file of the block.
 	 */
 	public Block(int rank, int file){
 		this.rank = rank;
@@ -28,7 +28,7 @@ public class Block {
 	
 	/**
 	 * Block Constructor for outer label blocks (a:h, 8:1)
-	 * @param display
+	 * @param display The string displayed when the black is printed.
 	 */
 	public Block(String display){
 		this.display=display;
@@ -36,7 +36,7 @@ public class Block {
 	
 	/**
 	 * Getter Method for Rank
-	 * @return int
+	 * @return The rank of the block.
 	 */
 	public int getRank(){
 		return rank;
@@ -44,7 +44,7 @@ public class Block {
 	
 	/**
 	 * Getter Method for File
-	 * @return int
+	 * @return The file of the block.
 	 */
 	public int getFile(){
 		return file;
@@ -53,7 +53,7 @@ public class Block {
 	
 	/**
 	 * Setter Method for Occupied Block
-	 * @param b
+	 * @param True if block is occupied, false if it is not.
 	 */
 	public void setOccupied(boolean b){
 		occupied = b;
@@ -61,7 +61,7 @@ public class Block {
 	
 	/**
 	 * Getter Method for Occupied Block
-	 * @return occupied
+	 * @return True if block is occupied, false if it is not.
 	 */
 	public boolean isOccupied(){
 		return occupied;
@@ -69,7 +69,7 @@ public class Block {
 	
 	/**
 	 * Setter Method for Piece
-	 * @param p
+	 * @param The Piece placed on a block.
 	 */
 	public void setPiece(Piece p){
 		piece = p;
@@ -77,35 +77,39 @@ public class Block {
 	
 	/**
 	 * Getter Method for Piece
-	 * @return piece
+	 * @return The Piece placed on a block.
 	 */
 	public Piece getPiece(){
 		return piece;
 	}
 
 	/**
-	 * @return shaded
+	 * Informs whether the block is shaded or not.
+	 * @return True if the block is shaded, False if it not.
 	 */
 	public boolean isShaded() {
 		return shaded;
 	}
 
 	/**
-	 * @param shaded
+	 * Sets the shade of the block.
+	 * @param True is block is shaded, False if it is not.
 	 */
 	public void setShaded(boolean shaded) {
 		this.shaded = shaded;
 	}
 
 	/**
-	 * @return display
+	 * Returns the string displayed when the board is printed.
+	 * @return The content displayed on board.
 	 */
 	public String getDisplay() {
 		return display;
 	}
 
 	/**
-	 * @param display
+	 * Sets the string displayed when the board is printed.
+	 * @param The content displayed on board.
 	 */
 	public void setDisplay(String display) {
 		this.display = display;

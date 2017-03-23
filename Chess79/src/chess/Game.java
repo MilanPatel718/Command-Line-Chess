@@ -7,6 +7,7 @@ import java.util.Scanner;
 import Piece.Pawn;
 import Piece.Piece;
 /**
+ * The Game application takes two players and a Chess Board and starts the game.
  * @author Baljit Kaur
  * @author Milan Patel
  */
@@ -25,6 +26,14 @@ public class Game {
 	Map<String, Integer> fMap;
 	Map<String, Integer> rMap;
 	
+	/**
+	 * Initializes the Game object to values passed as parameters.
+	 * @param board The Chess Board instance.
+	 * @param blackPlayer Player 1.
+	 * @param whitePlayer Player 2.
+	 * @param fMap The hashMap used to map input to File.
+	 * @param rMap The hashMap used to map input to Rank.
+	 */
 	public Game(Block board[][], Player blackPlayer, Player whitePlayer, 
 			Map<String, Integer> fMap, Map<String, Integer> rMap){
 		this.board = board;
@@ -44,7 +53,7 @@ public class Game {
 	}
 	
 	/**
-	* Method that begins an actual instance of a game
+	* Method that begins an actual instance of a game and asks players for input until a player wins or resigns.
 	* @param None
 	*/
 	public void Start(){
@@ -268,8 +277,8 @@ public class Game {
 	}
 	
 	/**
-	 * @param src
-	 * Parses Input Move
+	 * Takes a string received as input from user and translates it into the specified fields.
+	 * @param src Parses Input Move
 	 */
 	public void getInput(String src){
 		if(src.length()==11)
@@ -282,12 +291,14 @@ public class Game {
 		
 	}
 	
-	/**
-	 * @param current
-	 * @param dest
-	 * @param player
-	 * @return boolean
-	 * Checks if the current piece color matches the current player color and then executes move
+	 /**
+	 * Checks if the current piece color matches the current player color and then executes move.
+	 * @param current The block the piece being moved is currently placed on.
+	 * @param dest The block a piece is being moved to.
+	 * @param player The player making the move.
+	 * @param check Takes false if the move is actually being executed or true if it only for checking if the move results in the King being in check.
+	 * @param move String used for possible Pawn promotion.
+	 * @return boolean Returns true or false based on the success of the move or false if the move was invalid.
 	 */
 	public boolean makeMove(Block current, Block dest, Player player, boolean check, String move){
 		boolean success = false;
@@ -1524,7 +1535,14 @@ public class Game {
 		
 	}
 	
-	public boolean checkMate(Block Move, Piece  P, String color){
+	/**
+	 * Checks if a move results in Checkmate.
+	 * @param Move The block a piece isi being moved to.
+	 * @param P The piece being moved.
+	 * @param color The color of the piece being moved.
+	 * @return True if checkmate.
+	 */
+	public boolean checkMate(Block Move, Piece P, String color){
 		boolean occupied=Move.isOccupied();
 		String Color=" ";
 		if(Move.getPiece()!=null){
@@ -1572,10 +1590,10 @@ public class Game {
 
 	
 	/**
-	 * @param player
-	 * @param s
-	 * @return boolean
-	 * Takes in Player and Move sets up information for makeMove
+	 * Takes in Player and user input as a string sets up information for makeMove.
+	 * @param player The player whose turn it is to move.
+	 * @param s String received as input from player.
+	 * @return boolean The result of makeMove method.
 	 */
 	public boolean mapAndExecute(Player player, String s){
 		getInput(s);

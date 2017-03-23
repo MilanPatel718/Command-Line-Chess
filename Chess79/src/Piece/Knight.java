@@ -4,6 +4,7 @@ import chess.Block;
 import chess.Player;
 
 /**
+ * Represent a Knight in a Chess game.
  * @author Baljit Kaur
  * @author Milan Patel
  */
@@ -11,12 +12,9 @@ public class Knight extends Piece{
 	/**
 	 * Initializes a Knight object
 	 * 
-	 * @param name
-	 * Name used to identify a Knight
-	 * @param block
-	 * The block where the Knight is initially placed
-	 * @param color
-	 * Color of the piece
+	 * @param name Name used to identify a Knight
+	 * @param block The block where the Knight is initially placed
+	 * @param color Color of the piece
 	 */
 	public Knight(String name, Block block, String color, Player player){
 		super(name, block, color, player);
@@ -25,9 +23,7 @@ public class Knight extends Piece{
 	/**
 	 * Determines if a move to a new block is valid.
 	 * The Knight is moved if the move is valid, else an error is returned.
-	 * 
-	 * @param moveTo
-	 * The block a Knight will be moved to if the move is valid
+	 * @param moveTo The block a Knight will be moved to if the move is valid
 	 */
 	public boolean move(Block moveTo, boolean check, String move){
 		//Translate File and Rank to array indices
